@@ -10,6 +10,7 @@ import com.android.volley.toolbox.NetworkImageView;
 import com.android.volley.toolbox.Volley;
 import com.xiaomai.myproject.R;
 import com.xiaomai.myproject.base.BaseActivity;
+import com.xiaomai.myproject.demo.FragmentActivityDemoActivity;
 import com.xiaomai.myproject.demo.NumberProgressBarDemoActivity;
 import com.xiaomai.myproject.utils.BitmapCache;
 
@@ -27,7 +28,7 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTitle("这是标题");
-        startActivity(new Intent(this, NumberProgressBarDemoActivity.class));
+        startActivity(new Intent(this, FragmentActivityDemoActivity.class));
     }
 
     @Override

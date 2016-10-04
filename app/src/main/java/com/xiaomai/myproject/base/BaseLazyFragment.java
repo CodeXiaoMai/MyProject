@@ -11,6 +11,16 @@ public abstract class BaseLazyFragment extends BaseFragment {
     protected boolean isVisible;
 
     /**
+     * 是否完成初始化
+     */
+    protected boolean isPrepared;
+
+    /**
+     * 是否是是第一次加载
+     */
+    protected boolean isFirstTime = true;
+
+    /**
      * 这里实现数据的缓加载
      *
      * @param isVisibleToUser
