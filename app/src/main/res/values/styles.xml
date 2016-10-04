@@ -1,0 +1,56 @@
+<resources>
+
+    <style name="AppTheme.Base" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    </style>
+
+    <style name="AppTheme" parent="AppTheme.Base"/>
+
+    <!-- 不带标题的Dialog -->
+    <style name="MyDialogWithOutTitle" parent="android:style/Theme.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
+    <!-- ProgressBar -->
+    <style name="MyProgressBar" parent="android:style/Widget.ProgressBar.Large">
+        <item name="android:indeterminateDrawable">@drawable/rotate_progress</item>
+    </style>
+
+    <!-- 标题的风格 -->
+    <style name="MyTitle">
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/LargeTextSize</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <!-- Toolbar的风格 -->
+    <style name="MyToolbar" parent="Widget.AppCompat.Toolbar">
+        <!-- 设置该属性解决空白部分-->
+        <item name="contentInsetStart">0dp</item>
+        <item name="android:minHeight">?attr/actionBarSize</item>
+        <item name="android:background">@color/colorPrimaryDark</item>
+        <item name="android:fitsSystemWindows">true</item>
+    </style>
+
+    <style name="titleImage">
+        <item name="android:padding">@dimen/padding_tooLarge</item>
+    </style>
+
+    <!-- NumberProgressBar的默认风格 -->
+    <style name="NumberProgressBar_Default">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="max">100</item>
+        <item name="progress">0</item>
+        <item name="progress_unreached_color">#CCCCCC</item>
+        <item name="progress_reached_color">#3498DB</item>
+        <item name="progress_text_size">10sp</item>
+        <item name="progress_text_color">#3498DB</item>
+        <item name="progress_reached_bar_height">3dp</item>
+        <item name="progress_unreached_bar_height">2dp</item>
+    </style>
+</resources>

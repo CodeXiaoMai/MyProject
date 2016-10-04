@@ -1,0 +1,26 @@
+<resources>
+
+    <!-- margin -->
+    <dimen name="margin_normal">5dp</dimen>
+    <dimen name="margin_large">10dp</dimen>
+    <dimen name="margin_tooLarge">15dp</dimen>
+
+    <!-- Padding -->
+    <dimen name="padding_normal">5dp</dimen>
+    <dimen name="padding_large">10dp</dimen>
+    <dimen name="padding_tooLarge">15dp</dimen>
+
+    <!-- Line -->
+    <dimen name="line_tiny">0.5dp</dimen>
+    <dimen name="line_normal">1dp</dimen>
+
+    <!--TextSize-->
+    <dimen name="normalTextSize">15sp</dimen>
+    <dimen name="LargeTextSize">18sp</dimen>
+
+    <!-- LineSpaceExtras -->
+    <dimen name="lineSpaceExtras">3dp</dimen>
+
+    <dimen name="height_my_app_bar">45dp</dimen>
+
+</resources>

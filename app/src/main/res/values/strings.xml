@@ -1,0 +1,15 @@
+<resources>
+    <string name="authorities">com.xiaomai</string>
+
+    <string name="app_name">MyProjet</string>
+    <string name="button_ok">确定</string>
+    <string name="button_cancel">取消</string>
+
+    <string name="time_now">刚刚</string>
+    <string name="time_minute_before">分钟前</string>
+    <string name="time_hour_before">小时前</string>
+    <string name="time_day_before">天前</string>
+    <string name="time_yesterday">昨天</string>
+    <string name="time_theDayBeforeYesterday">前天</string>
+    <string name="back">返回</string>
+</resources>

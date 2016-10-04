@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        layout="@layout/my_app_bar"/>
+
+    <com.xiaomai.myproject.view.NumberProgressBar
+        android:padding="@dimen/margin_normal"
+        android:id="@+id/activity_number_progress"
+        android:layout_width="match_parent"
+        style="@style/NumberProgressBar_Default"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/activity_number_progress_button_start"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="开始"
+        android:layout_height="wrap_content" />
+</LinearLayout>
