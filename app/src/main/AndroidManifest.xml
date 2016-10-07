@@ -26,6 +26,7 @@
         <activity android:name=".demo.NoHttpDemoActivity"/>
         <activity android:name=".demo.NumberProgressBarDemoActivity"/>
         <activity android:name=".demo.FragmentActivityDemoActivity"/>
+        <activity android:name=".demo.LoopViewPagerDemoActivity"/>
 
         <!-- ContentProvider -->
         <provider
