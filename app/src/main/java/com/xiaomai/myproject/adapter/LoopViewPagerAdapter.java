@@ -12,18 +12,18 @@ import java.util.List;
  */
 public class LoopViewPagerAdapter extends PagerAdapter {
 
-    private List<ImageView> mList;
+    private List<ImageView> mImageList;
 
     private int[] mImageIds;
 
-    public LoopViewPagerAdapter(List<ImageView> mList, int[] mImageIds) {
-        this.mList = mList;
+    public LoopViewPagerAdapter(List<ImageView> mImageList, int[] mImageIds) {
+        this.mImageList = mImageList;
         this.mImageIds = mImageIds;
     }
 
     @Override
     public int getCount() {
-        return mList == null ? 0 : mList.size();
+        return mImageList == null ? 0 : mImageList.size();
     }
 
     @Override
@@ -34,18 +34,21 @@ public class LoopViewPagerAdapter extends PagerAdapter {
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
         if (position == 0) {
-            mList.get(position).setImageResource(mImageIds[2]);
-        } else if (position == (mList.size() - 1)) {
-            mList.get(position).setImageResource(mImageIds[0]);
+            //  如果是第0个item就设置它的图片内容为最后一个图片的内容
+            mImageList.get(position).setImageResource(mImageIds[mImageIds.length-1]);
+        } else if (position == (mImageList.size() - 1)) {
+            //  如果是最后一个item就设置它的图片内容为第一个图片的内容
+            mImageList.get(position).setImageResource(mImageIds[0]);
         } else {
-            mList.get(position).setImageResource(mImageIds[position - 1]);
+            //  这是正常的图片
+            mImageList.get(position).setImageResource(mImageIds[position - 1]);
         }
-        container.addView(mList.get(position));
-        return mList.get(position);
+        container.addView(mImageList.get(position));
+        return mImageList.get(position);
     }
 
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
-        container.removeView(mList.get(position));
+        container.removeView(mImageList.get(position));
     }
 }
