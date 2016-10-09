@@ -1,6 +1,5 @@
 package com.xiaomai.myproject.demo;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.view.ViewPager;
@@ -48,11 +47,6 @@ public class LoopViewPagerDemoActivity extends BaseActivity {
     private List<ImageView> mImageList;
 
     /**
-     * 当前页面是否可见
-     */
-    private boolean mIsResume;
-
-    /**
      * 当前广告的index
      */
     private int mCurrentPageIndex;
@@ -63,8 +57,6 @@ public class LoopViewPagerDemoActivity extends BaseActivity {
     private LinearLayout mLinearLayoutPoints;
 
     private Handler mHandler = new Handler();
-
-    private Context mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,7 +85,6 @@ public class LoopViewPagerDemoActivity extends BaseActivity {
     @Override
     protected void initVariables() {
         super.initVariables();
-        mContext = this;
     }
 
     @Override

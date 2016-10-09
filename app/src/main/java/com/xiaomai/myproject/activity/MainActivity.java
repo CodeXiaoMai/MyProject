@@ -10,7 +10,7 @@ import com.android.volley.toolbox.NetworkImageView;
 import com.android.volley.toolbox.Volley;
 import com.xiaomai.myproject.R;
 import com.xiaomai.myproject.base.BaseActivity;
-import com.xiaomai.myproject.demo.LoopViewPagerDemoActivity;
+import com.xiaomai.myproject.demo.LoopViewPagerDemo2Activity;
 import com.xiaomai.myproject.utils.BitmapCache;
 
 public class MainActivity extends BaseActivity {
@@ -27,7 +27,7 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTitle("这是标题");
-        startActivity(new Intent(this, LoopViewPagerDemoActivity.class));
+        startActivity(new Intent(this, LoopViewPagerDemo2Activity.class));
     }
 
     @Override

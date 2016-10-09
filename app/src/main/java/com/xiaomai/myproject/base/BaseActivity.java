@@ -1,5 +1,6 @@
 package com.xiaomai.myproject.base;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -38,6 +39,8 @@ public abstract class BaseActivity extends AppCompatActivity {
      */
     private MyProgressDialog mProgressDialog;
 
+    protected Context mContext;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +63,7 @@ public abstract class BaseActivity extends AppCompatActivity {
      * 初始化数据
      */
     protected void initVariables() {
+        mContext = this;
     }
 
     /**
