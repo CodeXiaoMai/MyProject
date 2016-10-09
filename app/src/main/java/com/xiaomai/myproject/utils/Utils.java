@@ -238,4 +238,22 @@ public class Utils {
             return srcDateStr;
         }
     }
+
+    /**
+     * Dip转换为像素
+     * @param context
+     * @param dpValue
+     * @return
+     */
+    public static int dip2px(Context context, float dpValue){
+        /**
+         * 获取屏幕的像素密度
+         */
+        final float scale = context.getResources().getDisplayMetrics().density;
+        if (dpValue > 0) {
+            return (int)(dpValue * scale + 0.5f);
+        }else {
+            return (int)(dpValue * scale - 0.5f);
+        }
+    }
 }

@@ -13,4 +13,13 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_below="@id/titleBar" />
+
+    <LinearLayout
+        android:id="@+id/activity_ll_container"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="@color/toast"
+        android:layout_alignBottom="@id/activity_loop_viewpager"
+        android:layout_height="40dp"/>
 </RelativeLayout>

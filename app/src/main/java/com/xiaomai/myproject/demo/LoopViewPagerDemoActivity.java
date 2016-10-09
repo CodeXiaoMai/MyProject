@@ -3,12 +3,16 @@ package com.xiaomai.myproject.demo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.view.ViewPager;
+import android.view.MotionEvent;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.xiaomai.myproject.R;
 import com.xiaomai.myproject.adapter.LoopViewPagerAdapter;
 import com.xiaomai.myproject.base.BaseActivity;
+import com.xiaomai.myproject.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,6 +52,11 @@ public class LoopViewPagerDemoActivity extends BaseActivity {
      */
     private int mCurrentPageIndex;
 
+    /**
+     * 指示Point
+     */
+    private LinearLayout mLinearLayoutPoints;
+
     private Handler mHandler = new Handler();
 
     @Override
@@ -71,7 +80,6 @@ public class LoopViewPagerDemoActivity extends BaseActivity {
         @Override
         public void run() {
             mViewPager.setCurrentItem(mCurrentPageIndex + 1);
-            mHandler.postDelayed(myRunnable, UPDATE_TIME);
         }
     };
 
@@ -105,6 +113,21 @@ public class LoopViewPagerDemoActivity extends BaseActivity {
 
     @Override
     protected void initViews() {
+        mLinearLayoutPoints = (LinearLayout) findViewById(R.id.activity_ll_container);
+        //圆点的直径
+        int diameter = Utils.dip2px(this,10f);
+        LinearLayout.LayoutParams layoutParams =
+                new LinearLayout.LayoutParams(diameter, diameter);
+        int margin = Utils.dip2px(this,5f);
+        layoutParams.setMargins(margin,margin,margin,margin);
+        for (int i = 0; i < mImageList.size(); i++) {
+            View view = new View(this);
+            view.setLayoutParams(layoutParams);
+            if (i != 0 && i != mImageList.size() - 1) {
+                view.setBackgroundResource(R.drawable.circle_normal);
+            }
+            mLinearLayoutPoints.addView(view);
+        }
         mViewPager = (ViewPager) findViewById(R.id.activity_loop_viewpager);
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -114,6 +137,8 @@ public class LoopViewPagerDemoActivity extends BaseActivity {
 
             @Override
             public void onPageSelected(int position) {
+                mHandler.removeCallbacks(myRunnable);
+                mHandler.postDelayed(myRunnable, UPDATE_TIME);
                 mCurrentPageIndex = position;
                 if (position == 0) {
                     // 当视图在第一个时，将页面号设置为图片的最后一张。
@@ -121,6 +146,7 @@ public class LoopViewPagerDemoActivity extends BaseActivity {
                 } else if (position == mImageIds.length + 1) {
                     // 当视图在最后一个时,将页面号设置为图片的第一张。
                     mCurrentPageIndex = 1;
+                } else {
                 }
                 /**
                  * 当视图在第一个或者最后一个时，pageIndex和position的值不相等，
@@ -133,11 +159,35 @@ public class LoopViewPagerDemoActivity extends BaseActivity {
                     mViewPager.setCurrentItem(mCurrentPageIndex, false);
                     return;
                 }
+                for (int i = 1; i < mLinearLayoutPoints.getChildCount() - 1; i++) {
+                    if (i != mCurrentPageIndex){
+                        mLinearLayoutPoints.getChildAt(i).setBackgroundResource(R.drawable.circle_normal);
+                    }else {
+                        mLinearLayoutPoints.getChildAt(mCurrentPageIndex).setBackgroundResource(
+                                R.drawable.circle_select);
+                    }
+                }
+
             }
 
             @Override
             public void onPageScrollStateChanged(int state) {
 
+            }
+        });
+        /**
+         * 当ViewPager被按下的时候，取消自动滚动
+         * 反之开启自动滑动。
+         */
+        mViewPager.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction() == MotionEvent.ACTION_DOWN){
+                    mHandler.removeCallbacks(myRunnable);
+                }else if (event.getAction() == MotionEvent.ACTION_UP){
+                    mHandler.postDelayed(myRunnable, UPDATE_TIME);
+                }
+                return false;
             }
         });
         mLoopViewPager = new LoopViewPagerAdapter(mImageList, mImageIds);
