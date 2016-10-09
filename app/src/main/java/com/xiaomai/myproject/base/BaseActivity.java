@@ -71,6 +71,7 @@ public abstract class BaseActivity extends AppCompatActivity {
      * 加载数据
      */
     protected void loadData() {
+        showProgressDialog();
     }
 
     /**
@@ -151,7 +152,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     /**
-     * 显示进度Dialog
+     * 显示进度Dialog，可以取消
      */
     protected void showProgressDialog() {
         if (mProgressDialog == null) {
@@ -163,7 +164,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     /**
      * 显示进度Dialog
-     * @param cancelable
+     * @param cancelable 默认值false，不可取消，true可以取消
      */
     protected void showProgressDialog(boolean cancelable){
         if (mProgressDialog == null){

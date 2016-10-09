@@ -21,5 +21,6 @@
         android:gravity="center"
         android:background="@color/toast"
         android:layout_alignBottom="@id/activity_loop_viewpager"
+        android:visibility="gone"
         android:layout_height="40dp"/>
 </RelativeLayout>
