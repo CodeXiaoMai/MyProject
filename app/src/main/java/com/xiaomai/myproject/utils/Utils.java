@@ -94,6 +94,24 @@ public class Utils {
 
     }
 
+    /**
+     * 把Object转换喂long型
+     *
+     * @param obj
+     * @return
+     */
+    public static long parseToLong(Object obj) {
+        if (obj == null) {
+            return 0;
+        } else {
+            try {
+                return Long.parseLong(obj.toString());
+            } catch (Exception e) {
+                return 0;
+            }
+        }
+    }
+
     public static String getDate() {
         return getDate(new Date(), "yyyy-MM-dd HH:mm:ss");
     }
@@ -245,6 +263,30 @@ public class Utils {
     }
 
     /**
+     * 将时间戳装换为时间
+     *
+     * @param milliSecond
+     * @return
+     */
+    public static String parseTimeStamp(String milliSecond) {
+        return parseTimeStamp(parseToLong(milliSecond));
+    }
+
+    /**
+     * 将时间戳装换为时间
+     *
+     * @param milliSecond
+     * @return
+     */
+    public static String parseTimeStamp(long milliSecond) {
+        if (milliSecond <= 0) {
+            return "milliSecond不能小于0";
+        }
+        Date date = new Date(milliSecond * 1000);
+        return getDate(date);
+    }
+
+    /**
      * Dip转换为像素
      *
      * @param context
@@ -297,12 +339,13 @@ public class Utils {
 
     /**
      * 打开某个App
+     *
      * @param context
      * @param packageName
      * @param url
      */
-    public static void openApp(Context context, String packageName, String url){
-        if (hasInstall(context, packageName)){
+    public static void openApp(Context context, String packageName, String url) {
+        if (hasInstall(context, packageName)) {
             context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
         }
     }
@@ -319,6 +362,7 @@ public class Utils {
 
     /**
      * 直接拨打电话
+     *
      * @param context
      * @param phoneNumber
      */
@@ -326,6 +370,11 @@ public class Utils {
         openDial(context, phoneNumber, true);
     }
 
+    /**
+     * @param context
+     * @param phoneNumber
+     * @param call true：直接拨打电话,false：打开拨号界面
+     */
     public static void openDial(Context context, String phoneNumber, boolean call) {
         Intent intent = new Intent();
         if (call) {

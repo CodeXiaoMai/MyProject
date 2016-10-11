@@ -12,6 +12,7 @@ import com.xiaomai.myproject.R;
 import com.xiaomai.myproject.utils.Const;
 import com.xiaomai.myproject.utils.MyLog;
 import com.xiaomai.myproject.view.MyProgressDialog;
+import com.xiaomai.myproject.view.MyToast;
 
 /**
  * Created by XiaoMai on 2016/8/29.
@@ -47,6 +48,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         int contentLayoutId = getContentLayout();
         if (contentLayoutId <= 0) {
             MyLog.e(Const.TAG_ERROR, "还没有setContentLayout");
+            MyToast.show(this,"还没有setContentLayout");
             return;
         }
         setContentView(contentLayoutId);

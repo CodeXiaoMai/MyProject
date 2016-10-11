@@ -1,4 +1,4 @@
-package com.xiaomai.myproject.activity;
+package com.xiaomai.myproject.demo;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * Created by XiaoMai on 2016/8/29.
  */
-public class MyListViewActivity extends Activity {
+public class MyMultiItemListViewDemoActivity extends Activity {
 
     private ListView mListView;
     private MyListViewAdapter mAdapter;

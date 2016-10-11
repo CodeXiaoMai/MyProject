@@ -5,14 +5,14 @@ import android.os.Bundle;
 
 import com.xiaomai.myproject.R;
 import com.xiaomai.myproject.base.BaseActivity;
-import com.xiaomai.myproject.demo.VolleyAndImageLoaderDemoActivity;
+import com.xiaomai.myproject.demo.TextAndImageViewDemoActivity;
 
 public class MainActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Intent intent = new Intent(mContext, VolleyAndImageLoaderDemoActivity.class);
+        Intent intent = new Intent(mContext, TextAndImageViewDemoActivity.class);
         startActivity(intent);
     }
 

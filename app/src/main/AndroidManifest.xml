@@ -19,7 +19,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.MyListViewActivity" />
+        <activity android:name=".demo.MyMultiItemListViewDemoActivity" />
         <activity android:name=".demo.MyEditDialogDemoActivity" />
         <activity android:name=".demo.DataBaseDemoActivity"/>
         <activity android:name=".demo.MyDownloadDemoActivity"/>
@@ -28,14 +28,12 @@
         <activity android:name=".demo.FragmentActivityDemoActivity"/>
         <activity android:name=".demo.LoopViewPagerDemoActivity"/>
         <activity android:name=".demo.LoopViewPagerDemo2Activity"/>
-
+        <activity android:name=".demo.TextAndImageViewDemoActivity"/>
         <!-- ContentProvider -->
         <provider
             android:name=".database.DataBaseProvider"
             android:exported="true"
             android:authorities="@string/authorities" />
-
-
     </application>
 
 </manifest>
