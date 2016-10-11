@@ -1,6 +1,9 @@
 package com.xiaomai.myproject.utils;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.net.Uri;
 import android.text.Html;
 import android.text.Spanned;
 import android.util.DisplayMetrics;
@@ -14,6 +17,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 /**
@@ -205,6 +209,7 @@ public class Utils {
 
     /**
      * 获取短时间：eg：刚刚、n分钟前，n小时前，n天前。。。
+     *
      * @param srcDateStr
      * @param descDateStr
      * @return
@@ -241,19 +246,95 @@ public class Utils {
 
     /**
      * Dip转换为像素
+     *
      * @param context
      * @param dpValue
      * @return
      */
-    public static int dip2px(Context context, float dpValue){
+    public static int dip2px(Context context, float dpValue) {
         /**
          * 获取屏幕的像素密度
          */
         final float scale = context.getResources().getDisplayMetrics().density;
         if (dpValue > 0) {
-            return (int)(dpValue * scale + 0.5f);
-        }else {
-            return (int)(dpValue * scale - 0.5f);
+            return (int) (dpValue * scale + 0.5f);
+        } else {
+            return (int) (dpValue * scale - 0.5f);
         }
     }
+
+    /**
+     * 判断某软件是否已经安装
+     *
+     * @param context
+     * @param packageName
+     * @return
+     */
+    public static boolean hasInstall(Context context, String packageName) {
+        List<PackageInfo> packageInfoList = context.getPackageManager().getInstalledPackages(0);
+        if (packageInfoList != null) {
+            for (int i = 0; i < packageInfoList.size(); i++) {
+                if (packageInfoList.get(i).packageName.equals(packageName)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    /**
+     * 打开QQ
+     *
+     * @param context
+     */
+    public static void openQQ(Context context) {
+        if (hasInstall(context, "com.tencent.mobileqq")) {
+            String qqNumber = "10000";
+            String url = "mqqwpa://im/chat?chat_type=wpa&uin=" + qqNumber;
+            context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
+        }
+    }
+
+    /**
+     * 打开某个App
+     * @param context
+     * @param packageName
+     * @param url
+     */
+    public static void openApp(Context context, String packageName, String url){
+        if (hasInstall(context, packageName)){
+            context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
+        }
+    }
+
+    /**
+     * 打开拨号键盘，不拨打电话
+     *
+     * @param context
+     * @param phoneNumber
+     */
+    public static void openDial(Context context, String phoneNumber) {
+        openDial(context, phoneNumber, false);
+    }
+
+    /**
+     * 直接拨打电话
+     * @param context
+     * @param phoneNumber
+     */
+    public static void call(Context context, String phoneNumber) {
+        openDial(context, phoneNumber, true);
+    }
+
+    public static void openDial(Context context, String phoneNumber, boolean call) {
+        Intent intent = new Intent();
+        if (call) {
+            intent.setAction(Intent.ACTION_CALL);
+        } else {
+            intent.setAction(Intent.ACTION_DIAL);
+        }
+        intent.setData(Uri.parse("tel:" + phoneNumber));
+        context.startActivity(intent);
+    }
+
 }

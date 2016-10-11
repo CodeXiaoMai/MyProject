@@ -23,7 +23,7 @@
         <activity android:name=".demo.MyEditDialogDemoActivity" />
         <activity android:name=".demo.DataBaseDemoActivity"/>
         <activity android:name=".demo.MyDownloadDemoActivity"/>
-        <activity android:name=".demo.NoHttpDemoActivity"/>
+        <activity android:name=".demo.VolleyAndImageLoaderDemoActivity"/>
         <activity android:name=".demo.NumberProgressBarDemoActivity"/>
         <activity android:name=".demo.FragmentActivityDemoActivity"/>
         <activity android:name=".demo.LoopViewPagerDemoActivity"/>

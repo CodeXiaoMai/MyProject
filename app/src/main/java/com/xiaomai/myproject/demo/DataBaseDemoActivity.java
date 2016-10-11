@@ -60,6 +60,6 @@ public class DataBaseDemoActivity extends BaseActivity {
 
     @Override
     protected int getContentLayout() {
-        return R.layout.activity_main;
+        return R.layout.act_main;
     }
 }

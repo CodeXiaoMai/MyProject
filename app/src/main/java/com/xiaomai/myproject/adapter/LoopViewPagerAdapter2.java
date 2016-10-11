@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import java.util.List;
 
 /**
- * Created by HSEDU on 2016/10/9 17:53.
+ * Created by XiaoMai on 2016/10/9 17:53.
  */
 public class LoopViewPagerAdapter2 extends PagerAdapter {
 
