@@ -29,6 +29,7 @@
         <activity android:name=".demo.LoopViewPagerDemoActivity"/>
         <activity android:name=".demo.LoopViewPagerDemo2Activity"/>
         <activity android:name=".demo.TextAndImageViewDemoActivity"/>
+        <activity android:name=".demo.RecyclerViewDemoActivity"/>
         <!-- ContentProvider -->
         <provider
             android:name=".database.DataBaseProvider"

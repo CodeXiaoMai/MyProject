@@ -5,7 +5,9 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
     </style>
 
-    <style name="AppTheme" parent="AppTheme.Base"/>
+    <style name="AppTheme" parent="AppTheme.Base">
+        <item name="android:listDivider">@drawable/list_divider</item>
+    </style>
 
     <!-- 不带标题的Dialog -->
     <style name="MyDialogWithOutTitle" parent="android:style/Theme.Dialog">
