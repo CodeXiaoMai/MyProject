@@ -2,8 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.xiaomai.myproject">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
         android:name=".MyApplication"
@@ -21,20 +24,27 @@
         </activity>
         <activity android:name=".demo.MyMultiItemListViewDemoActivity" />
         <activity android:name=".demo.MyEditDialogDemoActivity" />
-        <activity android:name=".demo.DataBaseDemoActivity"/>
-        <activity android:name=".demo.MyDownloadDemoActivity"/>
-        <activity android:name=".demo.VolleyAndImageLoaderDemoActivity"/>
-        <activity android:name=".demo.NumberProgressBarDemoActivity"/>
-        <activity android:name=".demo.FragmentActivityDemoActivity"/>
-        <activity android:name=".demo.LoopViewPagerDemoActivity"/>
-        <activity android:name=".demo.LoopViewPagerDemo2Activity"/>
-        <activity android:name=".demo.TextAndImageViewDemoActivity"/>
-        <activity android:name=".demo.RecyclerViewDemoActivity"/>
+        <activity android:name=".demo.DataBaseDemoActivity" />
+        <activity android:name=".demo.MyDownloadDemoActivity" />
+        <activity android:name=".demo.VolleyAndImageLoaderDemoActivity" />
+        <activity android:name=".demo.NumberProgressBarDemoActivity" />
+        <activity android:name=".demo.FragmentActivityDemoActivity" />
+        <activity android:name=".demo.LoopViewPagerDemoActivity" />
+        <activity android:name=".demo.LoopViewPagerDemo2Activity" />
+        <activity android:name=".demo.TextAndImageViewDemoActivity" />
+        <activity android:name=".demo.RecyclerViewDemoActivity" />
+        <activity android:name=".demo.VitamioDemoActivity" />
+        <activity
+            android:name="io.vov.vitamio.activity.InitActivity"
+            android:configChanges="orientation|screenSize|smallestScreenSize|keyboard|keyboardHidden|navigation"
+            android:launchMode="singleTop"
+            android:theme="@android:style/Theme.NoTitleBar"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <!-- ContentProvider -->
         <provider
             android:name=".database.DataBaseProvider"
-            android:exported="true"
-            android:authorities="@string/authorities" />
+            android:authorities="@string/authorities"
+            android:exported="true" />
     </application>
 
 </manifest>
