@@ -33,7 +33,9 @@
         <activity android:name=".demo.LoopViewPagerDemo2Activity" />
         <activity android:name=".demo.TextAndImageViewDemoActivity" />
         <activity android:name=".demo.RecyclerViewDemoActivity" />
-        <activity android:name=".demo.VitamioDemoActivity" />
+        <activity
+            android:name=".demo.VitamioDemoActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"/>
         <activity
             android:name="io.vov.vitamio.activity.InitActivity"
             android:configChanges="orientation|screenSize|smallestScreenSize|keyboard|keyboardHidden|navigation"

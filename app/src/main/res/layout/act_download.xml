@@ -24,7 +24,7 @@
             android:layout_margin="@dimen/margin_normal"
             android:layout_weight="1"
             style="@android:style/Widget.ProgressBar.Horizontal"
-            android:progressDrawable="@drawable/style_progressbar" />
+            android:progressDrawable="@drawable/style_horiziontal_progressbar" />
 
         <TextView
             android:id="@+id/activity_download_tv_progress"

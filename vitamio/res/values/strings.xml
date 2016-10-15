@@ -2,7 +2,7 @@
 <resources>
 
     <string name="vitamio_library_app_name">VitamioLibrary</string>
-    <string name="vitamio_init_decoders">Initializing decoders…</string>
+    <string name="vitamio_init_decoders">正在初始化…</string>
     <string name="permission_group_tools_label">Vitamio tools</string>
     <string name="permission_group_tools_description">Access Vitamio package and resources.</string>
     <string name="permission_receive_messages_label">Receive Vitamio messages</string>

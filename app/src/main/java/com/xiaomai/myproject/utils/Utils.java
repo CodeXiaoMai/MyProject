@@ -81,7 +81,7 @@ public class Utils {
      * @param obj
      * @return
      */
-    public static int parseToIntger(Object obj) {
+    public static int parseToInteger(Object obj) {
         if (obj == null) {
             return 0;
         } else {
@@ -110,6 +110,10 @@ public class Utils {
                 return 0;
             }
         }
+    }
+
+    public static String getTime(){
+        return getDate(new Date(), "HH:mm");
     }
 
     public static String getDate() {
@@ -373,7 +377,7 @@ public class Utils {
     /**
      * @param context
      * @param phoneNumber
-     * @param call true：直接拨打电话,false：打开拨号界面
+     * @param call        true：直接拨打电话,false：打开拨号界面
      */
     public static void openDial(Context context, String phoneNumber, boolean call) {
         Intent intent = new Intent();
