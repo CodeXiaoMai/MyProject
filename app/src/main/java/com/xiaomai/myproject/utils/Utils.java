@@ -112,8 +112,12 @@ public class Utils {
         }
     }
 
-    public static String getTime(){
+    public static String getTime() {
         return getDate(new Date(), "HH:mm");
+    }
+
+    public static String getTime(long millionSecond) {
+        return getDate(new Date(millionSecond), "HH:mm");
     }
 
     public static String getDate() {

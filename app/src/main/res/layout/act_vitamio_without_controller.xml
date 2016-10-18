@@ -2,9 +2,17 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:background="@color/black">
+
+    <io.vov.vitamio.widget.VideoView
+        android:id="@+id/activity_vitamio_videoView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
+
 
     <LinearLayout
+        android:id="@+id/ll_top"
         android:layout_width="match_parent"
         android:layout_height="@dimen/height_my_app_bar"
         android:background="@color/progress_gray">
@@ -17,14 +25,14 @@
             android:src="@drawable/back" />
 
         <TextView
-            android:id="@+id/mediacontroller_file_name"
+            android:id="@+id/tv_file_name"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:ellipsize="end"
             android:gravity="center_vertical"
             android:singleLine="true"
-            android:text="测试视屏"
+            android:text="FileName"
             android:textColor="@color/white"
             android:textSize="@dimen/normalTextSize" />
 
@@ -55,24 +63,43 @@
             android:textSize="@dimen/normalTextSize" />
     </LinearLayout>
 
+    <ImageView
+        android:id="@+id/iv_lock"
+        android:layout_marginLeft="@dimen/margin_large"
+        android:padding="@dimen/padding_large"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/unlock"
+        android:layout_width="@dimen/height_my_app_bar"
+        android:layout_height="@dimen/height_my_app_bar" />
+
+    <ImageView
+        android:id="@+id/iv_fullscreen"
+        android:padding="@dimen/padding_large"
+        android:layout_marginRight="@dimen/margin_large"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/fullscreen"
+        android:layout_width="@dimen/height_my_app_bar"
+        android:layout_height="@dimen/height_my_app_bar" />
+
     <LinearLayout
+        android:id="@+id/ll_bottom"
         android:layout_width="match_parent"
         android:layout_height="@dimen/height_my_app_bar"
         android:layout_alignParentBottom="true"
         android:background="@color/progress_gray">
 
-        <ImageButton
-            android:id="@+id/mediacontroller_play_pause"
-            android:layout_width="wrap_content"
+        <ImageView
+            android:id="@+id/iv_play_pause"
+            android:layout_width="@dimen/height_my_app_bar"
             android:layout_height="match_parent"
             android:layout_marginLeft="@dimen/margin_normal"
             android:layout_marginRight="@dimen/margin_normal"
-            android:background="@null"
-            android:contentDescription="@string/mediacontroller_play_pause"
             android:src="@drawable/video_play" />
 
         <TextView
-            android:id="@+id/mediacontroller_time_current"
+            android:id="@+id/tv_time_current"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
@@ -80,7 +107,7 @@
             android:textColor="@color/white" />
 
         <SeekBar
-            android:id="@+id/mediacontroller_seekbar"
+            android:id="@+id/seekbar"
             style="@style/MediaController_SeekBar"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -88,10 +115,10 @@
             android:layout_margin="@dimen/margin_normal"
             android:layout_weight="1"
             android:focusable="true"
-            android:max="100" />
+            android:max="1000" />
 
         <TextView
-            android:id="@+id/mediacontroller_time_total"
+            android:id="@+id/tv_time_total"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginRight="@dimen/margin_normal"
@@ -101,11 +128,20 @@
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/bt_play_pause_all"
-        android:layout_width="@dimen/height_my_app_bar"
-        android:layout_height="@dimen/height_my_app_bar"
+        android:id="@+id/iv_play_pause_all"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_centerInParent="true"
-        android:src="@drawable/video_play"
+        android:background="#88ffffff"
+        android:src="@drawable/play" />
+
+    <ImageView
+        android:id="@+id/iv_replay"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_centerInParent="true"
+        android:background="#88ffffff"
+        android:src="@drawable/replay"
         android:visibility="gone" />
 
     <LinearLayout
@@ -113,6 +149,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
+        android:background="@color/progress_gray"
         android:orientation="vertical"
         android:visibility="gone">
 

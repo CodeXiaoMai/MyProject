@@ -35,7 +35,10 @@
         <activity android:name=".demo.RecyclerViewDemoActivity" />
         <activity
             android:name=".demo.VitamioDemoActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"/>
+            android:configChanges="orientation|keyboardHidden|screenSize" />
+        <activity
+            android:name=".demo.VitamioWithoutControllerDemoActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize" />
         <activity
             android:name="io.vov.vitamio.activity.InitActivity"
             android:configChanges="orientation|screenSize|smallestScreenSize|keyboard|keyboardHidden|navigation"
