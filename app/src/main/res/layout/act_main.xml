@@ -4,12 +4,33 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <include layout="@layout/my_app_bar" />
+    <LinearLayout
+        android:id="@+id/textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/black"
+        android:gravity="center"
+        android:padding="@dimen/padding_large">
+
+
+        <Button
+            android:id="@+id/bt_enter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Go" />
+
+    </LinearLayout>
 
     <Button
-        android:layout_gravity="center"
-        android:id="@+id/bt_enter"
+        android:id="@+id/show"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Go" />
+        android:text="显示" />
+
+    <Button
+        android:id="@+id/yin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="隐藏" />
 </LinearLayout>

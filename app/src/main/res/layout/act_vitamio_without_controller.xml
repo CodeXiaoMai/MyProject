@@ -65,23 +65,23 @@
 
     <ImageView
         android:id="@+id/iv_lock"
-        android:layout_marginLeft="@dimen/margin_large"
-        android:padding="@dimen/padding_large"
+        android:layout_width="@dimen/height_my_app_bar"
+        android:layout_height="@dimen/height_my_app_bar"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
-        android:src="@drawable/unlock"
-        android:layout_width="@dimen/height_my_app_bar"
-        android:layout_height="@dimen/height_my_app_bar" />
+        android:layout_marginLeft="@dimen/margin_large"
+        android:padding="@dimen/padding_large"
+        android:src="@drawable/unlock" />
 
     <ImageView
         android:id="@+id/iv_fullscreen"
-        android:padding="@dimen/padding_large"
-        android:layout_marginRight="@dimen/margin_large"
+        android:layout_width="@dimen/height_my_app_bar"
+        android:layout_height="@dimen/height_my_app_bar"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:src="@drawable/fullscreen"
-        android:layout_width="@dimen/height_my_app_bar"
-        android:layout_height="@dimen/height_my_app_bar" />
+        android:layout_marginRight="@dimen/margin_large"
+        android:padding="@dimen/padding_large"
+        android:src="@drawable/fullscreen" />
 
     <LinearLayout
         android:id="@+id/ll_bottom"
@@ -133,6 +133,7 @@
         android:layout_height="60dp"
         android:layout_centerInParent="true"
         android:background="#88ffffff"
+        android:padding="@dimen/padding_normal"
         android:src="@drawable/play" />
 
     <ImageView
@@ -146,8 +147,8 @@
 
     <LinearLayout
         android:id="@+id/linear_volume_light"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_centerInParent="true"
         android:background="@color/progress_gray"
         android:orientation="vertical"
@@ -155,8 +156,9 @@
 
         <ImageView
             android:id="@+id/iv_volume_light"
-            android:layout_width="@dimen/height_my_app_bar"
-            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:src="@drawable/video_play" />
 
         <TextView
@@ -165,6 +167,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="100%"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:textSize="18sp" />
     </LinearLayout>
 </RelativeLayout>

@@ -45,6 +45,7 @@
             android:launchMode="singleTop"
             android:theme="@android:style/Theme.NoTitleBar"
             android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity android:name=".demo.PropertyAnimationDemoActivity"/>
         <!-- ContentProvider -->
         <provider
             android:name=".database.DataBaseProvider"

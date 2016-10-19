@@ -1,5 +1,7 @@
 package com.xiaomai.myproject.demo;
 
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -17,14 +19,16 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.xiaomai.myproject.R;
 import com.xiaomai.myproject.base.BaseActivity;
-import com.xiaomai.myproject.utils.MyLog;
 import com.xiaomai.myproject.utils.Utils;
+import com.xiaomai.myproject.view.MyToast;
 
 import io.vov.vitamio.MediaPlayer;
 import io.vov.vitamio.Vitamio;
@@ -156,6 +160,26 @@ public class VitamioWithoutControllerDemoActivity extends BaseActivity implement
 
     private GestureDetector mGestureDetector;
 
+    TranslateAnimation topShow = new TranslateAnimation(
+            Animation.RELATIVE_TO_SELF, 0, Animation.RELATIVE_TO_SELF, 0,
+            Animation.RELATIVE_TO_SELF, -1f, Animation.RELATIVE_TO_SELF, 0
+    );
+
+    TranslateAnimation topHidden = new TranslateAnimation(
+            Animation.RELATIVE_TO_SELF, 0, Animation.RELATIVE_TO_SELF, 0,
+            Animation.RELATIVE_TO_SELF, 0, Animation.RELATIVE_TO_SELF, -1f
+    );
+
+    TranslateAnimation bottomShow = new TranslateAnimation(
+            Animation.RELATIVE_TO_SELF, 0, Animation.RELATIVE_TO_SELF, 0,
+            Animation.RELATIVE_TO_SELF, 1f, Animation.RELATIVE_TO_SELF, 0
+    );
+
+    TranslateAnimation bottomHidden = new TranslateAnimation(
+            Animation.RELATIVE_TO_SELF, 0, Animation.RELATIVE_TO_SELF, 0,
+            Animation.RELATIVE_TO_SELF, 0, Animation.RELATIVE_TO_SELF, 1f
+    );
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //定义全屏参数
@@ -202,8 +226,22 @@ public class VitamioWithoutControllerDemoActivity extends BaseActivity implement
         mAudioManager = (AudioManager) getSystemService(AUDIO_SERVICE);
         //获取系统的最大声音
         mMaxVolume = mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
-        MyLog.e("mMaxVolume", mMaxVolume + "");
-//        mVolume = mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
+        topShow.setDuration(100);
+        topShow.setFillAfter(true);
+        topShow.setFillEnabled(true);
+
+        topHidden.setDuration(1000);
+        topHidden.setFillAfter(true);
+        topHidden.setFillEnabled(true);
+
+
+        bottomShow.setDuration(100);
+        bottomShow.setFillAfter(true);
+        bottomShow.setFillEnabled(true);
+
+        bottomHidden.setDuration(1000);
+        bottomHidden.setFillAfter(true);
+        bottomHidden.setFillEnabled(true);
     }
 
     @Override
@@ -213,6 +251,8 @@ public class VitamioWithoutControllerDemoActivity extends BaseActivity implement
             @Override
             public void onClick(View v) {
                 finish();
+                MyToast.show(mContext, "你点返回了" +
+                        "");
             }
         });
         mTextViewFileName = (TextView) findViewById(R.id.tv_file_name);
@@ -270,10 +310,10 @@ public class VitamioWithoutControllerDemoActivity extends BaseActivity implement
         mImageViewLock.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mIsLock){
+                if (mIsLock) {
                     mImageViewLock.setImageResource(R.drawable.unlock);
                     showTopAndBottom();
-                }else {
+                } else {
                     mImageViewLock.setImageResource(R.drawable.lock);
                     hiddenTopAndBottom();
                 }
@@ -318,8 +358,15 @@ public class VitamioWithoutControllerDemoActivity extends BaseActivity implement
         @Override
         public boolean onSingleTapConfirmed(MotionEvent e) {
             if (mIsLock) {
-                mImageViewLock.setVisibility(View.VISIBLE);
-            }else {
+                mHandler.removeCallbacks(mToggleControllerRunnable);
+                int width = mImageViewLock.getWidth();
+                ObjectAnimator show = ObjectAnimator.ofFloat(mImageViewLock, "translationX", -width, 0);
+                ObjectAnimator rotation = ObjectAnimator.ofFloat(mImageViewLock, "rotation", 30, -30, 30, -30, 0);
+                AnimatorSet animatorSet = new AnimatorSet();
+                animatorSet.play(rotation).after(show);
+                animatorSet.start();
+                mHandler.postDelayed(mToggleControllerRunnable, 5 * 1000);
+            } else {
                 toggleTopAndBottomStatus();
             }
             return false;
@@ -327,14 +374,13 @@ public class VitamioWithoutControllerDemoActivity extends BaseActivity implement
 
         @Override
         public boolean onDown(MotionEvent e) {
-
             return true;
         }
 
         //滑动
         @Override
         public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
-            if (mIsLock){
+            if (mIsLock) {
                 return super.onScroll(e1, e2, distanceX, distanceY);
             }
             float beginX = e1.getRawX();
@@ -404,16 +450,16 @@ public class VitamioWithoutControllerDemoActivity extends BaseActivity implement
         mViewLightOrVolume.setVisibility(View.VISIBLE);
         mTextViewLightOrColumn.setText((int) (((double) index / mMaxVolume) * 100) + "%");
         mAudioManager.setStreamVolume(AudioManager.STREAM_MUSIC, index, 0);
-        mHandler.postDelayed(mHiddenLightOrVolumeRunnable, 3 * 1000);
-        /*if (index >= 10) {
-            mOperationBg.setImageResource(R.drawable.volmn_100);
+        if (index >= 10) {
+            mImageViewLightOrVolume.setImageResource(R.drawable.volmn_100);
         } else if (index >= 5 && index < 10) {
-            mOperationBg.setImageResource(R.drawable.volmn_60);
+            mImageViewLightOrVolume.setImageResource(R.drawable.volmn_60);
         } else if (index > 0 && index < 5) {
-            mOperationBg.setImageResource(R.drawable.volmn_30);
+            mImageViewLightOrVolume.setImageResource(R.drawable.volmn_30);
         } else {
-            mOperationBg.setImageResource(R.drawable.volmn_no);
-        }*/
+            mImageViewLightOrVolume.setImageResource(R.drawable.volmn_no);
+        }
+        mHandler.postDelayed(mHiddenLightOrVolumeRunnable, 3 * 1000);
     }
 
     Runnable mHiddenLightOrVolumeRunnable = new Runnable() {
@@ -429,6 +475,7 @@ public class VitamioWithoutControllerDemoActivity extends BaseActivity implement
      * @param percent
      */
     private void onBrightnessSlide(float percent) {
+        mHandler.removeCallbacks(mHiddenLightOrVolumeRunnable);
         if (mBrightness < 0) {
             mBrightness = getWindow().getAttributes().screenBrightness;
             if (mBrightness <= 0.00f)
@@ -445,25 +492,26 @@ public class VitamioWithoutControllerDemoActivity extends BaseActivity implement
         getWindow().setAttributes(lpa);
         mViewLightOrVolume.setVisibility(View.VISIBLE);
         mTextViewLightOrColumn.setText((int) (lpa.screenBrightness * 100) + "%");
-       /* if (lpa.screenBrightness * 100 >= 90) {
-            mOperationBg.setImageResource(R.drawable.light_100);
+        if (lpa.screenBrightness * 100 >= 90) {
+            mImageViewLightOrVolume.setImageResource(R.drawable.light_100);
         } else if (lpa.screenBrightness * 100 >= 80 && lpa.screenBrightness * 100 < 90) {
-            mOperationBg.setImageResource(R.drawable.light_90);
+            mImageViewLightOrVolume.setImageResource(R.drawable.light_90);
         } else if (lpa.screenBrightness * 100 >= 70 && lpa.screenBrightness * 100 < 80) {
-            mOperationBg.setImageResource(R.drawable.light_80);
+            mImageViewLightOrVolume.setImageResource(R.drawable.light_80);
         } else if (lpa.screenBrightness * 100 >= 60 && lpa.screenBrightness * 100 < 70) {
-            mOperationBg.setImageResource(R.drawable.light_70);
+            mImageViewLightOrVolume.setImageResource(R.drawable.light_70);
         } else if (lpa.screenBrightness * 100 >= 50 && lpa.screenBrightness * 100 < 60) {
-            mOperationBg.setImageResource(R.drawable.light_60);
+            mImageViewLightOrVolume.setImageResource(R.drawable.light_60);
         } else if (lpa.screenBrightness * 100 >= 40 && lpa.screenBrightness * 100 < 50) {
-            mOperationBg.setImageResource(R.drawable.light_50);
+            mImageViewLightOrVolume.setImageResource(R.drawable.light_50);
         } else if (lpa.screenBrightness * 100 >= 30 && lpa.screenBrightness * 100 < 40) {
-            mOperationBg.setImageResource(R.drawable.light_40);
+            mImageViewLightOrVolume.setImageResource(R.drawable.light_40);
         } else if (lpa.screenBrightness * 100 >= 20 && lpa.screenBrightness * 100 < 30) {
-            mOperationBg.setImageResource(R.drawable.light_30);
+            mImageViewLightOrVolume.setImageResource(R.drawable.light_30);
         } else if (lpa.screenBrightness * 100 >= 10 && lpa.screenBrightness * 100 < 20) {
-            mOperationBg.setImageResource(R.drawable.light_20);
-        }*/
+            mImageViewLightOrVolume.setImageResource(R.drawable.light_20);
+        }
+        mHandler.postDelayed(mHiddenLightOrVolumeRunnable, 3 * 1000);
     }
 
     Runnable mToggleControllerRunnable = new Runnable() {
@@ -514,20 +562,44 @@ public class VitamioWithoutControllerDemoActivity extends BaseActivity implement
         mIsShow = !mIsShow;
     }
 
-    private void hiddenTopAndBottom(){
-        mViewTop.setVisibility(View.INVISIBLE);
-        mViewBottom.setVisibility(View.INVISIBLE);
-        mImageViewLock.setVisibility(View.INVISIBLE);
-        mImageViewFullScreen.setVisibility(View.INVISIBLE);
+    private void hiddenTopAndBottom() {
+        int height = mViewTop.getHeight();
+        int width = mImageViewFullScreen.getWidth();
+
+        ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(mViewTop, "translationY", 0, -height);
+        objectAnimator.setDuration(500);
+        objectAnimator.start();
+
+        ObjectAnimator objectAnimator2 = ObjectAnimator.ofFloat(mViewBottom, "translationY", 0, height);
+        objectAnimator2.setDuration(500);
+        objectAnimator2.start();
+
+        ObjectAnimator objectAnimator3 = ObjectAnimator.ofFloat(mImageViewLock, "translationX", 0, -width);
+        objectAnimator3.setDuration(500);
+        objectAnimator3.start();
+
+        ObjectAnimator objectAnimator4 = ObjectAnimator.ofFloat(mImageViewFullScreen, "translationX", 0, width);
+        objectAnimator4.setDuration(500);
+        objectAnimator4.start();
     }
 
-    private void showTopAndBottom(){
-        mViewTop.setVisibility(View.VISIBLE);
-        mViewBottom.setVisibility(View.VISIBLE);
-        mImageViewLock.setVisibility(View.VISIBLE);
-        mImageViewFullScreen.setVisibility(View.VISIBLE);
+    private void showTopAndBottom() {
+        int height = mViewTop.getHeight();
+        int width = mImageViewFullScreen.getWidth();
+        ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(mViewTop, "translationY", -height, 0);
+        objectAnimator.start();
+
+        ObjectAnimator objectAnimator2 = ObjectAnimator.ofFloat(mViewBottom, "translationY", height, 0);
+        objectAnimator2.start();
+
+        ObjectAnimator objectAnimator3 = ObjectAnimator.ofFloat(mImageViewLock, "translationX", -width, 0);
+        objectAnimator3.start();
+
+        ObjectAnimator objectAnimator4 = ObjectAnimator.ofFloat(mImageViewFullScreen, "translationX", width, 0);
+        objectAnimator4.start();
+
         mTextViewSystemTime.setText(Utils.getTime());
-        mHandler.postDelayed(mToggleControllerRunnable, 15 * 1000);
+        mHandler.postDelayed(mToggleControllerRunnable, 5 * 1000);
     }
 
     /**
@@ -540,7 +612,6 @@ public class VitamioWithoutControllerDemoActivity extends BaseActivity implement
             play();
         }
     }
-
 
     private void play() {
         if (!mVideoView.isPlaying()) {
