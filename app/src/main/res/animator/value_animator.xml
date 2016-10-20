@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animator xmlns:android="http://schemas.android.com/apk/res/android"
+    android:duration="1000"
+    android:repeatCount="1"
+    android:repeatMode="restart"
+    android:startOffset="1000"
+    android:valueFrom="0"
+    android:valueTo="100"
+    android:valueType="intType" />
+
+<!--
+    android:startOffset="1000"      动画之间的时间间隔，从上次动画停多少时间开始执行下个动画
+-->

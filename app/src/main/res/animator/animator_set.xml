@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:ordering="sequentially">
+
+    <objectAnimator
+        android:duration="222"
+        android:valueFrom="122"
+        android:valueTo="1900"
+        android:valueType="floatType" />
+
+    <set android:ordering="together">
+        <animator
+            android:duration="222"
+            android:valueFrom="122"
+            android:valueTo="1900"
+            android:valueType="floatType" />
+    </set>
+</set>
+
+    <!--
+         android:ordering="sequentially"   按顺序执行
+         android:ordering="together"       同时执行
+
+         最后XML文件是编写好了，只需调用如下代码即可：
+         Animator animator = AnimatorInflater.loadAnimator(context, R.animator.anim_file);
+         animator.setTarget(view);
+         animator.start();
+    -->
+

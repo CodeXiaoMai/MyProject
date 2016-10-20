@@ -19,8 +19,6 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
-import android.view.animation.Animation;
-import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -28,7 +26,6 @@ import android.widget.TextView;
 import com.xiaomai.myproject.R;
 import com.xiaomai.myproject.base.BaseActivity;
 import com.xiaomai.myproject.utils.Utils;
-import com.xiaomai.myproject.view.MyToast;
 
 import io.vov.vitamio.MediaPlayer;
 import io.vov.vitamio.Vitamio;
@@ -152,33 +149,10 @@ public class VitamioWithoutControllerDemoActivity extends BaseActivity implement
      * 全屏
      */
     private ImageView mImageViewFullScreen;
-    /**
-     * 当前全屏状态
-     */
-    private boolean mIsFullScreen;
+
     private Handler mHandler;
 
     private GestureDetector mGestureDetector;
-
-    TranslateAnimation topShow = new TranslateAnimation(
-            Animation.RELATIVE_TO_SELF, 0, Animation.RELATIVE_TO_SELF, 0,
-            Animation.RELATIVE_TO_SELF, -1f, Animation.RELATIVE_TO_SELF, 0
-    );
-
-    TranslateAnimation topHidden = new TranslateAnimation(
-            Animation.RELATIVE_TO_SELF, 0, Animation.RELATIVE_TO_SELF, 0,
-            Animation.RELATIVE_TO_SELF, 0, Animation.RELATIVE_TO_SELF, -1f
-    );
-
-    TranslateAnimation bottomShow = new TranslateAnimation(
-            Animation.RELATIVE_TO_SELF, 0, Animation.RELATIVE_TO_SELF, 0,
-            Animation.RELATIVE_TO_SELF, 1f, Animation.RELATIVE_TO_SELF, 0
-    );
-
-    TranslateAnimation bottomHidden = new TranslateAnimation(
-            Animation.RELATIVE_TO_SELF, 0, Animation.RELATIVE_TO_SELF, 0,
-            Animation.RELATIVE_TO_SELF, 0, Animation.RELATIVE_TO_SELF, 1f
-    );
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -226,22 +200,6 @@ public class VitamioWithoutControllerDemoActivity extends BaseActivity implement
         mAudioManager = (AudioManager) getSystemService(AUDIO_SERVICE);
         //获取系统的最大声音
         mMaxVolume = mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
-        topShow.setDuration(100);
-        topShow.setFillAfter(true);
-        topShow.setFillEnabled(true);
-
-        topHidden.setDuration(1000);
-        topHidden.setFillAfter(true);
-        topHidden.setFillEnabled(true);
-
-
-        bottomShow.setDuration(100);
-        bottomShow.setFillAfter(true);
-        bottomShow.setFillEnabled(true);
-
-        bottomHidden.setDuration(1000);
-        bottomHidden.setFillAfter(true);
-        bottomHidden.setFillEnabled(true);
     }
 
     @Override
@@ -251,8 +209,6 @@ public class VitamioWithoutControllerDemoActivity extends BaseActivity implement
             @Override
             public void onClick(View v) {
                 finish();
-                MyToast.show(mContext, "你点返回了" +
-                        "");
             }
         });
         mTextViewFileName = (TextView) findViewById(R.id.tv_file_name);
@@ -567,19 +523,15 @@ public class VitamioWithoutControllerDemoActivity extends BaseActivity implement
         int width = mImageViewFullScreen.getWidth();
 
         ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(mViewTop, "translationY", 0, -height);
-        objectAnimator.setDuration(500);
         objectAnimator.start();
 
         ObjectAnimator objectAnimator2 = ObjectAnimator.ofFloat(mViewBottom, "translationY", 0, height);
-        objectAnimator2.setDuration(500);
         objectAnimator2.start();
 
         ObjectAnimator objectAnimator3 = ObjectAnimator.ofFloat(mImageViewLock, "translationX", 0, -width);
-        objectAnimator3.setDuration(500);
         objectAnimator3.start();
 
         ObjectAnimator objectAnimator4 = ObjectAnimator.ofFloat(mImageViewFullScreen, "translationX", 0, width);
-        objectAnimator4.setDuration(500);
         objectAnimator4.start();
     }
 
