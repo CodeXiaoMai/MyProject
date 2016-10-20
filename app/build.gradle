@@ -15,21 +15,26 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            ndk {
+                abiFilters "armeabi", "armeabi-v7a"
+            }
         }
     }
 
     sourceSets {
         main {
             jniLibs.srcDirs = ['libs']
+            assets.srcDirs = ['assets']
         }
     }
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile project(path: ':volley')
+    compile project(':vitamio')
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:24.2.1'
-    compile project(path: ':volley')
     compile 'com.android.support:recyclerview-v7:24.2.1'
-    compile project(':vitamio')
+    compile 'pl.droidsonroids.gif:android-gif-drawable:1.2.2'
+    compile fileTree(include: ['*.jar'], dir: 'libs')
 }
