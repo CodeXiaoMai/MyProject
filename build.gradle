@@ -1,17 +1,30 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
+/**
+ * 这是顶层的build.gradle文件的配置最终会被应用到所有子moudle中。
+ */
 
+/**
+ *  buildscript：定义了 Android 编译工具的类路径。
+ */
 buildscript {
+    /**
+     * repositories中,jCenter是一个著名的 Maven 仓库。
+     */
     repositories {
         jcenter()
     }
+    /**
+     *  这是gradle的依赖
+     */
     dependencies {
+        /**
+         * 注意：不要把你的应用程序的依赖写到这里；他们应该在自己的模块build.gradle文件中配置
+         */
         classpath 'com.android.tools.build:gradle:2.1.2'
-
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
     }
 }
-
+/**
+ * allprojects:中定义的属性会被应用到所有 moudle 中，但是为了保证每个项目的独立性，我们一般不会在这里面操作太多共有的东西。
+ */
 allprojects {
     repositories {
         jcenter()

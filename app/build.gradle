@@ -1,24 +1,105 @@
+/**
+ * apply plugin:第一行代码应用了Android 程序的gradle插件，作为 Android 的应用程序，
+ * 这一步是必须的，因为plugin中提供了Android 编译、测试、打包等等的所有task。
+ */
 apply plugin: 'com.android.application'
 
+// 定义一个打包时间
+def releaseTime() {
+    return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("UTC"))
+}
+
+/**
+ * android:这是编译文件中最大的代码块，关于 android 的所有特殊配置都在这里，
+ * 这就是由我们前面的声明的 plugin 提供的。
+ */
 android {
+    // 编译SDK的版本
     compileSdkVersion 24
+    // build tools的版本
     buildToolsVersion "24.0.3"
 
+    /**
+     * defaultConfig就是程序的默认配置，
+     * 注意，如果在AndroidMainfest.xml里面定义了与这里相同的属性，会以这里的为主。
+     * 这里最有必要要说明的是applicationId的选项：
+     * 在我们曾经定义的AndroidManifest.xml中，那里定义的包名有两个用途：
+     * 一个是作为程序的唯一识别ID,防止在同一手机装两个一样的程序；
+     * 另一个就是作为我们R资源类的包名。在以前我们修改这个ID会导致所有引用R资源类的地方都要修改。
+     * 但是现在我们如果修改applicationId只会修改当前程序的ID,而不会去修改源码中资源文件的引用。
+     */
     defaultConfig {
         applicationId "com.xiaomai.myproject"
         minSdkVersion 15
         targetSdkVersion 24
         versionCode 1
         versionName "1.0"
+
+        // dex是否突破65535的限制
+        multiDexEnabled false
     }
-    buildTypes {
+
+    // 移除lint检查的error
+    lintOptions {
+        abortOnError false
+    }
+
+    //签名配置
+    signingConfigs {
+        debug {
+            // No debug config
+        }
+
         release {
-            minifyEnabled false
+            storeFile file("../yourapp.keystore")
+            storePassword "your password"
+            keyAlias "your alias"
+            keyPassword "your password"
+        }
+    }
+
+    /**
+     * buildTypes:定义了编译类型，针对每个类型我们可以有不同的编译配置，
+     * 不同的编译配置对应的有不同的编译命令。默认的有debug、release 的类型。
+     */
+    buildTypes {
+        debug {
+            // buildConfigField 自定义配置默认值,这个参数会自动创建到BuildConfig.java中
+            buildConfigField "String", "API_HOST", "\"http://api.debug.com\""//API Hos
+            // 版本名称后缀
+            versionNameSuffix "-debug"
+        }
+        release {
+            // buildConfigField 自定义配置默认值,这个参数会自动创建到BuildConfig.java中
+            buildConfigField "String", "API_HOST", "\"http://api.release.com\""//API Hos
+            // 版本名称后缀
+            versionNameSuffix "-release"
+            // 是否进行混淆
+            minifyEnabled true
+            // 混淆规则文件
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            // 是否zip对齐
+            zipAlignEnabled true
+            // 是否移除无用的resource文件
+            shrinkResources true
             ndk {
                 abiFilters "armeabi", "armeabi-v7a"
             }
         }
+    }
+
+    // 友盟多渠道打包
+    productFlavors {
+        wandoujia {}
+        $360 {}
+        baidu {}
+        xiaomi {}
+        tencent {}
+        taobao {}
+    }
+
+    productFlavors.all { flavor ->
+        flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
     }
 
     sourceSets {
@@ -29,12 +110,16 @@ android {
     }
 }
 
+/**
+ * dependencies:是属于 gradle 的依赖配置。它定义了当前项目需要依赖的其他库。
+ */
 dependencies {
+    // 编译libs目录下的所有jar包
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'
     compile project(path: ':volley')
     compile project(':vitamio')
-    testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:24.2.1'
     compile 'com.android.support:recyclerview-v7:24.2.1'
     compile 'pl.droidsonroids.gif:android-gif-drawable:1.2.2'
-    compile fileTree(include: ['*.jar'], dir: 'libs')
 }
