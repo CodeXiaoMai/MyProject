@@ -10,8 +10,8 @@ import android.widget.Button;
 
 import com.xiaomai.myproject.R;
 import com.xiaomai.myproject.base.BaseActivity;
-import com.xiaomai.myproject.demo.GifDemoActivity;
 import com.xiaomai.myproject.demo.VitamioWithoutControllerDemoActivity;
+import com.xiaomai.myproject.demo.WebViewJsDemoActivity;
 
 public class MainActivity extends BaseActivity {
 
@@ -29,7 +29,7 @@ public class MainActivity extends BaseActivity {
         getWindow().setFlags(flag,flag);
         super.onCreate(savedInstanceState);
         dissMissProgressDialog();
-        startActivity(new Intent(this,GifDemoActivity.class));
+        startActivity(new Intent(this,WebViewJsDemoActivity.class));
     }
 
     @Override

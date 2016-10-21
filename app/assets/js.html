@@ -1,0 +1,12 @@
+<input type="button" value="调用Android代码" onClick="showJavaScriptToast('I am from Android')"/>
+
+<script type="text/javaScript">
+    <!-- 调用Android的方法 -->
+	function showJavaScriptToast(toast){
+ 		Android.showToast(toast);
+ 	}
+    <!-- 被Android调用的方法 -->
+ 	function fromJs(){
+        alert("I am from Js")
+    }
+</script>
