@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.net.Uri;
+import android.provider.ContactsContract;
 import android.text.Html;
 import android.text.Spanned;
 import android.util.DisplayMetrics;
@@ -476,4 +477,21 @@ public class Utils {
         Intent intent = new Intent(Intent.ACTION_DELETE, uri);
         context.startActivity(intent);
     }
+
+    /**
+     * 打开微信
+     *
+     * @param context
+     * @param id
+     */
+    public static void openWeiXin(Context context,String id) {
+        String WEIXIN_CHATTING_MIMETYPE = "vnd.android.cursor.item/vnd.com.tencent.mm.chatting.profile";//微信聊天
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.setDataAndType(Uri.withAppendedPath(
+                ContactsContract.Data.CONTENT_URI, String.valueOf(id)),
+                WEIXIN_CHATTING_MIMETYPE);
+        context.startActivity(intent);
+    }
+
 }
