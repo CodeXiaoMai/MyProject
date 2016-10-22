@@ -16,6 +16,10 @@ public class MyJavaScriptInterface {
         this.mContext = mContext;
     }
 
+    /**
+     * 注意一定不忘记加 @JavascriptInterface
+     * @param toast
+     */
     @JavascriptInterface
     public void showToast(String toast){
         MyToast.show(mContext, toast);

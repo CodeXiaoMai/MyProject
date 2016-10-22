@@ -394,4 +394,86 @@ public class Utils {
         context.startActivity(intent);
     }
 
+    /**
+     * 调起系统发送短信的功能
+     * @param context
+     * @param phoneNumber   接收号码
+     * @param content       短信内容
+     */
+    public static void sendSMS(Context context, String phoneNumber, String content){
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_SENDTO);
+        intent.setData(Uri.parse("smsto:" + phoneNumber));
+        intent.putExtra("sms_body", content);
+        context.startActivity(intent);
+    }
+
+    /**
+     * 调起系统发送短信的功能
+     * @param context
+     * @param phoneNumber    接收号码
+     */
+    public static void sendSMS(Context context, String phoneNumber){
+        sendSMS(context, phoneNumber, "");
+    }
+
+    /**
+     * 打开浏览器
+     * @param context
+     * @param url
+     */
+    public static void openBrowser(Context context, String url){
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse(url));
+        context.startActivity(intent);
+    }
+
+    /**
+     * 打开地图
+     * geo:latitude,longitude   纬度、经度
+     * geo:latitude,longitude?z=zoom，       纬度、经度，z表示zoom级别，值为数字1到23
+     * geo:0,0?q=my+street+address
+     * geo:0,0?q=business+near+city
+     * @param context
+     * @param uri
+     */
+    public static void openMap(Context context, String uri){
+        Uri mUri = Uri.parse(uri);
+        Intent mIntent = new Intent(Intent.ACTION_VIEW,mUri);
+        context.startActivity(mIntent);
+    }
+
+    /**
+     * 根据关键词到应用商店搜索应用
+     * @param context
+     * @param packageName
+     */
+    public static void searchApp(Context context, String packageName){
+        Uri uri = Uri.parse("market://search?q=" + packageName);
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        context.startActivity(intent);
+    }
+
+    /**
+     * 在应用商店中根据AppId显示应用的相关信息
+     * @param context
+     * @param appId
+     */
+    public static void searchDetails(Context context,String appId){
+        Uri uri = Uri.parse("market://details?id=" + appId);
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        context.startActivity(intent);
+    }
+
+    /**
+     * 卸载某个应用
+     * @param context
+     * @param packageName
+     */
+    public static void unInstallApp(Context context,String packageName){
+        Uri uri = Uri.fromParts("package", packageName, null);
+        Intent intent = new Intent(Intent.ACTION_DELETE, uri);
+        context.startActivity(intent);
+    }
 }
