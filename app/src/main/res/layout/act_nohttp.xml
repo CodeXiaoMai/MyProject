@@ -4,6 +4,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <include layout="@layout/my_app_bar"/>
+
     <Button
         android:layout_gravity="center_horizontal"
         android:layout_margin="@dimen/margin_tooLarge"
