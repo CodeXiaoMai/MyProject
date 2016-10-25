@@ -3,26 +3,22 @@ package com.xiaomai.myproject.demo;
 import android.os.Bundle;
 import android.widget.ImageView;
 
-import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.ImageLoader;
-import com.android.volley.toolbox.NetworkImageView;
-import com.android.volley.toolbox.Volley;
 import com.xiaomai.myproject.R;
 import com.xiaomai.myproject.base.BaseActivity;
-import com.xiaomai.myproject.utils.BitmapCache;
+import com.yolanda.nohttp.rest.RequestQueue;
 
 /**
  * Created by XiaoMai on 2016/10/11 12:47.
  */
 public class VolleyAndImageLoaderDemoActivity extends BaseActivity{
 
-    private NetworkImageView mNetworkImageView;
+//    private NetworkImageView mNetworkImageView;
 
     private ImageView mImageView;
 
     private RequestQueue mRequestQueue;
 
-    private ImageLoader mImageLoader;
+//    private ImageLoader mImageLoader;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,16 +30,16 @@ public class VolleyAndImageLoaderDemoActivity extends BaseActivity{
     @Override
     protected void initVariables() {
 
-        mRequestQueue = Volley.newRequestQueue(this);
+ /*       mRequestQueue = Volley.newRequestQueue(this);
 
         mImageLoader = new ImageLoader(mRequestQueue, new BitmapCache());
-
+*/
     }
 
     @Override
     protected void initViews() {
 
-        mNetworkImageView = (NetworkImageView) findViewById(R.id.activity_main_iv_networkImageView);
+       /* mNetworkImageView = (NetworkImageView) findViewById(R.id.activity_main_iv_networkImageView);
 
         mImageView = (ImageView)findViewById(R.id.activity_main_iv_imageView);
 
@@ -57,7 +53,7 @@ public class VolleyAndImageLoaderDemoActivity extends BaseActivity{
 
         mNetworkImageView.setDefaultImageResId(R.mipmap.ic_launcher);
 
-        mNetworkImageView.setImageUrl(uri, mImageLoader);
+        mNetworkImageView.setImageUrl(uri, mImageLoader);*/
 
     }
 

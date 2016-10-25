@@ -49,6 +49,7 @@
         <activity android:name=".demo.GifDemoActivity" />
         <activity android:name=".demo.WebViewJsDemoActivity"/>
         <activity android:name=".demo.NoHttpDemoActivity"/>
+        <activity android:name=".demo.NoHttpDownloadDemoActivity"/>
         <!-- ContentProvider -->
         <provider
             android:name=".database.DataBaseProvider"
