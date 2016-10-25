@@ -28,7 +28,7 @@ public class MainActivity extends BaseActivity {
         getWindow().setFlags(flag,flag);
         super.onCreate(savedInstanceState);
         dissMissProgressDialog();
-//        startActivity(new Intent(this,WebViewJsDemoActivity.class));
+        startActivity(new Intent(this,VitamioWithoutControllerDemoActivity.class));
     }
 
     @Override

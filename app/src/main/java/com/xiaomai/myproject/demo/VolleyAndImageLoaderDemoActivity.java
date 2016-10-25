@@ -3,13 +3,18 @@ package com.xiaomai.myproject.demo;
 import android.os.Bundle;
 import android.widget.ImageView;
 
+import com.android.volley.Request;
 import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.xiaomai.myproject.R;
 import com.xiaomai.myproject.base.BaseActivity;
 import com.xiaomai.myproject.utils.BitmapCache;
+import com.xiaomai.myproject.utils.MyLog;
 
 /**
  * Created by XiaoMai on 2016/10/11 12:47.
@@ -59,6 +64,39 @@ public class VolleyAndImageLoaderDemoActivity extends BaseActivity{
 
         mNetworkImageView.setImageUrl(uri, mImageLoader);
 
+        StringRequest stringRequest = new StringRequest("http://www.baidu.com", new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                MyLog.e("onResponse1");
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        stringRequest.setTag("1");
+        mRequestQueue.add(stringRequest);
+        stringRequest = new StringRequest("http://www.csdn.net", new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                MyLog.e("onResponse2");
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        stringRequest.setTag("2");
+        mRequestQueue.add(stringRequest);
+        mRequestQueue.start();
+        mRequestQueue.cancelAll(new RequestQueue.RequestFilter() {
+            @Override
+            public boolean apply(Request<?> request) {
+                return true;
+            }
+        });
     }
 
     @Override
