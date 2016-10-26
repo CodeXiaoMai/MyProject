@@ -48,6 +48,7 @@
         <activity android:name=".demo.PropertyAnimationDemoActivity" />
         <activity android:name=".demo.GifDemoActivity" />
         <activity android:name=".demo.WebViewJsDemoActivity"/>
+        <activity android:name=".demo.GlideDemoActivity"/>
         <!-- ContentProvider -->
         <provider
             android:name=".database.DataBaseProvider"
