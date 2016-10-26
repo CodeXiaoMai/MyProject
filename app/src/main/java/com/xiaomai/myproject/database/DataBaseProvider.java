@@ -30,8 +30,8 @@ public class DataBaseProvider extends ContentProvider {
 
     static {
         sUriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
-        sUriMatcher.addURI(TableColumns.AUTHORITY, "push_cache", TABLE_TEST);
-        sUriMatcher.addURI(TableColumns.AUTHORITY, "push_cache/#", TABLE_TEST_ITEM);
+        sUriMatcher.addURI(TableColumns.AUTHORITY, "download", TABLE_TEST);
+        sUriMatcher.addURI(TableColumns.AUTHORITY, "download/#", TABLE_TEST_ITEM);
     }
 
     @Override
@@ -52,7 +52,7 @@ public class DataBaseProvider extends ContentProvider {
         String extra = null;
         switch (sUriMatcher.match(uri)) {
             case TABLE_TEST_ITEM:
-                extra = TableColumns.PushColumns._ID + " = " + ContentUris.parseId(uri);
+                extra = TableColumns.DownloadColumns._ID + " = " + ContentUris.parseId(uri);
                 break;
         }
         if (TextUtils.isEmpty(selection)) {
@@ -75,7 +75,7 @@ public class DataBaseProvider extends ContentProvider {
         switch (sUriMatcher.match(uri)) {
             case TABLE_TEST:
             case TABLE_TEST_ITEM:
-                tableName = DBHelper.Tables.PUSH_CACHE;
+                tableName = DBHelper.Tables.DOWNLOAD;
                 break;
             default:
                 tableName = "";

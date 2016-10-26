@@ -6,10 +6,15 @@
 
     <include layout="@layout/my_app_bar" />
 
+    <TextView
+        android:id="@+id/tv_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
     <pl.droidsonroids.gif.GifImageView
         android:id="@+id/activity_gif_giv"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_centerInParent="true"/>
 
     <pl.droidsonroids.gif.GifImageView

@@ -40,22 +40,20 @@ public final class TableColumns {
 
     }
 
-    public static final class PushColumns implements BaseColumns {
+    public static final class DownloadColumns implements BaseColumns {
 
-        private PushColumns() {
+        private DownloadColumns() {
         }
 
-        public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/push_cache");
+        public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/download");
 
         public static final String KEY = _ID;
 
-        public static final String TITLE = "title";
+        public static final String FILE_NAME = "file_name";
 
-        public static final String CONTENT = "content";
+        public static final String URL = "url";
 
-        public static final String CUSTOM_CONTENT = "custom_content";
-
-        public static final String DATE = "date";
+        public static final String PROGRESS = "progress";
 
     }
 }

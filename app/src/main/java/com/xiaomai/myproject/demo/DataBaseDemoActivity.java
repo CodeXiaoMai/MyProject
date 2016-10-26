@@ -26,16 +26,16 @@ public class DataBaseDemoActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         contentResolver = getContentResolver();
         ContentValues values = new ContentValues();
-        values.put(TableColumns.PushColumns.CONTENT, "1");
+        values.put(TableColumns.DownloadColumns.FILE_NAME, "1");
         //插入
-        contentResolver.insert(TableColumns.PushColumns.CONTENT_URI, values);
+        contentResolver.insert(TableColumns.DownloadColumns.CONTENT_URI, values);
         //查询 select * from tableName
-        Cursor cursor = contentResolver.query(TableColumns.PushColumns.CONTENT_URI, null, null, null, null);
+        Cursor cursor = contentResolver.query(TableColumns.DownloadColumns.CONTENT_URI, null, null, null, null);
         mList = new ArrayList<>();
         if (cursor != null) {
             for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
-                int id = cursor.getInt(cursor.getColumnIndex(TableColumns.PushColumns._ID));
-                String content = cursor.getString(cursor.getColumnIndex(TableColumns.PushColumns.CONTENT));
+                int id = cursor.getInt(cursor.getColumnIndex(TableColumns.DownloadColumns._ID));
+                String content = cursor.getString(cursor.getColumnIndex(TableColumns.DownloadColumns.FILE_NAME));
                 String str = id + " " + content;
                 mList.add(str);
             }
@@ -44,14 +44,14 @@ public class DataBaseDemoActivity extends BaseActivity {
 
         //修改
         ContentValues contentValues = new ContentValues();
-        contentValues.put(TableColumns.PushColumns.CONTENT, "数据更新了");
+        contentValues.put(TableColumns.DownloadColumns.FILE_NAME, "数据更新了");
         String where = "_id = ?";
-        contentResolver.update(TableColumns.PushColumns.CONTENT_URI, contentValues, where, new String[]{"1"});
+        contentResolver.update(TableColumns.DownloadColumns.CONTENT_URI, contentValues, where, new String[]{"1"});
 
         //删除
         where = "content = ?";
         String[] selectionArgs = {"1"};
-        contentResolver.delete(TableColumns.PushColumns.CONTENT_URI, where, selectionArgs);
+        contentResolver.delete(TableColumns.DownloadColumns.CONTENT_URI, where, selectionArgs);
     }
 
     @Override

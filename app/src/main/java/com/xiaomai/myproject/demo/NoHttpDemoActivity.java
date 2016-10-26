@@ -1,5 +1,6 @@
 package com.xiaomai.myproject.demo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -107,6 +108,13 @@ public class NoHttpDemoActivity extends BaseActivity implements OnResponseListen
                 //请求队列停止轮询，但不会被取消
 //                mRequestQueue.stop();
                 stringRequest.cancel();
+            }
+        });
+
+        mButton4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(mContext, NoHttpDownloadDemoActivity.class));
             }
         });
 
