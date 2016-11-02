@@ -50,6 +50,9 @@
         <activity android:name=".demo.WebViewJsDemoActivity"/>
         <activity android:name=".demo.GlideDemoActivity"/>
         <activity android:name=".demo.FileDownloaderDemoActivity"/>
+        <activity android:name=".demo.NoHttpDemoActivity"/>
+        <activity android:name=".demo.NoHttpDownloadDemoActivity"/>
+        <activity android:name=".demo.SwipeRefreshLayoutDemo"/>
         <!-- ContentProvider -->
         <provider
             android:name=".database.DataBaseProvider"

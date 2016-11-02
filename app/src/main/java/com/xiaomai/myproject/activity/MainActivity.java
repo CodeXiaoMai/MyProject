@@ -10,7 +10,7 @@ import android.widget.Button;
 
 import com.xiaomai.myproject.R;
 import com.xiaomai.myproject.base.BaseActivity;
-import com.xiaomai.myproject.demo.FileDownloaderDemoActivity;
+import com.xiaomai.myproject.demo.SwipeRefreshLayoutDemo;
 import com.xiaomai.myproject.demo.VitamioWithoutControllerDemoActivity;
 
 public class MainActivity extends BaseActivity {
@@ -29,7 +29,7 @@ public class MainActivity extends BaseActivity {
         getWindow().setFlags(flag,flag);
         super.onCreate(savedInstanceState);
         dissMissProgressDialog();
-        startActivity(new Intent(this,FileDownloaderDemoActivity.class));
+        startActivity(new Intent(this,SwipeRefreshLayoutDemo.class));
     }
 
     @Override

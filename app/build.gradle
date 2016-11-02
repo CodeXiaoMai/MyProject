@@ -117,11 +117,12 @@ dependencies {
     // 编译libs目录下的所有jar包
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
-    compile project(path: ':volley')
     compile project(':vitamio')
     compile 'com.android.support:appcompat-v7:24.2.1'
     compile 'com.android.support:recyclerview-v7:24.2.1'
     compile 'pl.droidsonroids.gif:android-gif-drawable:1.2.2'
     compile 'com.liulishuo.filedownloader:library:1.2.2'
     compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile project(':nohttp')
+    compile project(':volley')
 }

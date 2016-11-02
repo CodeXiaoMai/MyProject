@@ -155,7 +155,6 @@ public class LoopViewPagerDemoActivity extends BaseActivity {
                         } else if (position == mImageIds.length + 1) {
                             // 当视图在最后一个时,将页面号设置为图片的第一张。
                             mCurrentPageIndex = 1;
-                        } else {
                         }
                         /**
                          * 当视图在第一个或者最后一个时，pageIndex和position的值不相等，
