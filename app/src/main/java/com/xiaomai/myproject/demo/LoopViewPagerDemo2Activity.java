@@ -25,15 +25,6 @@ public class LoopViewPagerDemo2Activity extends BaseActivity {
      */
     private static final int UPDATE_TIME = 3 * 1000;
 
-    private ViewPager mViewPager;
-
-    private LoopViewPagerAdapter2 mAdapter;
-
-    /**
-     * 指示Point
-     */
-    private LinearLayout mLinearLayoutPonits;
-
     /**
      * 图片资源集合
      */
@@ -74,7 +65,6 @@ public class LoopViewPagerDemo2Activity extends BaseActivity {
          * 添加ImageView
          */
         mImageList = new ArrayList<>();
-        //额外添加两张图片
         ViewGroup.LayoutParams layoutParams =
                 new ViewGroup.LayoutParams(
                         ViewGroup.LayoutParams.MATCH_PARENT,
@@ -88,9 +78,12 @@ public class LoopViewPagerDemo2Activity extends BaseActivity {
 
     @Override
     protected void initViews() {
-        mLinearLayoutPonits = (LinearLayout) findViewById(R.id.activity_ll_container);
-        mViewPager = (ViewPager) findViewById(R.id.activity_loop_viewpager);
-        mAdapter = new LoopViewPagerAdapter2(mImageList, mImageIds);
+        /*
+      指示Point
+     */
+        LinearLayout mLinearLayoutPonits = (LinearLayout) findViewById(R.id.activity_ll_container);
+        ViewPager mViewPager = (ViewPager) findViewById(R.id.activity_loop_viewpager);
+        LoopViewPagerAdapter2 mAdapter = new LoopViewPagerAdapter2(mImageList, mImageIds);
         mViewPager.setAdapter(mAdapter);
         int middle = mAdapter.getCount() / 2;
         mViewPager.setCurrentItem(middle - middle % mImageList.size());

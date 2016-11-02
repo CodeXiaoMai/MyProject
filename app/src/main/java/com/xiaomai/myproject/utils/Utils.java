@@ -3,6 +3,8 @@ package com.xiaomai.myproject.utils;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.provider.ContactsContract;
 import android.text.Html;
@@ -315,6 +317,29 @@ public class Utils {
     }
 
     /**
+     * 判断某个Action是否可以在设备上使用
+     * @param context
+     * @param action
+     * @return
+     */
+    public static boolean isIntentAvailable(Context context, String action) {
+        Intent intent = new Intent(action);
+        return isIntentAvailable(context, intent);
+    }
+
+    /**
+     * 判断某个Intent是否可以在设备上使用
+     * @param context
+     * @param intent
+     * @return
+     */
+    public static boolean isIntentAvailable(Context context, Intent intent){
+        PackageManager packageManager = context.getPackageManager();
+        List<ResolveInfo> resolveInfos = packageManager.queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY);
+        return (resolveInfos != null && resolveInfos.size() > 0);
+    }
+
+    /**
      * 判断某软件是否已经安装
      *
      * @param context
@@ -397,11 +422,12 @@ public class Utils {
 
     /**
      * 调起系统发送短信的功能
+     *
      * @param context
-     * @param phoneNumber   接收号码
-     * @param content       短信内容
+     * @param phoneNumber 接收号码
+     * @param content     短信内容
      */
-    public static void sendSMS(Context context, String phoneNumber, String content){
+    public static void sendSMS(Context context, String phoneNumber, String content) {
         Intent intent = new Intent();
         intent.setAction(Intent.ACTION_SENDTO);
         intent.setData(Uri.parse("smsto:" + phoneNumber));
@@ -411,19 +437,21 @@ public class Utils {
 
     /**
      * 调起系统发送短信的功能
+     *
      * @param context
-     * @param phoneNumber    接收号码
+     * @param phoneNumber 接收号码
      */
-    public static void sendSMS(Context context, String phoneNumber){
+    public static void sendSMS(Context context, String phoneNumber) {
         sendSMS(context, phoneNumber, "");
     }
 
     /**
      * 打开浏览器
+     *
      * @param context
      * @param url
      */
-    public static void openBrowser(Context context, String url){
+    public static void openBrowser(Context context, String url) {
         Intent intent = new Intent();
         intent.setAction(Intent.ACTION_VIEW);
         intent.setData(Uri.parse(url));
@@ -436,21 +464,23 @@ public class Utils {
      * geo:latitude,longitude?z=zoom，       纬度、经度，z表示zoom级别，值为数字1到23
      * geo:0,0?q=my+street+address
      * geo:0,0?q=business+near+city
+     *
      * @param context
      * @param uri
      */
-    public static void openMap(Context context, String uri){
+    public static void openMap(Context context, String uri) {
         Uri mUri = Uri.parse(uri);
-        Intent mIntent = new Intent(Intent.ACTION_VIEW,mUri);
+        Intent mIntent = new Intent(Intent.ACTION_VIEW, mUri);
         context.startActivity(mIntent);
     }
 
     /**
      * 根据关键词到应用商店搜索应用
+     *
      * @param context
      * @param packageName
      */
-    public static void searchApp(Context context, String packageName){
+    public static void searchApp(Context context, String packageName) {
         Uri uri = Uri.parse("market://search?q=" + packageName);
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         context.startActivity(intent);
@@ -458,10 +488,11 @@ public class Utils {
 
     /**
      * 在应用商店中根据AppId显示应用的相关信息
+     *
      * @param context
      * @param appId
      */
-    public static void searchDetails(Context context,String appId){
+    public static void searchDetails(Context context, String appId) {
         Uri uri = Uri.parse("market://details?id=" + appId);
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         context.startActivity(intent);
@@ -469,10 +500,11 @@ public class Utils {
 
     /**
      * 卸载某个应用
+     *
      * @param context
      * @param packageName
      */
-    public static void unInstallApp(Context context,String packageName){
+    public static void unInstallApp(Context context, String packageName) {
         Uri uri = Uri.fromParts("package", packageName, null);
         Intent intent = new Intent(Intent.ACTION_DELETE, uri);
         context.startActivity(intent);
@@ -484,7 +516,7 @@ public class Utils {
      * @param context
      * @param id
      */
-    public static void openWeiXin(Context context,String id) {
+    public static void openWeiXin(Context context, String id) {
         String WEIXIN_CHATTING_MIMETYPE = "vnd.android.cursor.item/vnd.com.tencent.mm.chatting.profile";//微信聊天
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

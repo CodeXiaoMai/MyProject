@@ -104,10 +104,10 @@ public class NoHttpDemoActivity extends BaseActivity implements OnResponseListen
                 mRequestQueue.add(WHAT_STRING_REQUEST, stringRequest, NoHttpDemoActivity.this);
                 mRequestQueue.add(WHAT_STRING_REQUEST1, stringRequest1, NoHttpDemoActivity.this);
                 mRequestQueue.start();
-                mRequestQueue.cancelAll();
+//                mRequestQueue.cancelAll();
                 //请求队列停止轮询，但不会被取消
 //                mRequestQueue.stop();
-                stringRequest.cancel();
+//                stringRequest.cancel();
             }
         });
 
