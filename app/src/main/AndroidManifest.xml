@@ -53,6 +53,17 @@
         <activity android:name=".demo.NoHttpDemoActivity"/>
         <activity android:name=".demo.NoHttpDownloadDemoActivity"/>
         <activity android:name=".demo.SwipeRefreshLayoutDemo"/>
+
+        <!-- NoHttpDemo -->
+        <activity android:name=".nohttpdemo.activity.splash.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+            </activity>
+        <activity android:name=".nohttpdemo.activity.splash.WelcomeActivity"/>
+        <activity android:name=".nohttpdemo.activity.StartActivity"/>
+        <!-- NoHttpDemoEnd -->
         <!-- ContentProvider -->
         <provider
             android:name=".database.DataBaseProvider"
