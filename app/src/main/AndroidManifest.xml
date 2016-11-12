@@ -47,22 +47,26 @@
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity android:name=".demo.PropertyAnimationDemoActivity" />
         <activity android:name=".demo.GifDemoActivity" />
-        <activity android:name=".demo.WebViewJsDemoActivity"/>
-        <activity android:name=".demo.GlideDemoActivity"/>
-        <activity android:name=".demo.FileDownloaderDemoActivity"/>
-        <activity android:name=".demo.NoHttpDemoActivity"/>
-        <activity android:name=".demo.NoHttpDownloadDemoActivity"/>
-        <activity android:name=".demo.SwipeRefreshLayoutDemo"/>
+        <activity android:name=".demo.WebViewJsDemoActivity" />
+        <activity android:name=".demo.GlideDemoActivity" />
+        <activity android:name=".demo.FileDownloaderDemoActivity" />
+        <activity android:name=".demo.NoHttpDemoActivity" />
+        <activity android:name=".demo.NoHttpDownloadDemoActivity" />
+        <activity android:name=".demo.SwipeRefreshLayoutDemo" />
+        <activity android:name=".demo.CoordinatorLayoutDemo" />
+        <activity android:name=".demo.AppBarLayoutDemoActivity" />
+        <activity android:name=".demo.NotificationDemoActivity" />
 
         <!-- NoHttpDemo -->
         <activity android:name=".nohttpdemo.activity.splash.SplashActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            </activity>
-        <activity android:name=".nohttpdemo.activity.splash.WelcomeActivity"/>
-        <activity android:name=".nohttpdemo.activity.StartActivity"/>
+        </activity>
+        <activity android:name=".nohttpdemo.activity.splash.WelcomeActivity" />
+        <activity android:name=".nohttpdemo.activity.StartActivity" />
         <!-- NoHttpDemoEnd -->
         <!-- ContentProvider -->
         <provider

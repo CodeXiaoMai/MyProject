@@ -31,7 +31,7 @@ android {
     defaultConfig {
         applicationId "com.xiaomai.myproject"
         minSdkVersion 15
-        targetSdkVersion 24
+        targetSdkVersion 22
         versionCode 1
         versionName "1.0"
 
@@ -125,4 +125,7 @@ dependencies {
     compile 'com.github.bumptech.glide:glide:3.7.0'
     compile project(':nohttp')
     compile project(':volley')
+    compile 'com.android.support:design:24.2.1'
+    compile "me.leolin:ShortcutBadger:1.1.10@aar"   //计数器
+    compile 'de.hdodenhof:circleimageview:2.1.0'
 }

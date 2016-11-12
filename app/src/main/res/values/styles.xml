@@ -55,4 +55,7 @@
         <item name="progress_reached_bar_height">3dp</item>
         <item name="progress_unreached_bar_height">2dp</item>
     </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
 </resources>

@@ -15,6 +15,7 @@ import android.view.WindowManager;
 import com.xiaomai.myproject.MyApplication;
 import com.xiaomai.myproject.R;
 
+import java.io.File;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -499,6 +500,21 @@ public class Utils {
     }
 
     /**
+     * 安装App
+     * @param context
+     * @param apkPath
+     */
+    public static void installApp(Context context, String apkPath){
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setDataAndType(Uri.fromFile(new File(apkPath)), "application/vnd.android.package-archive");
+
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        android.os.Process.killProcess(android.os.Process.myPid());
+        // 如果不加上这句的话在apk安装完成之后点击单开会崩溃
+        context.startActivity(intent);
+    }
+
+    /**
      * 卸载某个应用
      *
      * @param context
@@ -506,6 +522,7 @@ public class Utils {
      */
     public static void unInstallApp(Context context, String packageName) {
         Uri uri = Uri.fromParts("package", packageName, null);
+        //或者Uri uri = Uri.parse("package:" + packageName);
         Intent intent = new Intent(Intent.ACTION_DELETE, uri);
         context.startActivity(intent);
     }

@@ -12,8 +12,11 @@ import android.widget.Button;
 
 import com.xiaomai.myproject.R;
 import com.xiaomai.myproject.base.BaseActivity;
-import com.xiaomai.myproject.demo.SwipeRefreshLayoutDemo;
+import com.xiaomai.myproject.demo.AppBarLayoutDemoActivity;
 import com.xiaomai.myproject.demo.VitamioWithoutControllerDemoActivity;
+import com.yolanda.nohttp.PosterHandler;
+
+import me.leolin.shortcutbadger.ShortcutBadger;
 
 public class MainActivity extends BaseActivity {
 
@@ -31,7 +34,14 @@ public class MainActivity extends BaseActivity {
         getWindow().setFlags(flag, flag);
         super.onCreate(savedInstanceState);
         dissMissProgressDialog();
-        startActivity(new Intent(this, SwipeRefreshLayoutDemo.class));
+        startActivity(new Intent(this, AppBarLayoutDemoActivity.class));
+
+        PosterHandler.getInstance().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                ShortcutBadger.applyCount(mContext, 10);
+            }
+        },3000);
     }
 
     @Override
@@ -70,6 +80,7 @@ public class MainActivity extends BaseActivity {
         mShow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 mView.offsetTopAndBottom(mView.getHeight());
                 mView.startAnimation(translateAnimation);
             }

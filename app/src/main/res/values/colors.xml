@@ -15,5 +15,7 @@
     <color name="textBlue">#00AAEE</color>
     <color name="textBlack">#363636</color>
 
+    <color name="colorPrimaryTransparent">#991B7AEA</color>
+
     <color name="toast">#CC222222</color>
 </resources>
