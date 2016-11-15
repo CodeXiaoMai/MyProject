@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <!-- 这是自定义MyImageView的attrs-->
-    <declare-styleable name="MyImageView">
-        <attr name="aspectRatio" format="float" />          <!--宽高比-->
-    </declare-styleable>
-</resources>

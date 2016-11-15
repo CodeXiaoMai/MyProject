@@ -1,10 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <attr name="aspectRatio" format="float" />
+    <!-- 这是自定义MyImageView的attrs-->
+    <declare-styleable name="MyImageView">
+        <attr name="aspectRatio" />          <!--宽高比-->
+    </declare-styleable>
     <declare-styleable name="AvatarImageBehavior">
         <attr name="finalYPosition" format="dimension" />
         <attr name="startXPosition" format="dimension" />
         <attr name="startToolbarPosition" format="dimension" />
         <attr name="startHeight" format="dimension" />
         <attr name="finalHeight" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="BannerView">
+        <attr name="aspectRatio" />   <!-- 宽高比 -->
+        <attr name="defaultSrc" format="integer|reference" />     <!-- 点位图 -->
+        <attr name="updateTime" format="integer" />     <!-- 图片切换时间 -->
+        <attr name="indicatorVisible" format="boolean" /> <!-- 是否显示指示器 -->
+        <attr name="indicatorHeight" format="dimension" /> <!-- 指示器的高度 -->
+        <attr name="indicatorBackground" format="color|reference" />    <!-- 指示器的背景颜色 -->
+    </declare-styleable>
+
+    <declare-styleable name="NumberProgressBar">
+        <attr name="progress" format="integer" />
+        <attr name="max" format="integer" />
+
+        <attr name="progress_unreached_color" format="color" />
+        <attr name="progress_reached_color" format="color" />
+
+        <attr name="progress_reached_bar_height" format="dimension" />
+        <attr name="progress_unreached_bar_height" format="dimension" />
+
+        <attr name="progress_text_size" format="dimension" />
+        <attr name="progress_text_color" format="color" />
+
+        <attr name="progress_text_offset" format="dimension" />
     </declare-styleable>
 </resources>

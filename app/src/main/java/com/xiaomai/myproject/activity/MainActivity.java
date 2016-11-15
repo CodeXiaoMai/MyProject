@@ -12,7 +12,7 @@ import android.widget.Button;
 
 import com.xiaomai.myproject.R;
 import com.xiaomai.myproject.base.BaseActivity;
-import com.xiaomai.myproject.demo.AppBarLayoutDemoActivity;
+import com.xiaomai.myproject.demo.BannerViewDemoActivity;
 import com.xiaomai.myproject.demo.VitamioWithoutControllerDemoActivity;
 import com.yolanda.nohttp.PosterHandler;
 
@@ -34,7 +34,7 @@ public class MainActivity extends BaseActivity {
         getWindow().setFlags(flag, flag);
         super.onCreate(savedInstanceState);
         dissMissProgressDialog();
-        startActivity(new Intent(this, AppBarLayoutDemoActivity.class));
+        startActivity(new Intent(this, BannerViewDemoActivity.class));
 
         PosterHandler.getInstance().postDelayed(new Runnable() {
             @Override

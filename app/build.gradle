@@ -65,13 +65,13 @@ android {
     buildTypes {
         debug {
             // buildConfigField 自定义配置默认值,这个参数会自动创建到BuildConfig.java中
-            buildConfigField "String", "API_HOST", "\"http://api.debug.com\""//API Hos
+            buildConfigField "String", "API_HOST", "\"http://api.debug.com\""//API Host
             // 版本名称后缀
             versionNameSuffix "-debug"
         }
         release {
             // buildConfigField 自定义配置默认值,这个参数会自动创建到BuildConfig.java中
-            buildConfigField "String", "API_HOST", "\"http://api.release.com\""//API Hos
+            buildConfigField "String", "API_HOST", "\"http://api.release.com\""//API Host
             // 版本名称后缀
             versionNameSuffix "-release"
             // 是否进行混淆
@@ -126,6 +126,8 @@ dependencies {
     compile project(':nohttp')
     compile project(':volley')
     compile 'com.android.support:design:24.2.1'
-    compile "me.leolin:ShortcutBadger:1.1.10@aar"   //计数器
+    compile 'me.leolin:ShortcutBadger:1.1.10@aar'
+    //计数器
     compile 'de.hdodenhof:circleimageview:2.1.0'
+    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
 }

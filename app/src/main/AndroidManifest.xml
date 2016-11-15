@@ -31,7 +31,6 @@
         <activity android:name=".demo.FragmentActivityDemoActivity" />
         <activity android:name=".demo.LoopViewPagerDemoActivity" />
         <activity android:name=".demo.LoopViewPagerDemo2Activity" />
-        <activity android:name=".demo.TextAndImageViewDemoActivity" />
         <activity android:name=".demo.RecyclerViewDemoActivity" />
         <activity
             android:name=".demo.VitamioDemoActivity"
@@ -56,6 +55,8 @@
         <activity android:name=".demo.CoordinatorLayoutDemo" />
         <activity android:name=".demo.AppBarLayoutDemoActivity" />
         <activity android:name=".demo.NotificationDemoActivity" />
+        <activity android:name=".demo.ServiceDemoActivity" />
+        <activity android:name=".demo.BannerViewDemoActivity"/>
 
         <!-- NoHttpDemo -->
         <activity android:name=".nohttpdemo.activity.splash.SplashActivity">
@@ -73,6 +74,8 @@
             android:name=".database.DataBaseProvider"
             android:authorities="@string/authorities"
             android:exported="true" />
+
+        <service android:name=".service.ServiceDemo" />
     </application>
 
 </manifest>

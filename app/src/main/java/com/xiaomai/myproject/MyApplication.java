@@ -4,7 +4,8 @@ import android.app.Application;
 import android.content.Context;
 
 import com.liulishuo.filedownloader.FileDownloader;
-
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.yolanda.nohttp.NoHttp;
 
 /**
@@ -23,6 +24,11 @@ public class MyApplication extends Application {
          */
         NoHttp.initialize(this);
         initFileDownloader();
+        initImageLoader();
+    }
+
+    private void initImageLoader() {
+        ImageLoader.getInstance().init(ImageLoaderConfiguration.createDefault(mContext));
     }
 
     /**
