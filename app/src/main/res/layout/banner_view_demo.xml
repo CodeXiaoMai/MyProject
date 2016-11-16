@@ -13,5 +13,7 @@
         android:layout_height="wrap_content"
         app:defaultSrc="@mipmap/ic_launcher"
         app:indicatorVisible="true"
+        app:aspectRatio="1.8"
+        app:indicatorPositionSize="10dp"
         app:updateTime="3000" />
 </LinearLayout>

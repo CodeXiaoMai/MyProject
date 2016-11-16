@@ -31,10 +31,14 @@ public class BannerView extends RelativeLayout {
 
     private ImageLoader imageLoader;
 
+    private boolean isHaveHandler = true;// 当用户点击轮播图时，取消handler队列，也就是取消滚动
+
     // 控件Start
     private ViewPager viewPager;
 
     private LinearLayout indicator;// 指示器
+
+    private onItemClickListener listener;
     // 控件End
 
     // 自定义属性Start
@@ -47,6 +51,8 @@ public class BannerView extends RelativeLayout {
     private boolean showIndicator; // 是否显示指示器,默认显示
 
     private int indicatorHeight;// 指示器的高度,默认35dp
+
+    private int indicatorPositionSize; // 指示器的大小
 
     private int indicatorBackground; // 指示器的背景颜色
 
@@ -64,10 +70,22 @@ public class BannerView extends RelativeLayout {
     private List<String> imageUrls;
     // 数据End
 
+    /**
+     * 点击监听回调事件
+     */
+    public interface onItemClickListener {
+        void onClick(View view, int position);
+    }
+
+    public void setOnItemClickListener(onItemClickListener listener) {
+        this.listener = listener;
+    }
+
     private Runnable updateRunnable = new Runnable() {
         @Override
         public void run() {
-
+            viewPager.setCurrentItem(lastPosition + 1);
+            handler.postDelayed(updateRunnable, updateTime);
         }
     };
 
@@ -105,6 +123,8 @@ public class BannerView extends RelativeLayout {
                 Utils.dip2px(context, 35)));
         indicatorBackground = typedArray.getResourceId(R.styleable.BannerView_indicatorBackground,
                 R.color.mediacontroller_bg_pressed);
+        indicatorPositionSize = (int) typedArray.getDimension(
+                R.styleable.BannerView_indicatorPositionSize, Utils.dip2px(context, 5));
         typedArray.recycle();
     }
 
@@ -136,11 +156,23 @@ public class BannerView extends RelativeLayout {
                     }
                     indicator.getChildAt(position % imageCount).setSelected(true);
                 }
+                lastPosition = position;
             }
 
             @Override
             public void onPageScrollStateChanged(int state) {
-
+                switch (state) {
+                    case ViewPager.SCROLL_STATE_IDLE:// 空闲状态
+                        if (!isHaveHandler) {
+                            isHaveHandler = true;
+                            handler.postDelayed(updateRunnable, updateTime);
+                        }
+                        break;
+                    case ViewPager.SCROLL_STATE_DRAGGING:// 用户滑动状态
+                        handler.removeCallbacks(updateRunnable);
+                        isHaveHandler = false;
+                        break;
+                }
             }
         });
         addView(viewPager, new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
@@ -180,6 +212,7 @@ public class BannerView extends RelativeLayout {
             addIndicationPoint();
         }
         viewPager.setAdapter(new MyViewPageAdapter());
+        viewPager.setCurrentItem(200 - (200 % imageCount));
         handler.removeCallbacks(updateRunnable);
         handler.postDelayed(updateRunnable, updateTime);
     }
@@ -193,10 +226,9 @@ public class BannerView extends RelativeLayout {
             indicator.removeAllViews();
         }
         View pointView;
-        // 圆点的直径
-        int diameter = Utils.dip2px(context, 10f);
         int margin = Utils.dip2px(context, 5f);
-        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(diameter, diameter);
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+                indicatorPositionSize, indicatorPositionSize);
         layoutParams.setMargins(margin, margin, margin, margin);
 
         for (int i = 0; i < imageCount; i++) {
@@ -223,10 +255,18 @@ public class BannerView extends RelativeLayout {
         }
 
         @Override
-        public Object instantiateItem(ViewGroup container, int position) {
-            ImageView imageView = new ImageView(container.getContext());
+        public Object instantiateItem(ViewGroup container, final int position) {
+            final ImageView imageView = new ImageView(container.getContext());
             imageView.setScaleType(ImageView.ScaleType.FIT_XY);
             imageLoader.displayImage(imageUrls.get(position % imageCount), imageView);
+            imageView.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (listener != null) {
+                        listener.onClick(v, position % imageCount);
+                    }
+                }
+            });
             container.addView(imageView);
             return imageView;
         }
