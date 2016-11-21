@@ -1,6 +1,8 @@
+
 package com.xiaomai.myproject.demo;
 
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.xiaomai.myproject.R;
 import com.xiaomai.myproject.base.BaseActivity;
@@ -21,7 +23,7 @@ public class BannerViewDemoActivity extends BaseActivity {
 
     @Override
     protected void initViews() {
-        bannerView = (BannerView) findViewById(R.id.banner);
+        bannerView = new BannerView(this, 1.8f);
         imageUrls = new ArrayList<>();
         imageUrls.add("https://www.baidu.com/img/bd_logo1.png");
         imageUrls.add("https://www.baidu.com/img/bd_logo1.png");
@@ -34,6 +36,9 @@ public class BannerViewDemoActivity extends BaseActivity {
                 MyLog.e("position: " + position);
             }
         });
+
+        addContentView(bannerView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT));
     }
 
     @Override

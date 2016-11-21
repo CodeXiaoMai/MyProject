@@ -89,8 +89,9 @@ public class BannerView extends RelativeLayout {
         }
     };
 
-    public BannerView(Context context) {
+    public BannerView(Context context, float aspectRatio) {
         this(context, null);
+        mAspectRatio = aspectRatio;
     }
 
     public BannerView(Context context, AttributeSet attrs) {

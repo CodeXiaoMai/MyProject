@@ -120,6 +120,11 @@ public class Utils {
         return getDate(new Date(), "HH:mm");
     }
 
+    /**
+     * 根据毫秒时间戳返回时间
+     * @param millionSecond
+     * @return
+     */
     public static String getTime(long millionSecond) {
         return getDate(new Date(millionSecond), "HH:mm");
     }
