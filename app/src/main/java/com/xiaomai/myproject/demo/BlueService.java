@@ -1,26 +1,11 @@
 package com.xiaomai.myproject.demo;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.UUID;
-
-import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothDevice;
-import android.bluetooth.BluetoothServerSocket;
-import android.bluetooth.BluetoothSocket;
-import android.content.Context;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.util.Log;
-
 /**
  * 这是一个蓝牙间通信的项目，需要用利用蓝牙而进行设备之间的数据传递。
  * 请在代码区No.1处写出获取蓝牙连接的代码。在No.2处：写出实现发送数据功能的代码。
  */
 public class BlueService {
-    private static final String TAG = "BlueService";
+    /*private static final String TAG = "BlueService";
     private static final boolean D = true;
 
     private static final String NAME_SECURE = "BluetoothChatSecure";
@@ -388,5 +373,5 @@ public class BlueService {
                 Log.e(TAG, "close() of connect socket failed", e);
             }
         }
-    }
+    }*/
 }

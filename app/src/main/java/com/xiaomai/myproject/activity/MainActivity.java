@@ -12,11 +12,8 @@ import android.widget.Button;
 
 import com.xiaomai.myproject.R;
 import com.xiaomai.myproject.base.BaseActivity;
-import com.xiaomai.myproject.demo.BannerViewDemoActivity;
+import com.xiaomai.myproject.demo.AlphaActivity;
 import com.xiaomai.myproject.demo.VitamioWithoutControllerDemoActivity;
-import com.yolanda.nohttp.PosterHandler;
-
-import me.leolin.shortcutbadger.ShortcutBadger;
 
 public class MainActivity extends BaseActivity {
 
@@ -34,14 +31,8 @@ public class MainActivity extends BaseActivity {
         getWindow().setFlags(flag, flag);
         super.onCreate(savedInstanceState);
         dissMissProgressDialog();
-        startActivity(new Intent(this, BannerViewDemoActivity.class));
+        startActivity(new Intent(this, AlphaActivity.class));
 
-        PosterHandler.getInstance().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                ShortcutBadger.applyCount(mContext, 10);
-            }
-        },3000);
     }
 
     @Override
