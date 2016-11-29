@@ -2,6 +2,7 @@
 package com.xiaomai.myproject.demo;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.GestureDetector;
@@ -11,6 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.Scroller;
+
+import com.xiaomai.myproject.R;
 
 /**
  * Created by XiaoMai on 2016/11/22 19:05.
@@ -23,6 +26,7 @@ public class ViewDemoActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        startActivity(new Intent(this, YaoYiYaoDemoActivity.class));
         super.onCreate(savedInstanceState);
         // [ˈdʒɛstʃɚ] [dɪˈtɛktɚ]
         final GestureDetector gestureDetector = new GestureDetector(this, gestureListener);
@@ -51,7 +55,7 @@ public class ViewDemoActivity extends Activity {
             }
         });
 
-        setContentView(view);
+        setContentView(R.layout.act_my_circle_imageview);
     }
 
     private void smoothScrollTo(View view, int destX, int destY) {

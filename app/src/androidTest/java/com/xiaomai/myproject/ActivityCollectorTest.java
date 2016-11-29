@@ -1,27 +1,20 @@
 package com.xiaomai.myproject;
 
+import android.test.AndroidTestCase;
+
 import com.xiaomai.myproject.nohttpdemo.activity.StartActivity;
 import com.xiaomai.myproject.utils.ActivityCollector;
 
-import org.junit.Test;
-
-import static org.junit.Assert.*;
-
 /**
- * To work on unit tests, switch the Test Artifact in the Build Variants view.
+ * Created by XiaoMai on 2016/11/29 14:12.
  */
-public class ExampleUnitTest {
-    @Test
-    public void addition_isCorrect() throws Exception {
-        assertEquals(4, 2 + 2);
-    }
+public class ActivityCollectorTest extends AndroidTestCase {
 
-    @Test
-    public void testAddActivity() throws Exception{
+    public void testAddActivity(){
         assertEquals(null, ActivityCollector.getActivities());
         StartActivity startActivity = new StartActivity();
         ActivityCollector.addActivity(startActivity);
-        assertEquals(0, ActivityCollector.getActivities().size());
+        assertEquals(1, ActivityCollector.getActivities().size());
         ActivityCollector.addActivity(startActivity);
         assertEquals(1, ActivityCollector.getActivities().size());
     }
