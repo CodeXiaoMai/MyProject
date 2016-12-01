@@ -8,6 +8,7 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.Vibrator;
+import android.widget.TextView;
 
 /**
  * Created by XiaoMai on 2016/11/29 13:20.
@@ -26,6 +27,10 @@ public class YaoYiYaoDemoActivity extends Activity {
         Sensor sensor = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         mVibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
         mSensorManager.registerListener(listener, sensor, SensorManager.SENSOR_DELAY_NORMAL);
+        TextView textView = new TextView(this);
+        textView.setText("kslf");
+        textView.setElevation(5f);
+        setContentView(textView);
     }
 
     @Override

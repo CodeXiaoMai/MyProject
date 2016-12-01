@@ -15,7 +15,7 @@ import android.view.WindowManager;
 
 import com.xiaomai.myproject.R;
 import com.xiaomai.myproject.base.BaseActivity;
-import com.xiaomai.myproject.utils.Utils;
+import com.xiaomai.myproject.utils.ParseUtils;
 import com.xiaomai.myproject.view.MyMediaController;
 
 import io.vov.vitamio.MediaPlayer;
@@ -58,7 +58,7 @@ public class VitamioDemoActivity extends BaseActivity implements MediaPlayer.OnP
                         mMediaController.setTime();
                         break;
                     case BATTERY:
-                        mMediaController.setBattery(Utils.parseToInteger(msg.obj));
+                        mMediaController.setBattery(ParseUtils.parseToInteger(msg.obj));
                         break;
                 }
             }

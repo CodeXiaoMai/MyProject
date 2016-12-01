@@ -69,7 +69,8 @@
         </activity>
         <activity android:name=".demo.AlarmDemoActivity" />
         <activity android:name=".demo.SensorDemoActivity" />
-        <activity android:name=".demo.YaoYiYaoDemoActivity"/>
+        <activity android:name=".demo.YaoYiYaoDemoActivity" />
+        <activity android:name=".demo.CustomViewActivity" />
         <!-- NoHttpDemo -->
         <activity android:name=".nohttpdemo.activity.splash.SplashActivity">
 

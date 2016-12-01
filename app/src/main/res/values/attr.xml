@@ -2,6 +2,10 @@
 <resources>
 
     <attr name="aspectRatio" format="float" />
+    <attr name="border_width" format="dimension" />
+    <attr name="border_color" format="color" />
+    <attr name="border_overlay" format="boolean" />
+    <attr name="fill_color" format="color" />
     <!-- 这是自定义MyImageView的attrs-->
     <declare-styleable name="MyImageView">
         <attr name="aspectRatio" />          <!--宽高比-->
@@ -48,9 +52,16 @@
     </declare-styleable>
 
     <declare-styleable name="MyCircleImageView">
-        <attr name="border_width" format="dimension" />
-        <attr name="border_color" format="color" />
-        <attr name="border_overlay" format="boolean" />
-        <attr name="fill_color" format="color" />
+        <attr name="border_width" />
+        <attr name="border_color" />
+        <attr name="border_overlay" />
+        <attr name="fill_color" />
+    </declare-styleable>
+
+    <declare-styleable name="CircleTextView">
+        <attr name="border_width" />
+        <attr name="border_color" />
+        <attr name="border_overlay" />
+        <attr name="fill_color" />
     </declare-styleable>
 </resources>
