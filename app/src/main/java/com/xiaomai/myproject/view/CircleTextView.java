@@ -2,23 +2,28 @@
 package com.xiaomai.myproject.view;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.widget.TextView;
+
+import com.xiaomai.myproject.R;
 
 /**
  * Created by XiaoMai on 2016/12/1 9:53.
  */
 public class CircleTextView extends TextView {
 
-    /**
-     * 文字默认的对其方式
-     */
-    private static final int GRAVITY = Gravity.CENTER;
-
     private int radius;
+
+    private int borderWidth;
+
+    private int borderColor;
+
+    private int fillColor;
 
     public CircleTextView(Context context) {
         this(context, null);
@@ -30,7 +35,13 @@ public class CircleTextView extends TextView {
 
     public CircleTextView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init();
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.CircleTextView);
+        borderWidth = typedArray.getDimensionPixelSize(R.styleable.CircleTextView_border_width, 0);
+        borderColor = typedArray.getColor(R.styleable.CircleTextView_border_color, Color.WHITE);
+        fillColor = typedArray.getColor(R.styleable.CircleTextView_fill_color, Color.WHITE);
+        typedArray.recycle();
+        setGravity(Gravity.CENTER);
+        setPadding(10, 10, 10, 10);
     }
 
     @Override
@@ -42,17 +53,21 @@ public class CircleTextView extends TextView {
         setMeasuredDimension(max, max);
     }
 
-    private void init() {
-        setGravity(GRAVITY);
-    }
-
     @Override
     protected void onDraw(Canvas canvas) {
-        int width = getWidth();
-        int height = getHeight();
+        int width = getWidth();// - getPaddingLeft() - getPaddingRight();
+        int height = getWidth();
+        ;// - getPaddingTop() - getPaddingBottom();
         // 半径
-        radius = Math.max(width, height) / 2;
-        canvas.drawCircle(width / 2, height / 2, radius, new Paint());
+        radius = Math.min(width, height) / 2;
+        if (borderWidth > 0) {
+            Paint borderPaint = new Paint();
+            borderPaint.setColor(borderColor);
+            canvas.drawCircle(getWidth() / 2, getWidth() / 2, radius, borderPaint);
+        }
+        Paint fillPaint = new Paint();
+        fillPaint.setColor(fillColor);
+        canvas.drawCircle(getWidth() / 2, getWidth() / 2, radius - borderWidth, fillPaint);
         super.onDraw(canvas);
     }
 

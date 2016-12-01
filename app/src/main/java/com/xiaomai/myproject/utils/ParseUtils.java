@@ -1,3 +1,4 @@
+
 package com.xiaomai.myproject.utils;
 
 /**
@@ -22,6 +23,60 @@ public class ParseUtils {
             }
         }
 
+    }
+
+    /**
+     * 把Object转换为double型
+     * 
+     * @param obj
+     * @return
+     */
+    public static double parseToDouble(Object obj) {
+        if (obj == null) {
+            return 0;
+        } else {
+            try {
+                return Double.parseDouble(obj.toString());
+            } catch (Exception e) {
+                return 0;
+            }
+        }
+    }
+
+    /**
+     * 把Object转换为double型
+     *
+     * @param obj
+     * @return
+     */
+    public static float parseToFloat(Object obj) {
+        if (obj == null) {
+            return 0;
+        } else {
+            try {
+                return Float.parseFloat(obj.toString());
+            } catch (Exception e) {
+                return 0;
+            }
+        }
+    }
+
+    /**
+     * 把Object转换为boolean型
+     *
+     * @param obj
+     * @return
+     */
+    public static boolean parseToBoolean(Object obj) {
+        if (obj == null) {
+            return false;
+        } else {
+            try {
+                return Boolean.parseBoolean(obj.toString()) || obj.toString().equals("1");
+            } catch (Exception e) {
+                return false;
+            }
+        }
     }
 
     /**
