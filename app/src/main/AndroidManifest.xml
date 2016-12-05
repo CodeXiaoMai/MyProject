@@ -71,6 +71,8 @@
         <activity android:name=".demo.SensorDemoActivity" />
         <activity android:name=".demo.YaoYiYaoDemoActivity" />
         <activity android:name=".demo.CustomViewActivity" />
+        <activity android:name=".demo.ImageScaleTypeDemoActivity" />
+        <activity android:name=".demo.ListViewDemoActivity" />
         <!-- NoHttpDemo -->
         <activity android:name=".nohttpdemo.activity.splash.SplashActivity">
 

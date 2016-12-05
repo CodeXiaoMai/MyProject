@@ -61,7 +61,6 @@
     <declare-styleable name="CircleTextView">
         <attr name="border_width" />
         <attr name="border_color" />
-        <attr name="border_overlay" />
         <attr name="fill_color" />
     </declare-styleable>
 </resources>

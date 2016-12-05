@@ -10,8 +10,8 @@
         android:layout_height="wrap_content"
         android:text="sdfasdfsdf"
         android:textSize="33sp"
-        app:fill_color="@color/textBlue"
         app:border_color="@color/colorAccent"
-        app:border_width="3dp" />
+        app:border_width="3dp"
+        app:fill_color="@color/textBlue" />
 
 </LinearLayout>

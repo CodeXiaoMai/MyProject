@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/my_app_bar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@drawable/list_divider"
+        android:dividerPadding="@dimen/dp_5"
+        android:orientation="horizontal"
+        android:showDividers="middle">
+
+        <Button
+            android:id="@+id/next"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="下一张" />
+
+        <Button
+            android:id="@+id/plus"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="放大" />
+
+        <Button
+            android:id="@+id/minus"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="缩小" />
+    </LinearLayout>
+
+    <!-- 显示图片整体的ImageView -->
+    <ImageView
+        android:id="@+id/image1"
+        android:layout_width="280dp"
+        android:layout_height="200dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/git_big_jb51" />
+
+    <!-- 显示局部细节的图片 -->
+    <ImageView
+        android:id="@+id/image2"
+        android:background="@color/white"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:scaleType="center"
+        android:layout_height="wrap_content" />
+
+   <ZoomControls
+       android:id="@+id/zoom"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content">
+
+   </ZoomControls>
+
+    <QuickContactBadge
+        android:id="@+id/search_badge"
+        android:src="@drawable/git_big_jb51"
+        android:layout_width="55dp"
+        android:layout_height="55dp" />
+</LinearLayout>

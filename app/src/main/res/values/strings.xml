@@ -12,5 +12,14 @@
     <string name="time_yesterday">昨天</string>
     <string name="time_theDayBeforeYesterday">前天</string>
     <string name="back">返回</string>
-    <string name="behavior_user_head_move" >com.xiaomai.myproject.nohttpdemo.behavior.AvatarImageBehavior</string>
+
+
+    <string-array name="array">
+        <item> 1</item>
+        <item> 1</item>
+        <item> 1</item>
+        <item> 1</item>
+    </string-array>
+
+    <string name="behavior_user_head_move">com.xiaomai.myproject.nohttpdemo.behavior.AvatarImageBehavior</string>
 </resources>
