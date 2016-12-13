@@ -11,6 +11,7 @@ import android.view.Gravity;
 import android.widget.TextView;
 
 import com.xiaomai.myproject.R;
+import com.xiaomai.myproject.utils.Utils;
 
 /**
  * Created by XiaoMai on 2016/12/1 9:53.
@@ -41,7 +42,8 @@ public class CircleTextView extends TextView {
         fillColor = typedArray.getColor(R.styleable.CircleTextView_fill_color, Color.WHITE);
         typedArray.recycle();
         setGravity(Gravity.CENTER);
-        setPadding(10, 10, 10, 10);
+        setPadding(Utils.dip2px(context, 10), Utils.dip2px(context, 10), Utils.dip2px(context, 10),
+                Utils.dip2px(context, 10));
     }
 
     @Override
@@ -55,9 +57,8 @@ public class CircleTextView extends TextView {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        int width = getWidth();// - getPaddingLeft() - getPaddingRight();
+        int width = getWidth();
         int height = getWidth();
-        ;// - getPaddingTop() - getPaddingBottom();
         // 半径
         radius = Math.min(width, height) / 2;
         if (borderWidth > 0) {

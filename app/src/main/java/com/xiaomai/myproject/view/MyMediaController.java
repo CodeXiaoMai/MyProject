@@ -11,7 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.xiaomai.myproject.R;
-import com.xiaomai.myproject.utils.Utils;
+import com.xiaomai.myproject.utils.TimeUtils;
 
 import io.vov.vitamio.widget.MediaController;
 import io.vov.vitamio.widget.VideoView;
@@ -156,7 +156,7 @@ public class MyMediaController extends MediaController {
      */
     public void setTime() {
         if (mTime != null) {
-            mTime.setText(Utils.getTime());
+            mTime.setText(TimeUtils.getTime());
         }
     }
 

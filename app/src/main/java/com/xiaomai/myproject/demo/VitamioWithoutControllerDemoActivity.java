@@ -25,7 +25,7 @@ import android.widget.TextView;
 
 import com.xiaomai.myproject.R;
 import com.xiaomai.myproject.base.BaseActivity;
-import com.xiaomai.myproject.utils.Utils;
+import com.xiaomai.myproject.utils.TimeUtils;
 
 import io.vov.vitamio.MediaPlayer;
 import io.vov.vitamio.Vitamio;
@@ -550,7 +550,7 @@ public class VitamioWithoutControllerDemoActivity extends BaseActivity implement
         ObjectAnimator objectAnimator4 = ObjectAnimator.ofFloat(mImageViewFullScreen, "translationX", width, 0);
         objectAnimator4.start();
 
-        mTextViewSystemTime.setText(Utils.getTime());
+        mTextViewSystemTime.setText(TimeUtils.getTime());
         mHandler.postDelayed(mToggleControllerRunnable, 5 * 1000);
     }
 

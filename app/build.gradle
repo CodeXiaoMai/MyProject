@@ -85,6 +85,19 @@ android {
             ndk {
                 abiFilters "armeabi", "armeabi-v7a"
             }
+
+            signingConfig signingConfigs.release
+
+            applicationVariants.all { variant ->
+                variant.outputs.each { output ->
+                    def outputFile = output.outputFile
+                    if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                        // 输出apk名称为：软件名_v1.0_渠道名.apk
+                        def fileName = "vyanke_v${defaultConfig.versionName}_${variant.productFlavors[0].name}.apk"
+                        output.outputFile = new File(outputFile.parent, fileName)
+                    }
+                }
+            }
         }
     }
 
@@ -100,6 +113,10 @@ android {
 
     productFlavors.all { flavor ->
         flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
+        // 在manifest中加入以下配置
+        // <meta-data
+        //android:name="UMENG_CHANNEL"
+        //android:value="${UMENG_CHANNEL_VALUE}" />
     }
 
     sourceSets {
