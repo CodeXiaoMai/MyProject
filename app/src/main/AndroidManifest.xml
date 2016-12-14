@@ -73,6 +73,7 @@
         <activity android:name=".demo.CustomViewActivity" />
         <activity android:name=".demo.ImageScaleTypeDemoActivity" />
         <activity android:name=".demo.ListViewDemoActivity" />
+        <activity android:name=".demo.ListDialogDemoActivity" />
         <!-- NoHttpDemo -->
         <activity android:name=".nohttpdemo.activity.splash.SplashActivity">
 
