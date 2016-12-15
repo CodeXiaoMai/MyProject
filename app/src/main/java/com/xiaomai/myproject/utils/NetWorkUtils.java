@@ -19,7 +19,7 @@ public class NetWorkUtils {
 
 
     /**
-     * 不要忘记叫网络权限<br>
+     * 不要忘记加网络权限<br>
      * 判断当前是否连接到网络
      *
      * @param context
@@ -36,7 +36,7 @@ public class NetWorkUtils {
     }
 
     /**
-     * 不要忘记叫网络权限<br>
+     * 不要忘记加网络权限<br>
      * 判断当前网络是否为Wifi
      *
      * @param context
@@ -54,7 +54,7 @@ public class NetWorkUtils {
     }
 
     /**
-     * 不要忘记叫网络权限<br>
+     * 不要忘记加网络权限<br>
      * 判断当前网络是否为移动网络
      *
      * @param context

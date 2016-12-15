@@ -5,6 +5,8 @@ import android.content.Context;
 import android.text.Html;
 import android.text.Spanned;
 
+import java.security.MessageDigest;
+
 /**
  * Created by XiaoMai on 2016/9/2.
  */
@@ -49,5 +51,29 @@ public class Utils {
         }
     }
 
+    /**
+     * 获取MD5加密的值
+     * 
+     * @param val
+     * @return
+     */
+    public static String getMD5(String val) {
+        try {
+            // 拿到一个MD5转换器（如果想要SHA1参数换成”SHA1”）
+            MessageDigest md5 = MessageDigest.getInstance("MD5");
+            md5.update(val.getBytes());
+            byte[] bytes = md5.digest();
 
+            StringBuilder hex = new StringBuilder(bytes.length * 2);
+            for (byte b : bytes) {
+                if ((b & 0xFF) < 0x10) {
+                    hex.append("0");
+                }
+                hex.append(Integer.toHexString(b & 0xFF));
+            }
+            return hex.toString().toUpperCase();
+        } catch (Exception e) {
+            return val;
+        }
+    }
 }

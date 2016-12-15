@@ -8,15 +8,19 @@ import android.text.TextUtils;
 
 import com.xiaomai.myproject.MyApplication;
 
+import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.math.BigDecimal;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
 
 /**
  * Created by XiaoMai on 2016/12/13 10:59.
@@ -316,5 +320,74 @@ public class FileUtils {
             availableBlocks = statFs.getAvailableBlocks();
         }
         return blockSize * availableBlocks;
+    }
+
+    /**
+     * 获取文件名字，不带扩展名
+     * 
+     * @param file
+     * @return
+     */
+    public static String getFileName(File file) {
+        if (file == null) {
+            return "";
+        }
+        String fileName = file.getName();
+        if (fileName.contains(".")) {
+            String name = fileName.split("\\.")[0];
+            return name;
+        } else {
+            return fileName;
+        }
+    }
+
+    /**
+     * 解压文件
+     * 
+     * @param src
+     * @param destPath
+     * @return
+     */
+    public static String unZip(File src, String destPath) {
+        String entryName;
+        BufferedWriter writer = null;
+        BufferedReader reader = null;
+        try {
+            FileInputStream inputStream = new FileInputStream(src);
+            ZipInputStream zipInputStream = new ZipInputStream(
+                    new BufferedInputStream(inputStream));
+            ZipEntry zipEntry;
+            while ((zipEntry = zipInputStream.getNextEntry()) != null) {
+                reader = new BufferedReader(new InputStreamReader(zipInputStream));
+                entryName = zipEntry.getName();
+                File entryFile = new File(
+                        destPath + File.separator + getFileName(src) + File.separator + entryName);
+                initDirectory(entryFile.getParent(), false);
+                writer = new BufferedWriter(
+                        new OutputStreamWriter(new FileOutputStream(entryFile)));
+                String line = "";
+                while ((line = reader.readLine()) != null) {
+                    writer.write(line);
+                }
+                writer.flush();
+                writer.close();
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (writer != null) {
+                    writer.close();
+                }
+                if (reader != null) {
+                    reader.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return destPath;
     }
 }
