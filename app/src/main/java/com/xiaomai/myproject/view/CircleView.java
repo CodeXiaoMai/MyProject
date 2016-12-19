@@ -25,9 +25,9 @@ import com.xiaomai.myproject.R;
 import com.xiaomai.myproject.utils.Utils;
 
 /**
- * Created by XiaoMai on 2016/11/28 14:19.
+ * Created by XiaoMai on 2016/12/19 14:28.
  */
-public class MyCircleImageView extends ImageView {
+public class CircleView extends ImageView {
 
     private static final ScaleType SCALE_TYPE = ScaleType.CENTER_CROP;
 
@@ -44,7 +44,6 @@ public class MyCircleImageView extends ImageView {
     // 默认的填充颜色为透明颜色
     private static final int DEFAULT_FILL_COLOR = Color.TRANSPARENT;
 
-    // 默认
     private static final boolean DEFAULT_BORDER_OVERLAY = false;
 
     private final RectF mDrawableRect = new RectF();
@@ -103,40 +102,38 @@ public class MyCircleImageView extends ImageView {
     // 圆形图片的半径
     private float mDrawableRadius;
 
-    public MyCircleImageView(Context context) {
+    public CircleView(Context context) {
         this(context, null);
     }
 
-    public MyCircleImageView(Context context, AttributeSet attrs) {
+    public CircleView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public MyCircleImageView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public CircleView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-
-        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.MyCircleImageView,
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.CircleView,
                 defStyleAttr, 0);
-        mBorderWidth = typedArray.getDimensionPixelSize(R.styleable.MyCircleImageView_border_width,
+        mBorderWidth = typedArray.getDimensionPixelSize(R.styleable.CircleView_border_width,
                 DEFAULT_BORDER_WIDTH);
-        mBorderColor = typedArray.getColor(R.styleable.MyCircleImageView_border_color,
+        mBorderColor = typedArray.getColor(R.styleable.CircleView_border_color,
                 DEFAULT_BORDER_COLOR);
-        mBorderOverlay = typedArray.getBoolean(R.styleable.MyCircleImageView_border_overlay,
+        mBorderOverlay = typedArray.getBoolean(R.styleable.CircleView_border_overlay,
                 DEFAULT_BORDER_OVERLAY);
-        mFillColor = typedArray.getColor(R.styleable.MyCircleImageView_fill_color,
+        mFillColor = typedArray.getColor(R.styleable.CircleView_fill_color,
                 DEFAULT_FILL_COLOR);
-        mText = typedArray.getString(R.styleable.MyCircleImageView_text);
-        mTextSize = typedArray.getDimensionPixelSize(R.styleable.MyCircleImageView_textSize,
+        mText = typedArray.getString(R.styleable.CircleView_text);
+        mTextSize = typedArray.getDimensionPixelSize(R.styleable.CircleView_textSize,
                 Utils.dip2px(context, 15));
-        mTextColor = typedArray.getColor(R.styleable.MyCircleImageView_textColor, Color.WHITE);
-        mIsCircle = typedArray.getBoolean(R.styleable.MyCircleImageView_isCircle, false);
+        mTextColor = typedArray.getColor(R.styleable.CircleView_textColor, Color.WHITE);
+        mIsCircle = typedArray.getBoolean(R.styleable.CircleView_isCircle, false);
         typedArray.recycle();
         init();
     }
 
     private void init() {
-        super.setScaleType(SCALE_TYPE);
+        setScaleType(SCALE_TYPE);
         mReady = true;
-
         if (mSetupPending) {
             setup();
             mSetupPending = false;
@@ -158,7 +155,6 @@ public class MyCircleImageView extends ImageView {
             invalidate();
             return;
         }
-
         mBitmapShader = new BitmapShader(mBitmap, Shader.TileMode.CLAMP, // 横向边缘拉伸
                 Shader.TileMode.CLAMP); // 纵向边缘拉伸
 
@@ -204,6 +200,32 @@ public class MyCircleImageView extends ImageView {
         invalidate();
     }
 
+    /**
+     * 这是圆形所在的矩形
+     *
+     * @return
+     */
+    private RectF calculateBounds() {
+        // 真正的宽度
+        int availableWidth = getWidth() - getPaddingLeft() - getPaddingRight();
+        // 真正的高度
+        int availableHeight = getHeight() - getPaddingTop() - getPaddingBottom();
+
+        // 因为圆形的宽和高的长度都是直径的长度，所以边长（直径）为最短的边长
+        int sideLength = Math.min(availableWidth, availableHeight);
+
+        float left = getPaddingLeft() + (availableWidth - sideLength) / 2f;
+        float top = getPaddingTop() + (availableHeight - sideLength) / 2f;
+
+        return new RectF(left, top, left + sideLength, top + sideLength);
+    }
+
+    private void applyColorFilter() {
+        if (mBitmapPaint != null) {
+            mBitmapPaint.setColorFilter(mColorFilter);
+        }
+    }
+
     private void updateShaderMatrix() {
         float scale;
         float dx = 0;
@@ -224,29 +246,11 @@ public class MyCircleImageView extends ImageView {
         mBitmapShader.setLocalMatrix(mShaderMatrix);
     }
 
-    private void applyColorFilter() {
-        if (mBitmapPaint != null) {
-            mBitmapPaint.setColorFilter(mColorFilter);
-        }
-    }
-
-    @Override
-    public ScaleType getScaleType() {
-        return SCALE_TYPE;
-    }
-
     @Override
     public void setScaleType(ScaleType scaleType) {
         if (scaleType != SCALE_TYPE) {
             throw new IllegalArgumentException(
                     String.format("ScaleType %s not supported.", scaleType));
-        }
-    }
-
-    @Override
-    public void setAdjustViewBounds(boolean adjustViewBounds) {
-        if (adjustViewBounds) {
-            throw new IllegalArgumentException("adjustViewBounds not supported.");
         }
     }
 
@@ -262,6 +266,13 @@ public class MyCircleImageView extends ImageView {
     }
 
     @Override
+    public void setAdjustViewBounds(boolean adjustViewBounds) {
+        if (adjustViewBounds) {
+            throw new IllegalArgumentException("adjustViewBounds not supported.");
+        }
+    }
+
+    @Override
     protected void onDraw(Canvas canvas) {
         if (!mIsCircle) {
             super.onDraw(canvas);
@@ -274,16 +285,14 @@ public class MyCircleImageView extends ImageView {
             }
             return;
         }
-
         if (mBitmap == null) {
             return;
         }
-
         if (mFillColor != Color.TRANSPARENT) {
             canvas.drawCircle(mDrawableRect.centerX(), mDrawableRect.centerY(), mDrawableRadius,
                     mFillPaint);
         }
-        canvas.drawCircle(mDrawableRect.centerX(), mDrawableRect.centerY(), mDrawableRadius,
+        canvas.drawCircle(mDrawableRect.centerX(), mDrawableRect.centerX(), mDrawableRadius,
                 mBitmapPaint);
         if (mBorderWidth > 0) {
             canvas.drawCircle(mBorderRect.centerX(), mBorderRect.centerY(), mBorderRadius,
@@ -291,8 +300,8 @@ public class MyCircleImageView extends ImageView {
         }
         if (!TextUtils.isEmpty(mText)) {
             Paint.FontMetricsInt fontMetricsInt = mTextPaint.getFontMetricsInt();
-            canvas.drawText(mText, mDrawableRadius - mTextPaint.measureText(mText) / 2,
-                    mDrawableRadius - fontMetricsInt.descent
+            canvas.drawText(mText, mDrawableRect.centerX() - mTextPaint.measureText(mText) / 2,
+                    mDrawableRect.centerY() - fontMetricsInt.descent
                             + (fontMetricsInt.bottom - fontMetricsInt.top) / 2,
                     mTextPaint);
         }
@@ -346,10 +355,10 @@ public class MyCircleImageView extends ImageView {
     }
 
     private void initializeBitmap() {
-        if (!mIsCircle) {
-            mBitmap = getBitmapFromDrawable(getDrawable());
-        } else {
+        if (mIsCircle) {
             mBitmap = null;
+        } else {
+            mBitmap = getBitmapFromDrawable(getDrawable());
         }
         setup();
     }
@@ -379,26 +388,6 @@ public class MyCircleImageView extends ImageView {
             e.printStackTrace();
             return null;
         }
-    }
-
-    /**
-     * 这是圆形所在的矩形
-     *
-     * @return
-     */
-    private RectF calculateBounds() {
-        // 真正的宽度
-        int availableWidth = getWidth() - getPaddingLeft() - getPaddingRight();
-        // 真正的高度
-        int availableHeight = getHeight() - getPaddingTop() - getPaddingBottom();
-
-        // 因为圆形的宽和高的长度都是直径的长度，所以边长（直径）为最短的边长
-        int sideLength = Math.min(availableWidth, availableHeight);
-
-        float left = getPaddingLeft() + (availableWidth - sideLength) / 2f;
-        float top = getPaddingTop() + (availableHeight - sideLength) / 2f;
-
-        return new RectF(left, top, left + sideLength, top + sideLength);
     }
 
     public void setBorderColor(@ColorInt int borderColor) {

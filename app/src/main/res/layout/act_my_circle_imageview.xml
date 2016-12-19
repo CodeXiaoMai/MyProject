@@ -6,8 +6,11 @@
     android:gravity="center"
     android:orientation="vertical">
 
-    <com.xiaomai.myproject.view.MyCircleImageView
+    <com.xiaomai.myproject.view.CircleView
         android:layout_width="185dp"
         android:layout_height="185dp"
-        android:src="@color/white"/>
+        app:isCircle="true"
+        app:border_width="5dp"
+        app:border_color="@color/textBlue"
+        android:src="@color/black" />
 </LinearLayout>
