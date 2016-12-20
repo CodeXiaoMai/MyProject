@@ -26,7 +26,7 @@ public class ViewDemoActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        startActivity(new Intent(this, ViewDemo2Actvity.class));
+        startActivity(new Intent(this,LabelsViewActivity.class));
         super.onCreate(savedInstanceState);
         // [ˈdʒɛstʃɚ] [dɪˈtɛktɚ]
         final GestureDetector gestureDetector = new GestureDetector(this, gestureListener);
