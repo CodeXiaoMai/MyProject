@@ -1,1 +1,1 @@
-include ':app', ':volley', ':vitamio', ':nohttp'
+include ':app', ':volley', ':vitamio', ':nohttp', ':designpattern'
