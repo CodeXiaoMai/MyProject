@@ -1,7 +1,6 @@
 
 package com.xiaomai.myproject.utils;
 
-import android.content.Context;
 import android.text.Html;
 import android.text.Spanned;
 
@@ -30,25 +29,6 @@ public class Utils {
                 + "<font color=" + color + ">" + src.substring(index, index + length) + "</font>"
                 + src.substring(index + length, src.length());// keyWords之后的
         return Html.fromHtml(src);
-    }
-
-    /**
-     * Dip转换为像素
-     *
-     * @param context
-     * @param dpValue
-     * @return
-     */
-    public static int dip2px(Context context, float dpValue) {
-        /**
-         * 获取屏幕的像素密度
-         */
-        final float scale = context.getResources().getDisplayMetrics().density;
-        if (dpValue > 0) {
-            return (int) (dpValue * scale + 0.5f);
-        } else {
-            return (int) (dpValue * scale - 0.5f);
-        }
     }
 
     /**
