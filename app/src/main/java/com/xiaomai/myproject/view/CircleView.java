@@ -22,7 +22,7 @@ import android.util.AttributeSet;
 import android.widget.ImageView;
 
 import com.xiaomai.myproject.R;
-import com.xiaomai.myproject.utils.Utils;
+import com.xiaomai.myproject.utils.DisplayUtils;
 
 /**
  * Created by XiaoMai on 2016/12/19 14:28.
@@ -124,7 +124,7 @@ public class CircleView extends ImageView {
                 DEFAULT_FILL_COLOR);
         mText = typedArray.getString(R.styleable.CircleView_text);
         mTextSize = typedArray.getDimensionPixelSize(R.styleable.CircleView_textSize,
-                Utils.dip2px(context, 15));
+                DisplayUtils.dip2px(context, 15));
         mTextColor = typedArray.getColor(R.styleable.CircleView_textColor, Color.WHITE);
         mIsCircle = typedArray.getBoolean(R.styleable.CircleView_isCircle, false);
         typedArray.recycle();

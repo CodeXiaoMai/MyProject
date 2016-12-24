@@ -16,7 +16,7 @@ import android.widget.RelativeLayout;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.xiaomai.myproject.R;
-import com.xiaomai.myproject.utils.Utils;
+import com.xiaomai.myproject.utils.DisplayUtils;
 
 import java.util.List;
 
@@ -121,11 +121,11 @@ public class BannerView extends RelativeLayout {
         updateTime = typedArray.getInt(R.styleable.BannerView_updateTime, 3000);
         showIndicator = typedArray.getBoolean(R.styleable.BannerView_indicatorVisible, true);
         indicatorHeight = (int) (typedArray.getDimension(R.styleable.BannerView_indicatorHeight,
-                Utils.dip2px(context, 35)));
+                DisplayUtils.dip2px(context, 35)));
         indicatorBackground = typedArray.getResourceId(R.styleable.BannerView_indicatorBackground,
                 R.color.mediacontroller_bg_pressed);
         indicatorPositionSize = (int) typedArray.getDimension(
-                R.styleable.BannerView_indicatorPositionSize, Utils.dip2px(context, 5));
+                R.styleable.BannerView_indicatorPositionSize, DisplayUtils.dip2px(context, 5));
         typedArray.recycle();
     }
 
@@ -227,7 +227,7 @@ public class BannerView extends RelativeLayout {
             indicator.removeAllViews();
         }
         View pointView;
-        int margin = Utils.dip2px(context, 5f);
+        int margin = DisplayUtils.dip2px(context, 5f);
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
                 indicatorPositionSize, indicatorPositionSize);
         layoutParams.setMargins(margin, margin, margin, margin);

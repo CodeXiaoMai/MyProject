@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import com.xiaomai.myproject.R;
 import com.xiaomai.myproject.adapter.LoopViewPagerAdapter;
 import com.xiaomai.myproject.base.BaseActivity;
+import com.xiaomai.myproject.utils.DisplayUtils;
 import com.xiaomai.myproject.utils.Utils;
 
 import java.util.ArrayList;
@@ -123,10 +124,10 @@ public class LoopViewPagerDemoActivity extends BaseActivity {
                     mImageList.add(imageView);
                 }
                 //圆点的直径
-                int diameter = Utils.dip2px(mContext,10f);
+                int diameter = DisplayUtils.dip2px(mContext,10f);
                 LinearLayout.LayoutParams params =
                         new LinearLayout.LayoutParams(diameter, diameter);
-                int margin = Utils.dip2px(mContext,5f);
+                int margin = DisplayUtils.dip2px(mContext,5f);
                 params.setMargins(margin,margin,margin,margin);
                 mLinearLayoutPoints.removeAllViews();
                 for (int i = 0; i < mImageList.size(); i++) {
