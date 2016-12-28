@@ -5,6 +5,8 @@ import android.text.Html;
 import android.text.Spanned;
 
 import java.security.MessageDigest;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by XiaoMai on 2016/9/2.
@@ -55,5 +57,20 @@ public class Utils {
         } catch (Exception e) {
             return val;
         }
+    }
+
+    /**
+     * 匹配验证码
+     * 
+     * @param body
+     * @return
+     */
+    public static String match(String body) {
+        Pattern pattern = Pattern.compile("[A-Za-z0-9]{4,}(?![A-Za-z0-9])");
+        Matcher m = pattern.matcher(body);
+        if (m.find()) {
+            return m.group();
+        }
+        return "";
     }
 }

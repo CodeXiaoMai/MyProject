@@ -1,11 +1,9 @@
 
 package com.xiaomai.myproject;
 
-import com.xiaomai.myproject.utils.FileUtils;
+import com.xiaomai.myproject.utils.Utils;
 
 import org.junit.Test;
-
-import java.io.File;
 
 import static org.junit.Assert.assertEquals;
 
@@ -16,10 +14,11 @@ public class UtilsTest {
 
     @Test
     public void testGetMD5() throws Exception {
-//        assertEquals("", Utils.getMD5("123"));
-        assertEquals("",
-                FileUtils.unZip(
-                        new File("/storage/emulated/legacy/com.vyanke/latexs/f3084c79ed7b668a67241f9c8a91141b_.zip"),
-                        "/storage/emulated/legacy/1/"));
+        assertEquals("", Utils.getMD5("123"));
+    }
+
+    @Test
+    public void testMatch() throws Exception {
+        assertEquals("729316", Utils.match("【V研客】您的验证码是：729316。不要把验证码泄露给其他人。"));
     }
 }

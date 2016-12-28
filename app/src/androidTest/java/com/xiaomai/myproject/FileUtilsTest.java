@@ -5,6 +5,8 @@ import android.test.AndroidTestCase;
 
 import com.xiaomai.myproject.utils.FileUtils;
 
+import org.junit.Test;
+
 import java.io.File;
 
 /**
@@ -30,4 +32,13 @@ public class FileUtilsTest extends AndroidTestCase {
                 FileUtils.getFileName(new File("/storage/emulated/legacy/Download/test1.apk")));
     }
 
+
+    @Test
+    public void testUnZip() throws Exception {
+        assertEquals("",
+                FileUtils.unZip(
+                        new File(
+                                "/storage/emulated/legacy/com.vyanke/latexs/f3084c79ed7b668a67241f9c8a91141b_.zip"),
+                        "/storage/emulated/legacy/1/"));
+    }
 }
