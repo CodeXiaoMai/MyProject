@@ -75,7 +75,8 @@
         <activity android:name=".demo.ListViewDemoActivity" />
         <activity android:name=".demo.ListDialogDemoActivity" />
         <activity android:name=".demo.ViewDemo2Actvity" />
-        <activity android:name=".demo.LabelsViewActivity"/>
+        <activity android:name=".demo.LabelsViewActivity" />
+        <activity android:name=".demo.AndroidWithHttpsDemoActivity" />
         <!-- NoHttpDemo -->
         <activity android:name=".nohttpdemo.activity.splash.SplashActivity">
 
