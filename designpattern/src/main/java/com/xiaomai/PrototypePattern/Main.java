@@ -9,6 +9,6 @@ public class Main {
     public static void main(String[] args) {
         ConcretePrototypeA concretePrototypeA = new ConcretePrototypeA("1");
         ConcretePrototypeA copy = (ConcretePrototypeA) concretePrototypeA.clone();
-        System.out.print(copy.getId());
+        System.out.print(copy.getId() == concretePrototypeA.getId());
     }
 }

@@ -9,7 +9,4 @@ public class ConcretePrototypeA extends Prototype {
         super(id);
     }
 
-    public Prototype clone() {
-        return this;
-    }
 }

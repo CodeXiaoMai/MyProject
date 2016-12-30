@@ -19,6 +19,8 @@ public class UtilsTest {
 
     @Test
     public void testMatch() throws Exception {
-        assertEquals("729316", Utils.match("【V研客】您的验证码是：729316。不要把验证码泄露给其他人。"));
+        assertEquals("729316", Utils.match("【V研客】您的验证码是729316。不要把验证码泄露给其他人。"));
     }
+
+
 }

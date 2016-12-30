@@ -66,10 +66,10 @@ public class Utils {
      * @return
      */
     public static String match(String body) {
-        Pattern pattern = Pattern.compile("[A-Za-z0-9]{4,}(?![A-Za-z0-9])");
+        Pattern pattern = Pattern.compile("验证码是[A-Za-z0-9]{4,}(?![A-Za-z0-9])");
         Matcher m = pattern.matcher(body);
         if (m.find()) {
-            return m.group();
+            return m.group().replace("验证码是","");
         }
         return "";
     }

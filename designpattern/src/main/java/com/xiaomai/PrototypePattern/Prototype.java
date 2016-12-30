@@ -5,7 +5,7 @@ package com.xiaomai.PrototypePattern;
  * Created by XiaoMai on 2016/12/29 13:55.</br>
  * 原型类
  */
-public abstract class Prototype implements Cloneable {
+public class Prototype implements Cloneable {
 
     private String id;
 
@@ -22,5 +22,14 @@ public abstract class Prototype implements Cloneable {
      *
      * @return
      */
-    public abstract Prototype clone();
+    @Override
+    public Object clone() {
+        Prototype prototype = null;
+        try {
+            prototype = (Prototype) super.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        return prototype;
+    }
 }
