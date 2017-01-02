@@ -26,7 +26,7 @@ public class ViewDemoActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        startActivity(new Intent(this,AndroidWithHttpsDemoActivity.class));
+        startActivity(new Intent(this,CrashHandlerActivity.class));
         super.onCreate(savedInstanceState);
         // [ˈdʒɛstʃɚ] [dɪˈtɛktɚ]
         final GestureDetector gestureDetector = new GestureDetector(this, gestureListener);

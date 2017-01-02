@@ -77,6 +77,7 @@
         <activity android:name=".demo.ViewDemo2Actvity" />
         <activity android:name=".demo.LabelsViewActivity" />
         <activity android:name=".demo.AndroidWithHttpsDemoActivity" />
+        <activity android:name=".demo.CrashHandlerActivity" />
         <!-- NoHttpDemo -->
         <activity android:name=".nohttpdemo.activity.splash.SplashActivity">
 

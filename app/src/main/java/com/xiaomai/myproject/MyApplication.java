@@ -1,3 +1,4 @@
+
 package com.xiaomai.myproject;
 
 import android.app.Application;
@@ -6,6 +7,7 @@ import android.content.Context;
 import com.liulishuo.filedownloader.FileDownloader;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.xiaomai.myproject.utils.CrashHandler;
 import com.yolanda.nohttp.NoHttp;
 
 /**
@@ -25,6 +27,11 @@ public class MyApplication extends Application {
         NoHttp.initialize(this);
         initFileDownloader();
         initImageLoader();
+        initCrashHandler();
+    }
+
+    private void initCrashHandler() {
+        CrashHandler.getInstance().init();
     }
 
     private void initImageLoader() {

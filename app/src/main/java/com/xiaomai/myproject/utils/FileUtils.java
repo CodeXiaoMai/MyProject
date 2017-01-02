@@ -52,7 +52,7 @@ public class FileUtils {
      * @return
      */
     public static String checkDirs(String path) {
-        File file = new File(path);
+//        File file = new File(path);
         initDirectory(path, false);
         return path + File.separator;
     }
