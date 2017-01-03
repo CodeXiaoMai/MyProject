@@ -9,6 +9,7 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:name=".MyApplication"
@@ -78,6 +79,8 @@
         <activity android:name=".demo.LabelsViewActivity" />
         <activity android:name=".demo.AndroidWithHttpsDemoActivity" />
         <activity android:name=".demo.CrashHandlerActivity" />
+        <activity android:name=".demo.ZXLibraryDemoActivity" />
+        <activity android:name=".demo.ZXLibraryCustomDemoActivity" />
         <!-- NoHttpDemo -->
         <activity android:name=".nohttpdemo.activity.splash.SplashActivity">
 

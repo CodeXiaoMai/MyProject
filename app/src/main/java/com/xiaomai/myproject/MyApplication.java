@@ -7,6 +7,7 @@ import android.content.Context;
 import com.liulishuo.filedownloader.FileDownloader;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.uuzuche.lib_zxing.activity.ZXingLibrary;
 import com.xiaomai.myproject.utils.CrashHandler;
 import com.yolanda.nohttp.NoHttp;
 
@@ -28,6 +29,14 @@ public class MyApplication extends Application {
         initFileDownloader();
         initImageLoader();
         initCrashHandler();
+        initZXingLibrary();
+    }
+
+    /**
+     * 初始化二维码扫描库
+     */
+    private void initZXingLibrary() {
+        ZXingLibrary.initDisplayOpinion(this);
     }
 
     private void initCrashHandler() {

@@ -147,4 +147,6 @@ dependencies {
     //计数器
     compile 'de.hdodenhof:circleimageview:2.1.0'
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
+    //二维码
+    compile 'cn.yipianfengye.android:zxing-library:2.1'
 }
