@@ -7,9 +7,12 @@ import android.content.Context;
 import com.liulishuo.filedownloader.FileDownloader;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.orhanobut.logger.LogLevel;
+import com.orhanobut.logger.Logger;
 import com.uuzuche.lib_zxing.activity.ZXingLibrary;
 import com.xiaomai.myproject.utils.CrashHandler;
 import com.yolanda.nohttp.NoHttp;
+
 
 /**
  * Created by XiaoMai on 2016/9/7.
@@ -30,6 +33,15 @@ public class MyApplication extends Application {
         initImageLoader();
         initCrashHandler();
         initZXingLibrary();
+        initLogger();
+    }
+
+    /**
+     * 初始化Logger
+     */
+    private void initLogger() {
+        Logger.init("XiaoMai").setLogLevel(LogLevel.FULL).setMethodCount(3);
+        Logger.e("hello");
     }
 
     /**
