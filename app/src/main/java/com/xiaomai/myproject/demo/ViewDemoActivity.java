@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.Scroller;
 
+import com.orhanobut.logger.Logger;
 import com.xiaomai.myproject.R;
 
 /**
@@ -26,8 +27,11 @@ public class ViewDemoActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        startActivity(new Intent(this, ZXLibraryDemoActivity.class));
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.act_my_circle_imageview);
+        View viewById = findViewById(R.id.civ);
+
+        startActivity(new Intent(this, ZXLibraryDemoActivity.class));
         // [ˈdʒɛstʃɚ] [dɪˈtɛktɚ]
         final GestureDetector gestureDetector = new GestureDetector(this, gestureListener);
         // 解决长按屏幕后无法拖动的现象
@@ -37,7 +41,7 @@ public class ViewDemoActivity extends Activity {
         view.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT));
 
-        view.setOnTouchListener(new View.OnTouchListener() {
+        viewById.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 // 触摸事件是否被消费
@@ -48,6 +52,8 @@ public class ViewDemoActivity extends Activity {
                 velocityTracker.computeCurrentVelocity(1000);
                 int xVelocity = (int) velocityTracker.getXVelocity();
                 int yVelocity = (int) velocityTracker.getYVelocity();
+                Logger.d("getX() = " + event.getX() + ", getY() = " + event.getY());
+                Logger.d("getRawX() = " + event.getRawX() + ", getRawY() = " + event.getRawY());
                 Log.i(TAG, "onTouch: X = " + xVelocity + ", Y = " + yVelocity);
                 velocityTracker.clear();
                 velocityTracker.recycle();
@@ -55,7 +61,7 @@ public class ViewDemoActivity extends Activity {
             }
         });
 
-        setContentView(R.layout.act_my_circle_imageview);
+//        setContentView(R.layout.act_my_circle_imageview);
     }
 
     private void smoothScrollTo(View view, int destX, int destY) {

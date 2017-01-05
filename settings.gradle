@@ -1,1 +1,1 @@
-include ':app', ':volley', ':vitamio', ':nohttp', ':designpattern', ':rxjava', ':java'
+include ':app', ':volley', ':vitamio', ':nohttp', ':designpattern', ':rxjava', ':java', ':自定义view'
