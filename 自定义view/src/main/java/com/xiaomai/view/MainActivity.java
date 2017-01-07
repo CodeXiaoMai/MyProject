@@ -17,6 +17,14 @@ import com.xiaomai.view.bCanvasDemo.CanvasRotateView;
 import com.xiaomai.view.bCanvasDemo.CanvasScaleView;
 import com.xiaomai.view.bCanvasDemo.CanvasSkewView;
 import com.xiaomai.view.bCanvasDemo.CanvasTranslateView;
+import com.xiaomai.view.cCanvasDrawPictureAndText.CanvasDrawPictureView;
+import com.xiaomai.view.cCanvasDrawPictureAndText.CanvasDrawPosTextView;
+import com.xiaomai.view.cCanvasDrawPictureAndText.CanvasDrawTextView;
+import com.xiaomai.view.dCanvasDrawPathView.PathViewA;
+import com.xiaomai.view.dCanvasDrawPathView.PathViewB;
+import com.xiaomai.view.dCanvasDrawPathView.PathViewC;
+import com.xiaomai.view.dCanvasDrawPathView.PathViewD;
+import com.xiaomai.view.dCanvasDrawPathView.RadarView;
 import com.xiaomai.view.javabean.PieData;
 
 import java.util.ArrayList;
@@ -27,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+//        setContentView(R.layout.activity_main);
         DrawColorView drawColorView = new DrawColorView(this);
         DrawPointView drawPointView = new DrawPointView(this);
         DrawLineView drawLineView = new DrawLineView(this);
@@ -50,7 +58,32 @@ public class MainActivity extends AppCompatActivity {
         CanvasScaleView canvasScaleView = new CanvasScaleView(this);
         CanvasRotateView canvasRotateView = new CanvasRotateView(this);
         CanvasSkewView canvasSkewView = new CanvasSkewView(this);
-        setContentView(canvasSkewView);
 
+        CanvasDrawPictureView canvasDrawPictureView = new CanvasDrawPictureView(this);
+
+//        final CheckView checkView = (CheckView) findViewById(R.id.checkView);
+//        // setContentView(checkView);
+//        findViewById(R.id.check).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                checkView.check();
+//            }
+//        });
+//        findViewById(R.id.uncheck).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                checkView.unCheck();
+//            }
+//        });
+//
+
+        CanvasDrawTextView canvasDrawTextView = new CanvasDrawTextView(this);
+        CanvasDrawPosTextView canvasDrawPosTextView = new CanvasDrawPosTextView(this);
+        PathViewA pathViewA = new PathViewA(this);
+        PathViewB pathViewB = new PathViewB(this);
+        PathViewC pathViewC = new PathViewC(this);
+        PathViewD pathViewD = new PathViewD(this);
+        RadarView radarView = new RadarView(this);
+        setContentView(radarView);
     }
 }
