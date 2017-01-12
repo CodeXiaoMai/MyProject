@@ -81,6 +81,7 @@
         <activity android:name=".demo.CrashHandlerActivity" />
         <activity android:name=".demo.ZXLibraryDemoActivity" />
         <activity android:name=".demo.ZXLibraryCustomDemoActivity" />
+        <activity android:name=".demo.MatDemoActivity"/>
         <!-- NoHttpDemo -->
         <activity android:name=".nohttpdemo.activity.splash.SplashActivity">
 

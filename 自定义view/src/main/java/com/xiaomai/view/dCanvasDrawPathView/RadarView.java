@@ -15,7 +15,7 @@ import android.view.View;
 public class RadarView extends View {
 
     // 数据个数
-    private int count = 6;
+    private int count = 5;
 
     private float angle = (float) (Math.PI * 2 / count);
 
@@ -27,12 +27,12 @@ public class RadarView extends View {
     private int centerY;
 
     private String[] titles = {
-            "a", "b", "c", "d", "e", "f"
+            "a", "b", "c", "d", "e", "f","g"
     };
 
     // 各个维度的值
     private double[] datas = {
-            70, 50, 30, 60, 20, 22
+            70, 50, 30, 60, 20, 22,33
     };
 
     private float maxValue = 100;

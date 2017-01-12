@@ -25,6 +25,8 @@ import com.xiaomai.view.dCanvasDrawPathView.PathViewB;
 import com.xiaomai.view.dCanvasDrawPathView.PathViewC;
 import com.xiaomai.view.dCanvasDrawPathView.PathViewD;
 import com.xiaomai.view.dCanvasDrawPathView.RadarView;
+import com.xiaomai.view.eCanvasDrawBezierView.CubicBezierView;
+import com.xiaomai.view.eCanvasDrawBezierView.QuadraticBezierView;
 import com.xiaomai.view.javabean.PieData;
 
 import java.util.ArrayList;
@@ -84,6 +86,8 @@ public class MainActivity extends AppCompatActivity {
         PathViewC pathViewC = new PathViewC(this);
         PathViewD pathViewD = new PathViewD(this);
         RadarView radarView = new RadarView(this);
-        setContentView(radarView);
+        QuadraticBezierView bezierView = new QuadraticBezierView(this);
+        CubicBezierView cubicBezierView = new CubicBezierView(this);
+        setContentView(cubicBezierView);
     }
 }

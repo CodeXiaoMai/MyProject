@@ -31,7 +31,7 @@ public class ViewDemoActivity extends Activity {
         setContentView(R.layout.act_my_circle_imageview);
         View viewById = findViewById(R.id.civ);
 
-        startActivity(new Intent(this, ZXLibraryDemoActivity.class));
+        startActivity(new Intent(this, MatDemoActivity.class));
         // [ˈdʒɛstʃɚ] [dɪˈtɛktɚ]
         final GestureDetector gestureDetector = new GestureDetector(this, gestureListener);
         // 解决长按屏幕后无法拖动的现象
