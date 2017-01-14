@@ -5,3 +5,4 @@
 ##### 5.  MyToast             -->自定义的Toast
 ##### 6.  MyProgressDialog    -->自定义的ProgressDialog
 ##### 7.  MultiSelectDemoActivity   -->ListView多选
+##### 8.  custom_checkbox     -->自定义CheckBox

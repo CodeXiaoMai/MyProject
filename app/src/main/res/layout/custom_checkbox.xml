@@ -4,9 +4,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.xiaomai.myproject.view.VerticalSeekBar
-        android:layout_gravity="center"
+    <CheckBox
         android:layout_width="wrap_content"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:button="@drawable/check_box_selector" />
 
 </LinearLayout>
