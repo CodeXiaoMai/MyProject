@@ -4,3 +4,4 @@
 ##### 4.  MyEditDialog        -->自定义的可以输入文本的Dialog
 ##### 5.  MyToast             -->自定义的Toast
 ##### 6.  MyProgressDialog    -->自定义的ProgressDialog
+##### 7.  MultiSelectDemoActivity   -->ListView多选

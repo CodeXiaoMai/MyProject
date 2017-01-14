@@ -12,7 +12,7 @@ import android.widget.Button;
 
 import com.xiaomai.myproject.R;
 import com.xiaomai.myproject.base.BaseActivity;
-import com.xiaomai.myproject.demo.AlphaActivity;
+import com.xiaomai.myproject.demo.MultiSelectListViewDemo2Activity;
 import com.xiaomai.myproject.demo.VitamioWithoutControllerDemoActivity;
 
 public class MainActivity extends BaseActivity {
@@ -31,7 +31,7 @@ public class MainActivity extends BaseActivity {
         getWindow().setFlags(flag, flag);
         super.onCreate(savedInstanceState);
         dissMissProgressDialog();
-        startActivity(new Intent(this, AlphaActivity.class));
+        startActivity(new Intent(this, MultiSelectListViewDemo2Activity.class));
 
     }
 

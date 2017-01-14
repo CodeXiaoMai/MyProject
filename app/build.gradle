@@ -151,4 +151,6 @@ dependencies {
     compile 'cn.yipianfengye.android:zxing-library:2.1'
     //Logger
     compile 'com.orhanobut:logger:1.8'
+    // 垂直的SeekBar
+    compile 'com.h6ah4i.android.widget.verticalseekbar:verticalseekbar:0.7.0'
 }

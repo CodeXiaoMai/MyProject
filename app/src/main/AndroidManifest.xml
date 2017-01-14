@@ -19,7 +19,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".activity.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".demo.MyMultiItemListViewDemoActivity" />
         <activity android:name=".demo.MyEditDialogDemoActivity" />
@@ -62,11 +66,7 @@
 
         </activity>
         <activity android:name=".demo.ViewDemoActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".demo.AlarmDemoActivity" />
         <activity android:name=".demo.SensorDemoActivity" />
@@ -81,7 +81,10 @@
         <activity android:name=".demo.CrashHandlerActivity" />
         <activity android:name=".demo.ZXLibraryDemoActivity" />
         <activity android:name=".demo.ZXLibraryCustomDemoActivity" />
-        <activity android:name=".demo.MatDemoActivity"/>
+        <activity android:name=".demo.MatDemoActivity" />
+        <activity android:name=".demo.VerticalSeekBarDemoActivity" />
+        <activity android:name=".demo.MultiSelectListViewDemoActivity" />
+        <activity android:name=".demo.MultiSelectListViewDemo2Activity"/>
         <!-- NoHttpDemo -->
         <activity android:name=".nohttpdemo.activity.splash.SplashActivity">
 
