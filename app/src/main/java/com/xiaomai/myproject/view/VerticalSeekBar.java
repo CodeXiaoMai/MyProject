@@ -121,6 +121,7 @@ public class VerticalSeekBar extends SeekBar {
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN: {
                 setPressed(true);
+                // 由于父类的这个方法没有修饰符，也就是default修饰的，所以只能本类和同包可以访问，需要自己写这个方法
                 onStartTrackingTouch();
                 trackTouchEvent(event);
                 break;
@@ -177,6 +178,7 @@ public class VerticalSeekBar extends SeekBar {
 
     private void attemptClaimDrag() {
         if (getParent() != null) {
+            // 阻止父类的View截获touch事件
             getParent().requestDisallowInterceptTouchEvent(true);
         }
     }
