@@ -27,6 +27,14 @@ import com.xiaomai.view.dCanvasDrawPathView.PathViewD;
 import com.xiaomai.view.dCanvasDrawPathView.RadarView;
 import com.xiaomai.view.eCanvasDrawBezierView.CubicBezierView;
 import com.xiaomai.view.eCanvasDrawBezierView.QuadraticBezierView;
+import com.xiaomai.view.fCanvasDrawPathFillType.BooleanOp;
+import com.xiaomai.view.fCanvasDrawPathFillType.FillTypeEvenOdd;
+import com.xiaomai.view.fCanvasDrawPathFillType.FillTypeWinding;
+import com.xiaomai.view.fCanvasDrawPathFillType.TaiJi;
+import com.xiaomai.view.gPathMeasure.PathMeasureContour;
+import com.xiaomai.view.gPathMeasure.PathMeasureOne;
+import com.xiaomai.view.gPathMeasure.PathMeasurePosTan;
+import com.xiaomai.view.gPathMeasure.PathMeasureSegment;
 import com.xiaomai.view.javabean.PieData;
 
 import java.util.ArrayList;
@@ -37,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_main);
+        // setContentView(R.layout.activity_main);
         DrawColorView drawColorView = new DrawColorView(this);
         DrawPointView drawPointView = new DrawPointView(this);
         DrawLineView drawLineView = new DrawLineView(this);
@@ -63,21 +71,23 @@ public class MainActivity extends AppCompatActivity {
 
         CanvasDrawPictureView canvasDrawPictureView = new CanvasDrawPictureView(this);
 
-//        final CheckView checkView = (CheckView) findViewById(R.id.checkView);
-//        // setContentView(checkView);
-//        findViewById(R.id.check).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                checkView.check();
-//            }
-//        });
-//        findViewById(R.id.uncheck).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                checkView.unCheck();
-//            }
-//        });
-//
+        // final CheckView checkView = (CheckView) findViewById(R.id.checkView);
+        // // setContentView(checkView);
+        // findViewById(R.id.check).setOnClickListener(new
+        // View.OnClickListener() {
+        // @Override
+        // public void onClick(View v) {
+        // checkView.check();
+        // }
+        // });
+        // findViewById(R.id.uncheck).setOnClickListener(new
+        // View.OnClickListener() {
+        // @Override
+        // public void onClick(View v) {
+        // checkView.unCheck();
+        // }
+        // });
+        //
 
         CanvasDrawTextView canvasDrawTextView = new CanvasDrawTextView(this);
         CanvasDrawPosTextView canvasDrawPosTextView = new CanvasDrawPosTextView(this);
@@ -88,6 +98,14 @@ public class MainActivity extends AppCompatActivity {
         RadarView radarView = new RadarView(this);
         QuadraticBezierView bezierView = new QuadraticBezierView(this);
         CubicBezierView cubicBezierView = new CubicBezierView(this);
-        setContentView(cubicBezierView);
+        FillTypeEvenOdd fillType = new FillTypeEvenOdd(this);
+        FillTypeWinding fillTypeWinding = new FillTypeWinding(this);
+        TaiJi taiJi = new TaiJi(this);
+        BooleanOp booleanOp = new BooleanOp(this);
+        PathMeasureOne pathMeasureOne = new PathMeasureOne(this);
+        PathMeasureSegment pathMeasureSegment = new PathMeasureSegment(this);
+        PathMeasureContour pathMeasureContour = new PathMeasureContour(this);
+        PathMeasurePosTan pathMeasurePosTan = new PathMeasurePosTan(this);
+        setContentView(pathMeasurePosTan);
     }
 }
