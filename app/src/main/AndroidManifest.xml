@@ -85,6 +85,7 @@
         <activity android:name=".demo.VerticalSeekBarDemoActivity" />
         <activity android:name=".demo.MultiSelectListViewDemoActivity" />
         <activity android:name=".demo.MultiSelectListViewDemo2Activity"/>
+        <activity android:name=".demo.ButterKnifeDemoActivity"/>
         <!-- NoHttpDemo -->
         <activity android:name=".nohttpdemo.activity.splash.SplashActivity">
 

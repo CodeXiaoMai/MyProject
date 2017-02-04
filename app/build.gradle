@@ -3,7 +3,7 @@
  * 这一步是必须的，因为plugin中提供了Android 编译、测试、打包等等的所有task。
  */
 apply plugin: 'com.android.application'
-
+apply plugin: 'com.jakewharton.butterknife'
 // 定义一个打包时间
 def releaseTime() {
     return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("UTC"))
@@ -66,6 +66,7 @@ android {
         debug {
             // buildConfigField 自定义配置默认值,这个参数会自动创建到BuildConfig.java中
             buildConfigField "String", "API_HOST", "\"http://api.debug.com\""//API Host
+
             // 版本名称后缀
             versionNameSuffix "-debug"
         }
@@ -141,7 +142,6 @@ dependencies {
     compile 'com.liulishuo.filedownloader:library:1.2.2'
     compile 'com.github.bumptech.glide:glide:3.7.0'
     compile project(':nohttp')
-    compile project(':volley')
     compile 'com.android.support:design:24.2.1'
     compile 'me.leolin:ShortcutBadger:1.1.10@aar'
     //计数器
@@ -153,4 +153,7 @@ dependencies {
     compile 'com.orhanobut:logger:1.8'
     // 垂直的SeekBar
     compile 'com.h6ah4i.android.widget.verticalseekbar:verticalseekbar:0.7.0'
+    compile 'eu.the4thfloor.volley:com.android.volley:2015.05.28'
+    compile 'com.jakewharton:butterknife:8.5.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
 }

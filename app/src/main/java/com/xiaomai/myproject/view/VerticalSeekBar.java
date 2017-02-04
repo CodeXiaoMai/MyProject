@@ -11,6 +11,7 @@ import android.widget.SeekBar;
 
 /**
  * Created by XiaoMai on 2017/1/13 10:27.
+ * 在proguard-rules文件中保证onProgressRefresh(float scale, boolean fromUser)不被混淆
  */
 public class VerticalSeekBar extends SeekBar {
 

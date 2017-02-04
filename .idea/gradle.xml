@@ -3,9 +3,8 @@
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
-        <option name="distributionType" value="LOCAL" />
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="gradleHome" value="C:\Program Files\Android\Android Studio\gradle\gradle-2.14.1" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
@@ -15,7 +14,6 @@
             <option value="$PROJECT_DIR$/nohttp" />
             <option value="$PROJECT_DIR$/rxjava" />
             <option value="$PROJECT_DIR$/vitamio" />
-            <option value="$PROJECT_DIR$/volley" />
             <option value="$PROJECT_DIR$/自定义view" />
           </set>
         </option>
@@ -28,7 +26,6 @@
             <option value="$PROJECT_DIR$/nohttp" />
             <option value="$PROJECT_DIR$/rxjava" />
             <option value="$PROJECT_DIR$/vitamio" />
-            <option value="$PROJECT_DIR$/volley" />
             <option value="$PROJECT_DIR$/自定义view" />
           </set>
         </option>
