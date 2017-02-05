@@ -9,7 +9,7 @@ import android.os.Bundle;
 import android.widget.RemoteViews;
 
 import com.xiaomai.myproject.R;
-import com.xiaomai.myproject.activity.MainActivity;
+import com.xiaomai.myproject.activity.MainActivityOld;
 
 import java.util.Date;
 
@@ -30,7 +30,7 @@ public class NotificationDemoActivity extends Activity {
         view.setImageViewResource(R.id.image, R.mipmap.ic_launcher);
         notification.flags |= Notification.FLAG_AUTO_CANCEL;
         notification.contentView = view;
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, MainActivityOld.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(this,
                 REQUESTCODE, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         notification.contentIntent = pendingIntent;

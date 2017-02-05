@@ -1,110 +1,129 @@
 
 package com.xiaomai.myproject.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.WindowManager;
-import android.view.animation.Animation;
-import android.view.animation.TranslateAnimation;
-import android.widget.Button;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.Toolbar;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import com.xiaomai.myproject.R;
-import com.xiaomai.myproject.base.BaseActivity;
-import com.xiaomai.myproject.demo.ButterKnifeDemoActivity;
-import com.xiaomai.myproject.demo.VitamioWithoutControllerDemoActivity;
+import com.xiaomai.myproject.base.BaseFragment;
+import com.xiaomai.myproject.fragment.CommonFrameFragment;
+import com.xiaomai.myproject.fragment.OtherFragment;
 
-public class MainActivity extends BaseActivity {
+import java.util.ArrayList;
+import java.util.List;
 
-    private Button mButton;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
-    private View mView;
+/**
+ * Created by XiaoMai on 2017/2/5 10:28.
+ */
+public class MainActivity extends FragmentActivity implements RadioGroup.OnCheckedChangeListener {
 
-    private View mShow;
+    private static final String TAG = "MainActivity";
 
-    private View mYing;
+    @BindView(R.id.back)
+    ImageView back;
+
+    @BindView(R.id.tv_title)
+    TextView tvTitle;
+
+    @BindView(R.id.more)
+    ImageView more;
+
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+
+    @BindView(R.id.fl_main)
+    FrameLayout flMain;
+
+    @BindView(R.id.rb_main_home)
+    RadioButton rbMainHome;
+
+    @BindView(R.id.rb_main_other)
+    RadioButton rbMainOther;
+
+    @BindView(R.id.rg_main)
+    RadioGroup rgMain;
+
+    private List<BaseFragment> mFragments;
+
+    private int mPosition;
+
+    /**
+     * 上次切换的Fragment
+     */
+    private BaseFragment mContent;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        int flag = WindowManager.LayoutParams.FLAG_FULLSCREEN;
-        getWindow().setFlags(flag, flag);
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        dissMissProgressDialog();
-        startActivity(new Intent(this, ButterKnifeDemoActivity.class));
+        setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
+        initFragment();
+        setListener();
+    }
 
+    private void setListener() {
+        rgMain.setOnCheckedChangeListener(this);
+        // 要在RadioGroup设置监听事件后再调用下面的方法，否则第一次没有数据
+        rgMain.check(R.id.rb_main_home);
+    }
+
+    private void initFragment() {
+        mFragments = new ArrayList<>();
+        mFragments.add(new CommonFrameFragment());
+        mFragments.add(new OtherFragment());
     }
 
     @Override
-    protected void initViews() {
-        mButton = (Button) findViewById(R.id.bt_enter);
-        mButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(mContext, VitamioWithoutControllerDemoActivity.class));
-            }
-        });
-        final TranslateAnimation mTranslateAnimation = new TranslateAnimation(
-                Animation.RELATIVE_TO_SELF, 0, Animation.RELATIVE_TO_SELF, 0,
-                Animation.RELATIVE_TO_SELF, 1f, Animation.RELATIVE_TO_SELF, 0);
-        mTranslateAnimation.setDuration(1000);
-        mTranslateAnimation.setFillAfter(true);
-        mView = findViewById(R.id.textview);
-
-        mShow = findViewById(R.id.show);
-
-        mYing = findViewById(R.id.yin);
-        mYing.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mView.offsetTopAndBottom(-mView.getHeight());
-                mView.startAnimation(mTranslateAnimation);
-            }
-        });
-
-        final TranslateAnimation translateAnimation = new TranslateAnimation(
-                Animation.RELATIVE_TO_SELF, 0, Animation.RELATIVE_TO_SELF, 0,
-                Animation.RELATIVE_TO_SELF, -1f, Animation.RELATIVE_TO_SELF, 0);
-        translateAnimation.setDuration(1000);
-        translateAnimation.setFillAfter(true);
-
-        mShow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                mView.offsetTopAndBottom(mView.getHeight());
-                mView.startAnimation(translateAnimation);
-            }
-        });
-    }
-
-    @Override
-    protected boolean isWithoutToolbar() {
-        return true;
-    }
-
-    @Override
-    protected int getContentLayout() {
-        return R.layout.act_main;
-    }
-
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        /**
-         * 实现按返回键程序不是真正的退出，而是返回桌面
-         */
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            Intent intent = new Intent(Intent.ACTION_MAIN);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            intent.addCategory(Intent.CATEGORY_HOME);
-            startActivity(intent);
-            return true;
+    public void onCheckedChanged(RadioGroup group, int checkedId) {
+        switch (checkedId) {
+            case R.id.rb_main_home:
+                mPosition = 0;
+                break;
+            case R.id.rb_main_other:
+                mPosition = 1;
+                break;
+            default:
+                mPosition = 0;
+                break;
         }
-        return super.onKeyDown(keyCode, event);
+        // 根据位置得到对应的Fragment
+        BaseFragment to = mFragments.get(mPosition);
+        switchFragment(mContent, to);
     }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
+    /**
+     * @param from 当前正在显示的Fragment
+     * @param to   将要显示的Fragment
+     */
+    private void switchFragment(BaseFragment from, BaseFragment to) {
+        // 当from和to相同时就不切换了
+        if (from != to && to != null) {
+            mContent = to;
+            // 切换
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            if (to.isAdded()) {
+                if (from != null){
+                    // 隐藏from
+                    fragmentTransaction.hide(from);
+                }
+                fragmentTransaction.show(to).commit();
+            } else {
+                if (from != null){
+                    fragmentTransaction.hide(from);
+                }
+                fragmentTransaction.add(R.id.fl_main, to).commit();
+            }
+        }
     }
+
 }

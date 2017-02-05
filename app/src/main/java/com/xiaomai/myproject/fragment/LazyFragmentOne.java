@@ -34,9 +34,10 @@ public class LazyFragmentOne extends BaseLazyFragment{
     }
 
     @Override
-    protected void initViews() {
+    protected View initView() {
         textView = (TextView) view.findViewById(R.id.fragment_one_tv_one);
         textView.setText("数据加载完毕");
+        return textView;
     }
 
     @Override
@@ -47,7 +48,7 @@ public class LazyFragmentOne extends BaseLazyFragment{
     @Override
     protected void lazyLoad() {
         if (isPrepared && isFirstTime && isVisible){
-            initViews();
+            initView();
         }
     }
 }

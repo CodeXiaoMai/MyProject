@@ -18,7 +18,9 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.MainActivity">
+        <activity
+            android:name=".activity.MainActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -84,8 +86,8 @@
         <activity android:name=".demo.MatDemoActivity" />
         <activity android:name=".demo.VerticalSeekBarDemoActivity" />
         <activity android:name=".demo.MultiSelectListViewDemoActivity" />
-        <activity android:name=".demo.MultiSelectListViewDemo2Activity"/>
-        <activity android:name=".demo.ButterKnifeDemoActivity"/>
+        <activity android:name=".demo.MultiSelectListViewDemo2Activity" />
+        <activity android:name=".demo.ButterKnifeDemoActivity" />
         <!-- NoHttpDemo -->
         <activity android:name=".nohttpdemo.activity.splash.SplashActivity">
 
