@@ -1,5 +1,6 @@
 package com.xiaomai.myproject.fragment;
 
+import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -7,6 +8,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.xiaomai.myproject.R;
+import com.xiaomai.myproject.activity.OKHttpActivity;
 import com.xiaomai.myproject.adapter.CommonFrameFragmentAdapter;
 import com.xiaomai.myproject.base.BaseFragment;
 
@@ -34,7 +36,7 @@ public class CommonFrameFragment extends BaseFragment implements AdapterView.OnI
     protected void initVariables() {
         super.initVariables();
         datas = new String[]{
-                "1", "2", "1", "2", "1", "2", "1", "2", "1", "2", "1", "2", "1", "2", "1", "2"
+                "OKHttp", "2", "1", "2", "1", "2", "1", "2", "1", "2", "1", "2", "1", "2", "1", "2"
         };
     }
 
@@ -47,6 +49,12 @@ public class CommonFrameFragment extends BaseFragment implements AdapterView.OnI
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Intent intent = new Intent();
+        String data = datas[position].toLowerCase();
+        if ("okhttp".equals(data)){
+            intent.setClass(mContext, OKHttpActivity.class);
+            startActivity(intent);
+        }
         Toast.makeText(mContext, "data == " + datas[position], Toast.LENGTH_SHORT).show();
     }
 }

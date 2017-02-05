@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/my_app_bar" />
+
+    <Button
+        android:id="@+id/bt_okhttp_get"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="get请求"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/bt_okhttp_post"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="post请求"
+        android:textAllCaps="false" />
+
+    <TextView
+        android:id="@+id/tv_okhttp_reslut"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>
