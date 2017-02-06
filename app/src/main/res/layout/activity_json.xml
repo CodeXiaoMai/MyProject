@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/my_app_bar" />
+
+
+    <TextView
+        style="@style/CommonTextView"
+        android:text="@string/json_introduce" />
+
+    <Button
+        android:id="@+id/bt_json_tojava"
+        style="@style/CommonButton"
+        android:text="将JSON转换为Java对象" />
+
+    <Button
+        android:id="@+id/bt_json_tojavalist"
+        style="@style/CommonButton"
+        android:text="将JSON数组转换为Java集合" />
+
+    <Button
+        android:id="@+id/bt_json_complex"
+        style="@style/CommonButton"
+        android:text="复杂JSON转换为Java对象" />
+
+    <Button
+        android:id="@+id/bt_json_special"
+        style="@style/CommonButton"
+        android:text="特殊JSON数据解析" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/CommonTextView"
+                android:text="原始数据" />
+
+            <TextView
+                android:id="@+id/tv_json_origin"
+                style="@style/CommonTextView" />
+
+            <TextView
+                style="@style/CommonTextView"
+                android:text="转换后的数据" />
+
+            <TextView
+                android:id="@+id/tv_json_last"
+                style="@style/CommonTextView" />
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

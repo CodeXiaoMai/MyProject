@@ -22,4 +22,9 @@
     </string-array>
 
     <string name="behavior_user_head_move">com.xiaomai.myproject.nohttpdemo.behavior.AvatarImageBehavior</string>
+    <string name="json_introduce">JSON的全称是“JavaScript Object Notation”，是一种轻量级的数据交换格式。\n特点：\n
+（1）JSON 比 XML 数据传输的有效性要高出很多\n
+（2）JSON 完全独立于编程语言\n
+（3）本质就是具有特定格式的字符串\n
+</string>
 </resources>
