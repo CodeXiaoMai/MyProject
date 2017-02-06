@@ -77,7 +77,7 @@ public abstract class BaseActivity extends AppCompatActivity {
      * 加载数据
      */
     protected void loadData() {
-        showProgressDialog();
+//        showProgressDialog();
     }
 
     /**

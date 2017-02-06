@@ -9,11 +9,12 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.xiaomai.myproject.R;
+import com.xiaomai.myproject.adapter.CommonFrameFragmentAdapter;
+import com.xiaomai.myproject.base.BaseFragment;
+import com.xiaomai.myproject.gson.activity.GsonActivity;
 import com.xiaomai.myproject.json.activity.JsonActivity;
 import com.xiaomai.myproject.okhttp.activity.OKHttpActivity;
 import com.xiaomai.myproject.recyclerview.activity.RecyclerViewActivity;
-import com.xiaomai.myproject.adapter.CommonFrameFragmentAdapter;
-import com.xiaomai.myproject.base.BaseFragment;
 
 /**
  * Created by XiaoMai on 2017/2/5 11:44.
@@ -39,8 +40,7 @@ public class CommonFrameFragment extends BaseFragment implements AdapterView.OnI
     protected void initVariables() {
         super.initVariables();
         datas = new String[] {
-                "JSON","RecyclerView", "OKHttp", "1", "2", "1", "2", "1", "2", "1", "2", "1", "2", "1",
-                "2", "1", "2"
+                "GSON", "JSON", "RecyclerView", "OKHttp"
         };
     }
 
@@ -59,8 +59,10 @@ public class CommonFrameFragment extends BaseFragment implements AdapterView.OnI
             intent = new Intent(mContext, OKHttpActivity.class);
         } else if ("recyclerview".equals(data)) {
             intent = new Intent(mContext, RecyclerViewActivity.class);
-        } else if ("json".equals(data)){
+        } else if ("json".equals(data)) {
             intent = new Intent(mContext, JsonActivity.class);
+        } else if ("gson".equals(data)) {
+            intent = new Intent(mContext, GsonActivity.class);
         }
         if (intent != null) {
             startActivity(intent);
