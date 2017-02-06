@@ -43,6 +43,7 @@ public class JsonActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     protected void initViews() {
+        super.initViews();
         setTitle("JSON解析");
         bt_json_tojava = (Button) findViewById(R.id.bt_json_tojava);
         bt_json_tojavalist = (Button) findViewById(R.id.bt_json_tojavalist);
@@ -55,6 +56,11 @@ public class JsonActivity extends BaseActivity implements View.OnClickListener {
         bt_json_tojavalist.setOnClickListener(this);
         bt_json_complex.setOnClickListener(this);
         bt_json_special.setOnClickListener(this);
+    }
+
+    @Override
+    protected int getCodeResId() {
+        return R.string.code_json;
     }
 
     @Override
@@ -242,4 +248,5 @@ public class JsonActivity extends BaseActivity implements View.OnClickListener {
         tv_json_origin.setText(json);
         tv_json_last.setText(shopInfo.toString());
     }
+
 }

@@ -4,12 +4,9 @@ package com.xiaomai.myproject.activity;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.widget.Toolbar;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 
 import com.xiaomai.myproject.R;
 import com.xiaomai.myproject.base.BaseFragment;
@@ -28,18 +25,6 @@ import butterknife.ButterKnife;
 public class MainActivity extends FragmentActivity implements RadioGroup.OnCheckedChangeListener {
 
     private static final String TAG = "MainActivity";
-
-    @BindView(R.id.back)
-    ImageView back;
-
-    @BindView(R.id.tv_title)
-    TextView tvTitle;
-
-    @BindView(R.id.more)
-    ImageView more;
-
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
 
     @BindView(R.id.fl_main)
     FrameLayout flMain;

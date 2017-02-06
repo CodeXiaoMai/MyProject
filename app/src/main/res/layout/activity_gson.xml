@@ -6,26 +6,6 @@
 
     <include layout="@layout/my_app_bar" />
 
-    <Button
-        android:id="@+id/bt_gson_tojava"
-        style="@style/CommonButton"
-        android:text="将JSON转换为Java对象" />
-
-    <Button
-        android:id="@+id/bt_gson_tojavalist"
-        style="@style/CommonButton"
-        android:text="将JSON数组转换为Java集合" />
-
-    <Button
-        android:id="@+id/bt_gson_javatojson"
-        style="@style/CommonButton"
-        android:text="将Java对象转换为Json对象" />
-
-    <Button
-        android:id="@+id/bt_gson_javatojsonarray"
-        style="@style/CommonButton"
-        android:text="将Java集合转换为JSON数组" />
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -34,6 +14,26 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
+            <Button
+                android:id="@+id/bt_gson_tojava"
+                style="@style/CommonButton"
+                android:text="将JSON转换为Java对象" />
+
+            <Button
+                android:id="@+id/bt_gson_tojavalist"
+                style="@style/CommonButton"
+                android:text="将JSON数组转换为Java集合" />
+
+            <Button
+                android:id="@+id/bt_gson_javatojson"
+                style="@style/CommonButton"
+                android:text="将Java对象转换为Json对象" />
+
+            <Button
+                android:id="@+id/bt_gson_javatojsonarray"
+                style="@style/CommonButton"
+                android:text="将Java集合转换为JSON数组" />
 
             <TextView
                 style="@style/CommonTextView"

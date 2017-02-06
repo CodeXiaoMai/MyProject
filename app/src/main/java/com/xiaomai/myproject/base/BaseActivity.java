@@ -1,14 +1,16 @@
+
 package com.xiaomai.myproject.base;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.xiaomai.myproject.R;
+import com.xiaomai.myproject.activity.CodeActivity;
 import com.xiaomai.myproject.utils.Const;
 import com.xiaomai.myproject.utils.MyLog;
 import com.xiaomai.myproject.view.MyProgressDialog;
@@ -23,18 +25,22 @@ public abstract class BaseActivity extends AppCompatActivity {
      * 返回按钮
      */
     private ImageView iv_back;
+
     /**
      * 更多按钮
      */
     private ImageView iv_more;
+
     /**
      * 标题
      */
     private TextView tv_title;
+
     /**
      * 更多按钮的点击事件
      */
     private View.OnClickListener onMoreClickListener;
+
     /**
      * 进度条Dialog
      */
@@ -48,18 +54,14 @@ public abstract class BaseActivity extends AppCompatActivity {
         int contentLayoutId = getContentLayout();
         if (contentLayoutId <= 0) {
             MyLog.e(Const.TAG_ERROR, "还没有setContentLayout");
-            MyToast.show(this,"还没有setContentLayout");
+            MyToast.show(this, "还没有setContentLayout");
             return;
         }
         setContentView(contentLayoutId);
-        if (!isWithoutToolbar()) {
-            initToolBar();
-        }
         initVariables();
         initViews();
         loadData();
     }
-
 
     /**
      * 初始化数据
@@ -71,35 +73,20 @@ public abstract class BaseActivity extends AppCompatActivity {
     /**
      * 初始化布局
      */
-    protected abstract void initViews();
-
-    /**
-     * 加载数据
-     */
-    protected void loadData() {
-//        showProgressDialog();
-    }
-
-    /**
-     * 设置布局文件
-     *
-     * @return
-     */
-    protected abstract int getContentLayout();
-
-    protected boolean isWithoutToolbar() {
-        return false;
-    }
-
-    /**
-     * 初始化标题
-     */
-    protected void initToolBar() {
-        /**
-         * Toolbar取代原本的 actionbar
-         */
-        Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(mToolbar);
+    protected void initViews() {
+        setOnMoreClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, CodeActivity.class);
+                int resId = getCodeResId();
+                if (resId != 0) {
+                    intent.putExtra(Const.CODE_CONTENT, getString(resId));
+                    startActivity(intent);
+                } else {
+                    MyToast.show(mContext, "没有设置resId");
+                }
+            }
+        });
         /**
          * 返回按钮
          */
@@ -114,15 +101,29 @@ public abstract class BaseActivity extends AppCompatActivity {
          * more按钮
          */
         iv_more = (ImageView) findViewById(R.id.more);
-        if (onMoreClickListener != null) {
-            iv_more.setOnClickListener(onMoreClickListener);
-        } else {
-            iv_more.setVisibility(View.INVISIBLE);
-        }
+        iv_more.setOnClickListener(onMoreClickListener);
         /**
-         *  标题
+         * 标题
          */
         tv_title = (TextView) findViewById(R.id.tv_title);
+    }
+
+    /**
+     * 加载数据
+     */
+    protected void loadData() {
+        // showProgressDialog();
+    }
+
+    /**
+     * 设置布局文件
+     *
+     * @return
+     */
+    protected abstract int getContentLayout();
+
+    protected boolean isWithoutToolbar() {
+        return false;
     }
 
     /**
@@ -137,6 +138,9 @@ public abstract class BaseActivity extends AppCompatActivity {
      */
     protected void setOnMoreClickListener(View.OnClickListener onMoreClickListener) {
         this.onMoreClickListener = onMoreClickListener;
+        if (onMoreClickListener == null) {
+            iv_more.setVisibility(View.INVISIBLE);
+        }
     }
 
     /**
@@ -170,10 +174,11 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     /**
      * 显示进度Dialog
+     * 
      * @param cancelable 默认值false，不可取消，true可以取消
      */
-    protected void showProgressDialog(boolean cancelable){
-        if (mProgressDialog == null){
+    protected void showProgressDialog(boolean cancelable) {
+        if (mProgressDialog == null) {
             mProgressDialog = new MyProgressDialog.Builder(this).setCancelable(cancelable).create();
         }
         mProgressDialog.setCancelable(cancelable);
@@ -183,9 +188,13 @@ public abstract class BaseActivity extends AppCompatActivity {
     /**
      * 隐藏进度Dialog
      */
-    protected void dissMissProgressDialog() {
+    protected void disMissProgressDialog() {
         if (mProgressDialog != null) {
             mProgressDialog.dismiss();
         }
+    }
+
+    protected int getCodeResId() {
+        return 0;
     }
 }

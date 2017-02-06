@@ -1,11 +1,14 @@
 
 package com.xiaomai.myproject.adapter;
 
+import android.content.Context;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+
+import com.xiaomai.myproject.utils.DisplayUtils;
 
 /**
  * Created by XiaoMai on 2017/2/5 15:06.
@@ -35,7 +38,9 @@ public class CommonFrameFragmentAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        TextView textView = new TextView(parent.getContext());
+        Context context = parent.getContext();
+        TextView textView = new TextView(context);
+        textView.setHeight(DisplayUtils.dip2px(context, 45));
         textView.setGravity(Gravity.CENTER);
         textView.setTextSize(20);
         textView.setPadding(10, 10, 10, 10);

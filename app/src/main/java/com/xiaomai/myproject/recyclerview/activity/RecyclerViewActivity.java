@@ -1,12 +1,12 @@
 
 package com.xiaomai.myproject.recyclerview.activity;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
 import com.xiaomai.myproject.R;
+import com.xiaomai.myproject.base.BaseActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -15,7 +15,7 @@ import butterknife.OnClick;
 /**
  * Created by XiaoMai on 2017/2/5 18:55.
  */
-public class RecyclerViewActivity extends Activity {
+public class RecyclerViewActivity extends BaseActivity {
 
     @BindView(R.id.bt_recyclerview_add)
     Button btRecyclerviewAdd;
@@ -35,8 +35,23 @@ public class RecyclerViewActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_recyclerview);
         ButterKnife.bind(this);
+    }
+
+    @Override
+    protected void initViews() {
+        super.initViews();
+        setTitle("RecyclerView");
+    }
+
+    @Override
+    protected int getCodeResId() {
+        return super.getCodeResId();
+    }
+
+    @Override
+    protected int getContentLayout() {
+        return R.layout.activity_recyclerview;
     }
 
     @OnClick({

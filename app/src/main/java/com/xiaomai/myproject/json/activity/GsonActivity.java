@@ -43,6 +43,7 @@ public class GsonActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     protected void initViews() {
+        super.initViews();
         setTitle("GSON解析");
         bt_gson_tojava = (Button) findViewById(R.id.bt_gson_tojava);
         bt_gson_tojavalist = (Button) findViewById(R.id.bt_gson_tojavalist);
@@ -55,6 +56,11 @@ public class GsonActivity extends BaseActivity implements View.OnClickListener {
         bt_gson_tojavalist.setOnClickListener(this);
         bt_gson_javatojson.setOnClickListener(this);
         bt_gson_javatojsonarray.setOnClickListener(this);
+    }
+
+    @Override
+    protected int getCodeResId() {
+        return R.string.code_gson;
     }
 
     @Override

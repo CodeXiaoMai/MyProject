@@ -13,7 +13,6 @@ import com.xiaomai.myproject.R;
 import com.xiaomai.myproject.adapter.LoopViewPagerAdapter;
 import com.xiaomai.myproject.base.BaseActivity;
 import com.xiaomai.myproject.utils.DisplayUtils;
-import com.xiaomai.myproject.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -205,7 +204,7 @@ public class LoopViewPagerDemoActivity extends BaseActivity {
                  * 因为第0个item是另外添加的那张图片，所以初始化时要把当前item设置为1。
                  */
                 mViewPager.setCurrentItem(1);
-                dissMissProgressDialog();
+                disMissProgressDialog();
             }
         }, 3 * 1000);
 

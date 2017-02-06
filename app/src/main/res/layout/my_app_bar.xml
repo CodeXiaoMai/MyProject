@@ -20,6 +20,7 @@
         <TextView
             android:id="@+id/tv_title"
             style="@style/MyTitle"
+            android:text="标题"
             android:layout_width="0dp"
             android:layout_height="@dimen/height_my_app_bar" />
 

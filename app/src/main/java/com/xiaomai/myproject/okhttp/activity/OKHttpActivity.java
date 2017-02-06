@@ -1,7 +1,6 @@
 
 package com.xiaomai.myproject.okhttp.activity;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -10,6 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.xiaomai.myproject.R;
+import com.xiaomai.myproject.base.BaseActivity;
 
 import java.io.IOException;
 
@@ -22,9 +22,10 @@ import okhttp3.Response;
 /**
  * Created by XiaoMai on 2017/2/5 16:37.
  */
-public class OKHttpActivity extends Activity implements View.OnClickListener {
+public class OKHttpActivity extends BaseActivity implements View.OnClickListener {
 
     private MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+
     private static final int GET = 1;
 
     private static final int POST = 2;
@@ -55,13 +56,28 @@ public class OKHttpActivity extends Activity implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_okhttp);
+        okHttpClient = new OkHttpClient();
+    }
+
+    @Override
+    protected void initViews() {
+        super.initViews();
+        setTitle("OkHttp");
         bt_okhttp_get = (Button) findViewById(R.id.bt_okhttp_get);
         bt_okhttp_post = (Button) findViewById(R.id.bt_okhttp_post);
         tv_okhttp_reslut = (TextView) findViewById(R.id.tv_okhttp_reslut);
         bt_okhttp_get.setOnClickListener(this);
         bt_okhttp_post.setOnClickListener(this);
-        okHttpClient = new OkHttpClient();
+    }
+
+    @Override
+    protected int getCodeResId() {
+        return R.string.code_okhttp;
+    }
+
+    @Override
+    protected int getContentLayout() {
+        return R.layout.activity_okhttp;
     }
 
     @Override
@@ -137,4 +153,5 @@ public class OKHttpActivity extends Activity implements View.OnClickListener {
         Response response = okHttpClient.newCall(request).execute();
         return response.body().string();
     }
+
 }

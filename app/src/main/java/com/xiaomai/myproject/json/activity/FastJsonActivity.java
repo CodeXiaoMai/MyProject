@@ -16,7 +16,7 @@ import java.util.List;
 /**
  * Created by XiaoMai on 2017/2/6 20:37.
  */
-public class FastJsonActivity extends BaseActivity implements View.OnClickListener {
+public class FastJsonActivity extends BaseActivity implements View.OnClickListener{
 
     private Button bt_fastjson_tojava;
 
@@ -32,6 +32,7 @@ public class FastJsonActivity extends BaseActivity implements View.OnClickListen
 
     @Override
     protected void initViews() {
+        super.initViews();
         setTitle("FastJson解析");
         bt_fastjson_tojava = (Button) findViewById(R.id.bt_fastjson_tojava);
         bt_fastjson_tojavalist = (Button) findViewById(R.id.bt_fastjson_tojavalist);
@@ -49,6 +50,11 @@ public class FastJsonActivity extends BaseActivity implements View.OnClickListen
     @Override
     protected int getContentLayout() {
         return R.layout.activity_fastjson;
+    }
+
+    @Override
+    protected int getCodeResId() {
+        return R.string.code_fastjson;
     }
 
     @Override
@@ -105,4 +111,5 @@ public class FastJsonActivity extends BaseActivity implements View.OnClickListen
         tv_fastjson_origin.setText(json);
         tv_fastjson_last.setText(shopInfo.toString());
     }
+
 }

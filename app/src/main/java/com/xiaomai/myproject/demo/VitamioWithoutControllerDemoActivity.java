@@ -596,7 +596,7 @@ public class VitamioWithoutControllerDemoActivity extends BaseActivity implement
     @Override
     public void onPrepared(MediaPlayer mp) {
         play();
-        dissMissProgressDialog();
+        disMissProgressDialog();
     }
 
     @Override

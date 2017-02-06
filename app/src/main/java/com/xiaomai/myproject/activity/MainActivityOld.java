@@ -30,7 +30,7 @@ public class MainActivityOld extends BaseActivity {
         int flag = WindowManager.LayoutParams.FLAG_FULLSCREEN;
         getWindow().setFlags(flag, flag);
         super.onCreate(savedInstanceState);
-        dissMissProgressDialog();
+        disMissProgressDialog();
         startActivity(new Intent(this, ButterKnifeDemoActivity.class));
 
     }
