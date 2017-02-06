@@ -37,6 +37,7 @@
         <activity android:name=".picasso.activity.PicassoListViewActivity"/>
         <activity android:name=".picasso.activity.PicassoTransformationActivity"/>
 
+        <activity android:name=".wheelpicker.activity.WheelPickerViewActivity" />
         <activity android:name=".demo.MyMultiItemListViewDemoActivity" />
         <activity android:name=".demo.MyEditDialogDemoActivity" />
         <activity android:name=".demo.DataBaseDemoActivity" />

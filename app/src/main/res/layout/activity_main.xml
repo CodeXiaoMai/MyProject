@@ -46,6 +46,12 @@
             android:text="常用框架" />
 
         <RadioButton
+            android:id="@+id/rb_main_custom_widget"
+            style="@style/MainRadioButton"
+            android:drawableTop="@drawable/rb_widget_drawable_selector"
+            android:text="自定义控件"/>
+
+        <RadioButton
             android:id="@+id/rb_main_other"
             style="@style/MainRadioButton"
             android:drawableTop="@drawable/rb_other_drawable_selector"

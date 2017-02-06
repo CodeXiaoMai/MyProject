@@ -11,6 +11,7 @@ import android.widget.RadioGroup;
 import com.xiaomai.myproject.R;
 import com.xiaomai.myproject.base.BaseFragment;
 import com.xiaomai.myproject.fragment.CommonFrameFragment;
+import com.xiaomai.myproject.fragment.CustomWidgetFragment;
 import com.xiaomai.myproject.fragment.OtherFragment;
 
 import java.util.ArrayList;
@@ -37,6 +38,9 @@ public class MainActivity extends FragmentActivity implements RadioGroup.OnCheck
 
     @BindView(R.id.rg_main)
     RadioGroup rgMain;
+
+    @BindView(R.id.rb_main_custom_widget)
+    RadioButton rbMainCustomWidget;
 
     private List<BaseFragment> mFragments;
 
@@ -65,6 +69,7 @@ public class MainActivity extends FragmentActivity implements RadioGroup.OnCheck
     private void initFragment() {
         mFragments = new ArrayList<>();
         mFragments.add(new CommonFrameFragment());
+        mFragments.add(new CustomWidgetFragment());
         mFragments.add(new OtherFragment());
     }
 
@@ -74,8 +79,11 @@ public class MainActivity extends FragmentActivity implements RadioGroup.OnCheck
             case R.id.rb_main_home:
                 mPosition = 0;
                 break;
-            case R.id.rb_main_other:
+            case R.id.rb_main_custom_widget:
                 mPosition = 1;
+                break;
+            case R.id.rb_main_other:
+                mPosition = 2;
                 break;
             default:
                 mPosition = 0;
@@ -88,22 +96,23 @@ public class MainActivity extends FragmentActivity implements RadioGroup.OnCheck
 
     /**
      * @param from 当前正在显示的Fragment
-     * @param to   将要显示的Fragment
+     * @param to 将要显示的Fragment
      */
     private void switchFragment(BaseFragment from, BaseFragment to) {
         // 当from和to相同时就不切换了
         if (from != to && to != null) {
             mContent = to;
             // 切换
-            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager()
+                    .beginTransaction();
             if (to.isAdded()) {
-                if (from != null){
+                if (from != null) {
                     // 隐藏from
                     fragmentTransaction.hide(from);
                 }
                 fragmentTransaction.show(to).commit();
             } else {
-                if (from != null){
+                if (from != null) {
                     fragmentTransaction.hide(from);
                 }
                 fragmentTransaction.add(R.id.fl_main, to).commit();
