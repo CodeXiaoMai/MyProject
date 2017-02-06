@@ -30,7 +30,8 @@
         <activity android:name=".okhttp.activity.OKHttpActivity" />
         <activity android:name=".recyclerview.activity.RecyclerViewActivity" />
         <activity android:name=".json.activity.JsonActivity" />
-        <activity android:name=".gson.activity.GsonActivity" />
+        <activity android:name=".json.activity.GsonActivity" />
+        <activity android:name=".json.activity.FastJsonActivity" />
 
         <activity android:name=".demo.MyMultiItemListViewDemoActivity" />
         <activity android:name=".demo.MyEditDialogDemoActivity" />

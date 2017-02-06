@@ -11,7 +11,8 @@ import android.widget.Toast;
 import com.xiaomai.myproject.R;
 import com.xiaomai.myproject.adapter.CommonFrameFragmentAdapter;
 import com.xiaomai.myproject.base.BaseFragment;
-import com.xiaomai.myproject.gson.activity.GsonActivity;
+import com.xiaomai.myproject.json.activity.FastJsonActivity;
+import com.xiaomai.myproject.json.activity.GsonActivity;
 import com.xiaomai.myproject.json.activity.JsonActivity;
 import com.xiaomai.myproject.okhttp.activity.OKHttpActivity;
 import com.xiaomai.myproject.recyclerview.activity.RecyclerViewActivity;
@@ -40,7 +41,7 @@ public class CommonFrameFragment extends BaseFragment implements AdapterView.OnI
     protected void initVariables() {
         super.initVariables();
         datas = new String[] {
-                "GSON", "JSON", "RecyclerView", "OKHttp"
+                "FastJson", "GSON", "JSON", "RecyclerView", "OKHttp"
         };
     }
 
@@ -63,6 +64,8 @@ public class CommonFrameFragment extends BaseFragment implements AdapterView.OnI
             intent = new Intent(mContext, JsonActivity.class);
         } else if ("gson".equals(data)) {
             intent = new Intent(mContext, GsonActivity.class);
+        } else if ("fastjson".equals(data)) {
+            intent = new Intent(mContext, FastJsonActivity.class);
         }
         if (intent != null) {
             startActivity(intent);

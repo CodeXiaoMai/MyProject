@@ -1,5 +1,5 @@
 
-package com.xiaomai.myproject.gson.activity;
+package com.xiaomai.myproject.json.activity;
 
 import android.graphics.Color;
 import android.os.Bundle;
