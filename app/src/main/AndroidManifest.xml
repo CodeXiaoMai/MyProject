@@ -32,7 +32,10 @@
         <activity android:name=".recyclerview.activity.RecyclerViewActivity" />
         <activity android:name=".json.activity.JsonActivity" />
         <activity android:name=".json.activity.GsonActivity" />
-        <activity android:name=".json.activity.FastJsonActivity" />
+        <activity android:name=".json.activity.FastJsonActivity" />f
+        <activity android:name=".picasso.activity.PicassoActivity"/>
+        <activity android:name=".picasso.activity.PicassoListViewActivity"/>
+        <activity android:name=".picasso.activity.PicassoTransformationActivity"/>
 
         <activity android:name=".demo.MyMultiItemListViewDemoActivity" />
         <activity android:name=".demo.MyEditDialogDemoActivity" />
@@ -71,12 +74,8 @@
         <activity android:name=".demo.BannerViewDemoActivity" />
         <activity android:name=".demo.TextViewLinkActivity" />
         <activity android:name=".demo.TuYaActivity" />
-        <activity android:name=".demo.AlphaActivity">
-
-        </activity>
-        <activity android:name=".demo.ViewDemoActivity">
-
-        </activity>
+        <activity android:name=".demo.AlphaActivity"></activity>
+        <activity android:name=".demo.ViewDemoActivity"></activity>
         <activity android:name=".demo.AlarmDemoActivity" />
         <activity android:name=".demo.SensorDemoActivity" />
         <activity android:name=".demo.YaoYiYaoDemoActivity" />
@@ -96,9 +95,7 @@
         <activity android:name=".demo.MultiSelectListViewDemo2Activity" />
         <activity android:name=".demo.ButterKnifeDemoActivity" />
         <!-- NoHttpDemo -->
-        <activity android:name=".nohttpdemo.activity.splash.SplashActivity">
-
-        </activity>
+        <activity android:name=".nohttpdemo.activity.splash.SplashActivity"></activity>
         <activity android:name=".nohttpdemo.activity.splash.WelcomeActivity" />
         <activity android:name=".nohttpdemo.activity.StartActivity" />
         <!-- NoHttpDemoEnd -->
@@ -113,6 +110,7 @@
 
         <receiver android:name=".receiver.AlarmReceiver" />
         <receiver android:name=".receiver.MessageReceiver" />
+
     </application>
 
 </manifest>

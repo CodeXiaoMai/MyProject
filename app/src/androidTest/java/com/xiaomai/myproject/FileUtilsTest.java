@@ -5,7 +5,6 @@ import android.test.AndroidTestCase;
 
 import com.xiaomai.myproject.utils.FileUtils;
 
-import org.junit.Test;
 
 import java.io.File;
 
@@ -33,7 +32,6 @@ public class FileUtilsTest extends AndroidTestCase {
     }
 
 
-    @Test
     public void testUnZip() throws Exception {
         assertEquals("",
                 FileUtils.unZip(

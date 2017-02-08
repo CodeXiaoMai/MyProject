@@ -15,6 +15,7 @@ import com.xiaomai.myproject.json.activity.FastJsonActivity;
 import com.xiaomai.myproject.json.activity.GsonActivity;
 import com.xiaomai.myproject.json.activity.JsonActivity;
 import com.xiaomai.myproject.okhttp.activity.OKHttpActivity;
+import com.xiaomai.myproject.picasso.activity.PicassoActivity;
 import com.xiaomai.myproject.recyclerview.activity.RecyclerViewActivity;
 
 /**
@@ -40,8 +41,8 @@ public class CommonFrameFragment extends BaseFragment implements AdapterView.OnI
     @Override
     protected void initVariables() {
         super.initVariables();
-        datas = new String[] {
-                "FastJson", "GSON", "JSON", "RecyclerView", "OKHttp"
+        datas = new String[]{
+                "Picasso", "FastJson", "GSON", "JSON", "RecyclerView", "OKHttp"
         };
     }
 
@@ -66,6 +67,8 @@ public class CommonFrameFragment extends BaseFragment implements AdapterView.OnI
             intent = new Intent(mContext, GsonActivity.class);
         } else if ("fastjson".equals(data)) {
             intent = new Intent(mContext, FastJsonActivity.class);
+        } else if ("picasso".equals(data)) {
+            intent = new Intent(mContext, PicassoActivity.class);
         }
         if (intent != null) {
             startActivity(intent);

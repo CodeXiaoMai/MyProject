@@ -158,4 +158,9 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
     compile files('libs/gson-2.7.jar')
     compile files('libs/fastjson-1.1.54.android.jar')
+    compile files('libs/picasso-2.5.2.jar')
+    compile 'jp.wasabeef:picasso-transformations:2.1.0'
+    // If you want to use the GPU Filters
+    compile 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.4.1'
+
 }

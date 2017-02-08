@@ -16,6 +16,8 @@ import com.xiaomai.myproject.utils.MyLog;
 import com.xiaomai.myproject.view.MyProgressDialog;
 import com.xiaomai.myproject.view.MyToast;
 
+import butterknife.ButterKnife;
+
 /**
  * Created by XiaoMai on 2016/8/29.
  */
@@ -58,6 +60,7 @@ public abstract class BaseActivity extends AppCompatActivity {
             return;
         }
         setContentView(contentLayoutId);
+        ButterKnife.bind(this);
         initVariables();
         initViews();
         loadData();
