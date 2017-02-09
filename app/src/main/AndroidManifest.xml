@@ -27,15 +27,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.CodeActivity" />
+        <activity
+            android:name=".activity.CodeActivity"
+            android:screenOrientation="landscape" />
         <activity android:name=".okhttp.activity.OKHttpActivity" />
         <activity android:name=".recyclerview.activity.RecyclerViewActivity" />
         <activity android:name=".json.activity.JsonActivity" />
         <activity android:name=".json.activity.GsonActivity" />
         <activity android:name=".json.activity.FastJsonActivity" />f
-        <activity android:name=".picasso.activity.PicassoActivity"/>
-        <activity android:name=".picasso.activity.PicassoListViewActivity"/>
-        <activity android:name=".picasso.activity.PicassoTransformationActivity"/>
+        <activity android:name=".picasso.activity.PicassoActivity" />
+        <activity android:name=".picasso.activity.PicassoListViewActivity" />
+        <activity android:name=".picasso.activity.PicassoTransformationActivity" />
 
         <activity android:name=".wheelpicker.activity.WheelPickerViewActivity" />
         <activity android:name=".demo.MyMultiItemListViewDemoActivity" />
