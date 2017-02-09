@@ -120,6 +120,11 @@ public class PicassoListViewActivity extends BaseActivity {
     }
 
     @Override
+    protected int getCodeResId() {
+        return R.string.code_picasso_listview;
+    }
+
+    @Override
     protected void initViews() {
         super.initViews();
         setTitle("Picasso在ListView中使用");

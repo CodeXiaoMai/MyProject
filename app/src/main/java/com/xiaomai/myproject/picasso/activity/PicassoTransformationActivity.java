@@ -25,6 +25,11 @@ public class PicassoTransformationActivity extends BaseActivity {
     }
 
     @Override
+    protected int getCodeResId() {
+        return R.string.code_picasso_transformation;
+    }
+
+    @Override
     protected void initViews() {
         super.initViews();
         setTitle("Picasso的转换操作");

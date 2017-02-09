@@ -77,38 +77,41 @@ public abstract class BaseActivity extends AppCompatActivity {
      * 初始化布局
      */
     protected void initViews() {
-        setOnMoreClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(mContext, CodeActivity.class);
-                int resId = getCodeResId();
-                if (resId != 0) {
-                    intent.putExtra(Const.CODE_CONTENT, getString(resId));
-                    startActivity(intent);
-                } else {
-                    MyToast.show(mContext, "没有设置resId");
+
+        if (!isWithoutToolbar()) {
+            setOnMoreClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(mContext, CodeActivity.class);
+                    int resId = getCodeResId();
+                    if (resId != 0) {
+                        intent.putExtra(Const.CODE_CONTENT, getString(resId));
+                        startActivity(intent);
+                    } else {
+                        MyToast.show(mContext, "没有设置resId");
+                    }
                 }
-            }
-        });
-        /**
-         * 返回按钮
-         */
-        iv_back = (ImageView) findViewById(R.id.back);
-        iv_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onBackClick();
-            }
-        });
-        /**
-         * more按钮
-         */
-        iv_more = (ImageView) findViewById(R.id.more);
-        iv_more.setOnClickListener(onMoreClickListener);
-        /**
-         * 标题
-         */
-        tv_title = (TextView) findViewById(R.id.tv_title);
+            });
+            /**
+             * 返回按钮
+             */
+            iv_back = (ImageView) findViewById(R.id.back);
+            iv_back.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    onBackClick();
+                }
+            });
+            /**
+             * more按钮
+             */
+            iv_more = (ImageView) findViewById(R.id.more);
+            iv_more.setOnClickListener(onMoreClickListener);
+            /**
+             * 标题
+             */
+            tv_title = (TextView) findViewById(R.id.tv_title);
+        }
     }
 
     /**

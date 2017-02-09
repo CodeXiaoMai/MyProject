@@ -32,6 +32,11 @@ public class PicassoActivity extends BaseActivity {
         return R.layout.activity_picasso;
     }
 
+    @Override
+    protected int getCodeResId() {
+        return R.string.code_picasso;
+    }
+
     @OnClick({R.id.bt_picasso_base, R.id.bt_picasso_listview, R.id.bt_picasso_transformations})
     public void onClick(View view) {
         switch (view.getId()) {
