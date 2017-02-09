@@ -18,4 +18,7 @@
     <color name="colorPrimaryTransparent">#991B7AEA</color>
 
     <color name="toast">#CC222222</color>
+
+    <color name="wheel_select_text_color">#0288CE</color>
+    <color name="wheel_normal_text_color">#CCCCCC</color>
 </resources>
