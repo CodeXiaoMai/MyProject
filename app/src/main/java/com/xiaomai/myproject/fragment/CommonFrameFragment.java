@@ -11,6 +11,7 @@ import android.widget.Toast;
 import com.xiaomai.myproject.R;
 import com.xiaomai.myproject.adapter.CommonFrameFragmentAdapter;
 import com.xiaomai.myproject.base.BaseFragment;
+import com.xiaomai.myproject.glide.activity.GlideActivity;
 import com.xiaomai.myproject.json.activity.FastJsonActivity;
 import com.xiaomai.myproject.json.activity.GsonActivity;
 import com.xiaomai.myproject.json.activity.JsonActivity;
@@ -41,8 +42,8 @@ public class CommonFrameFragment extends BaseFragment implements AdapterView.OnI
     @Override
     protected void initVariables() {
         super.initVariables();
-        datas = new String[]{
-                "Picasso", "FastJson", "GSON", "JSON", "RecyclerView", "OKHttp"
+        datas = new String[] {
+                "Glide", "Picasso", "FastJson", "GSON", "JSON", "RecyclerView", "OKHttp"
         };
     }
 
@@ -69,6 +70,8 @@ public class CommonFrameFragment extends BaseFragment implements AdapterView.OnI
             intent = new Intent(mContext, FastJsonActivity.class);
         } else if ("picasso".equals(data)) {
             intent = new Intent(mContext, PicassoActivity.class);
+        } else if ("glide".equals(data)) {
+            intent = new Intent(mContext, GlideActivity.class);
         }
         if (intent != null) {
             startActivity(intent);

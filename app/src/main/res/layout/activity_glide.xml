@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.xiaomai.myproject.glide.activity.GlideActivity">
+
+    <include layout="@layout/my_app_bar" />
+
+    <Button
+        android:id="@+id/bt_glide_base"
+        style="@style/CommonButton"
+        android:text="基本方法的使用" />
+
+    <Button
+        android:id="@+id/bt_glide_recyclerview"
+        style="@style/CommonButton"
+        android:text="RecyclerView中加载网络图片" />
+
+    <Button
+        android:id="@+id/bt_glide_transformation"
+        style="@style/CommonButton"
+        android:text="图片转换" />
+
+</LinearLayout>
