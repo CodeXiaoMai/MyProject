@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/my_app_bar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/bt_retrofit_get1"
+                style="@style/CommonButton"
+                android:text="GET请求：test" />
+
+            <Button
+                android:id="@+id/bt_retrofit_get2"
+                style="@style/CommonButton"
+                android:text="GET请求：test/{name}" />
+
+            <Button
+                android:id="@+id/bt_retrofit_get3"
+                style="@style/CommonButton"
+                android:text="GET请求+Query参数" />
+
+            <Button
+                android:id="@+id/bt_retrofit_get4"
+                style="@style/CommonButton"
+                android:text="GET请求+QueryMap" />
+
+            <Button
+                android:id="@+id/bt_retrofit_post1"
+                style="@style/CommonButton"
+                android:text="POST请求" />
+
+            <Button
+                android:id="@+id/bt_retrofit_post2"
+                style="@style/CommonButton"
+                android:text="POST请求With Headers" />
+
+
+            <TextView
+                android:id="@+id/tv_retrofit"
+                style="@style/CommonTextView" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

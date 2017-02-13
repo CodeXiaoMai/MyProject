@@ -35,7 +35,7 @@
         <activity android:name=".json.activity.JsonActivity" />
         <activity android:name=".json.activity.GsonActivity" />
         <activity android:name=".json.activity.FastJsonActivity" />
-        f
+        <activity android:name=".retrofit.RetrofitActivity" />
         <activity android:name=".picasso.activity.PicassoActivity" />
         <activity android:name=".picasso.activity.PicassoListViewActivity" />
         <activity android:name=".picasso.activity.PicassoTransformationActivity" />
@@ -76,7 +76,7 @@
         <activity android:name=".demo.ServiceDemoActivity" />
         <activity android:name=".demo.BannerViewDemoActivity" />
         <activity android:name=".demo.TextViewLinkActivity" />
-        <activity android:name=".demo.TuYaActivity" />
+        <activity android:name=".demo.TuYa2Activity" />
         <activity android:name=".demo.AlphaActivity" />
         <activity android:name=".demo.ViewDemoActivity" />
         <activity android:name=".demo.AlarmDemoActivity" />
