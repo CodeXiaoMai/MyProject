@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.xiaomai.myproject.rxjava.RxJavaActivity">
+
+    <include layout="@layout/my_app_bar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/bt_rx_java_simple"
+                style="@style/CommonButton"
+                android:text="RxJava简单的使用" />
+
+            <Button
+                android:id="@+id/bt_rx_java_complex"
+                style="@style/CommonButton"
+                android:text="RxJava复杂的使用" />
+
+            <Button
+                android:id="@+id/bt_rx_java_scheduler"
+                style="@style/CommonButton"
+                android:text="Scheduler的使用" />
+
+            <Button
+                android:id="@+id/bt_rx_java_flat"
+                style="@style/CommonButton"
+                android:text="变换的使用" />
+
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

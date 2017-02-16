@@ -19,6 +19,7 @@ import com.xiaomai.myproject.okhttp.activity.OKHttpActivity;
 import com.xiaomai.myproject.picasso.activity.PicassoActivity;
 import com.xiaomai.myproject.recyclerview.activity.RecyclerViewActivity;
 import com.xiaomai.myproject.retrofit.RetrofitActivity;
+import com.xiaomai.myproject.rxjava.RxJavaActivity;
 
 /**
  * Created by XiaoMai on 2017/2/5 11:44.
@@ -44,7 +45,8 @@ public class CommonFrameFragment extends BaseFragment implements AdapterView.OnI
     protected void initVariables() {
         super.initVariables();
         datas = new String[] {
-                "Retrofit","Glide", "Picasso", "FastJson", "GSON", "JSON", "RecyclerView", "OKHttp"
+                "RxJava", "Retrofit", "Glide", "Picasso", "FastJson", "GSON", "JSON",
+                "RecyclerView", "OKHttp"
         };
     }
 
@@ -75,6 +77,8 @@ public class CommonFrameFragment extends BaseFragment implements AdapterView.OnI
             intent = new Intent(mContext, GlideActivity.class);
         } else if ("retrofit".equals(data)) {
             intent = new Intent(mContext, RetrofitActivity.class);
+        } else if ("rxjava".equals(data)) {
+            intent = new Intent(mContext, RxJavaActivity.class);
         }
         if (intent != null) {
             startActivity(intent);

@@ -117,7 +117,12 @@
         <activity android:name=".glide.activity.GlideActivity" />
         <activity android:name=".glide.activity.GlideBaseActivity" />
         <activity android:name=".glide.activity.GlideRecyclerViewActivity" />
-        <activity android:name=".glide.activity.GlideTransformationActivity"></activity>
+        <activity android:name=".glide.activity.GlideTransformationActivity" />
+        <activity android:name=".rxjava.RxJavaActivity" />
+        <activity android:name=".rxjava.RxJavaSimpleActivity" />
+        <activity android:name=".rxjava.RxJavaComplexActivity" />
+        <activity android:name=".rxjava.RxJavaSchedulerActivity" />
+        <activity android:name=".rxjava.RxJavaFlatActivity"></activity>
     </application>
 
 </manifest>
