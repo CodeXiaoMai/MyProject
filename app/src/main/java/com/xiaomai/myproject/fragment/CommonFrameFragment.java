@@ -20,6 +20,7 @@ import com.xiaomai.myproject.picasso.activity.PicassoActivity;
 import com.xiaomai.myproject.recyclerview.activity.RecyclerViewActivity;
 import com.xiaomai.myproject.retrofit.RetrofitActivity;
 import com.xiaomai.myproject.rxjava.RxJavaActivity;
+import com.xiaomai.myproject.tablayout.activity.TabLayoutActivity;
 
 /**
  * Created by XiaoMai on 2017/2/5 11:44.
@@ -45,7 +46,7 @@ public class CommonFrameFragment extends BaseFragment implements AdapterView.OnI
     protected void initVariables() {
         super.initVariables();
         datas = new String[] {
-                "RxJava", "Retrofit", "Glide", "Picasso", "FastJson", "GSON", "JSON",
+                "TabLayout","RxJava", "Retrofit", "Glide", "Picasso", "FastJson", "GSON", "JSON",
                 "RecyclerView", "OKHttp"
         };
     }
@@ -79,6 +80,8 @@ public class CommonFrameFragment extends BaseFragment implements AdapterView.OnI
             intent = new Intent(mContext, RetrofitActivity.class);
         } else if ("rxjava".equals(data)) {
             intent = new Intent(mContext, RxJavaActivity.class);
+        } else if ("tablayout".equals(data)) {
+            intent = new Intent(mContext, TabLayoutActivity.class);
         }
         if (intent != null) {
             startActivity(intent);

@@ -122,7 +122,8 @@
         <activity android:name=".rxjava.RxJavaSimpleActivity" />
         <activity android:name=".rxjava.RxJavaComplexActivity" />
         <activity android:name=".rxjava.RxJavaSchedulerActivity" />
-        <activity android:name=".rxjava.RxJavaFlatActivity"></activity>
+        <activity android:name=".rxjava.RxJavaFlatActivity" />
+        <activity android:name=".tablayout.activity.TabLayoutActivity"></activity>
     </application>
 
 </manifest>
