@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.xiaomai.myproject.lifecycle.LifeCycleActivityB">
+
+    <include layout="@layout/my_app_bar" />
+
+    <fragment
+        android:id="@+id/fragment_one_tv_one"
+        android:name="com.xiaomai.myproject.lifecycle.MyFragmentA"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:tag="@string/app_name"
+        tools:layout="@layout/fragment_my" />
+</LinearLayout>
