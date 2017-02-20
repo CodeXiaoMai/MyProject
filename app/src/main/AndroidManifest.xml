@@ -123,9 +123,10 @@
         <activity android:name=".rxjava.RxJavaComplexActivity" />
         <activity android:name=".rxjava.RxJavaSchedulerActivity" />
         <activity android:name=".rxjava.RxJavaFlatActivity" />
-        <activity android:name=".tablayout.activity.TabLayoutActivity"></activity>
+        <activity android:name=".tablayout.activity.TabLayoutActivity" />
         <activity android:name=".lifecycle.LifeCycleActivityA" />
         <activity android:name=".lifecycle.LifeCycleActivityB" />
+        <activity android:name=".handler.HandlerActivity"></activity>
     </application>
 
 </manifest>

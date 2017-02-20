@@ -12,6 +12,7 @@ import com.xiaomai.myproject.R;
 import com.xiaomai.myproject.adapter.CommonFrameFragmentAdapter;
 import com.xiaomai.myproject.base.BaseFragment;
 import com.xiaomai.myproject.glide.activity.GlideActivity;
+import com.xiaomai.myproject.handler.HandlerActivity;
 import com.xiaomai.myproject.json.activity.FastJsonActivity;
 import com.xiaomai.myproject.json.activity.GsonActivity;
 import com.xiaomai.myproject.json.activity.JsonActivity;
@@ -47,7 +48,7 @@ public class CommonFrameFragment extends BaseFragment implements AdapterView.OnI
     protected void initVariables() {
         super.initVariables();
         datas = new String[] {
-                "Fragment", "TabLayout", "RxJava", "Retrofit", "Glide", "Picasso", "FastJson",
+                "Handler的使用","Fragment", "TabLayout", "RxJava", "Retrofit", "Glide", "Picasso", "FastJson",
                 "GSON", "JSON", "RecyclerView", "OKHttp"
         };
     }
@@ -85,6 +86,8 @@ public class CommonFrameFragment extends BaseFragment implements AdapterView.OnI
             intent = new Intent(mContext, TabLayoutActivity.class);
         } else if ("fragment".equals(data)) {
             intent = new Intent(mContext, LifeCycleActivityA.class);
+        } else if ("handler的使用".equals(data)) {
+            intent = new Intent(mContext, HandlerActivity.class);
         }
         if (intent != null) {
             startActivity(intent);
