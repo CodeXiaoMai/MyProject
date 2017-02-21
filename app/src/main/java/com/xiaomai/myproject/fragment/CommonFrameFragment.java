@@ -23,6 +23,7 @@ import com.xiaomai.myproject.recyclerview.activity.RecyclerViewActivity;
 import com.xiaomai.myproject.retrofit.RetrofitActivity;
 import com.xiaomai.myproject.rxjava.RxJavaActivity;
 import com.xiaomai.myproject.tablayout.activity.TabLayoutActivity;
+import com.xiaomai.myproject.touchevent.TouchEventDispatchActivity;
 
 /**
  * Created by XiaoMai on 2017/2/5 11:44.
@@ -48,8 +49,8 @@ public class CommonFrameFragment extends BaseFragment implements AdapterView.OnI
     protected void initVariables() {
         super.initVariables();
         datas = new String[] {
-                "Handler的使用","Fragment", "TabLayout", "RxJava", "Retrofit", "Glide", "Picasso", "FastJson",
-                "GSON", "JSON", "RecyclerView", "OKHttp"
+                "事件分发机制", "Handler的使用", "Fragment", "TabLayout", "RxJava", "Retrofit", "Glide",
+                "Picasso", "FastJson", "GSON", "JSON", "RecyclerView", "OKHttp"
         };
     }
 
@@ -88,6 +89,8 @@ public class CommonFrameFragment extends BaseFragment implements AdapterView.OnI
             intent = new Intent(mContext, LifeCycleActivityA.class);
         } else if ("handler的使用".equals(data)) {
             intent = new Intent(mContext, HandlerActivity.class);
+        } else if ("事件分发机制".equals(data)) {
+            intent = new Intent(mContext, TouchEventDispatchActivity.class);
         }
         if (intent != null) {
             startActivity(intent);

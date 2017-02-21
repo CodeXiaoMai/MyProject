@@ -126,7 +126,8 @@
         <activity android:name=".tablayout.activity.TabLayoutActivity" />
         <activity android:name=".lifecycle.LifeCycleActivityA" />
         <activity android:name=".lifecycle.LifeCycleActivityB" />
-        <activity android:name=".handler.HandlerActivity"></activity>
+        <activity android:name=".handler.HandlerActivity" />
+        <activity android:name=".touchevent.TouchEventDispatchActivity"></activity>
     </application>
 
 </manifest>
