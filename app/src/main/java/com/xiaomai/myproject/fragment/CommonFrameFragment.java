@@ -11,6 +11,7 @@ import android.widget.Toast;
 import com.xiaomai.myproject.R;
 import com.xiaomai.myproject.adapter.CommonFrameFragmentAdapter;
 import com.xiaomai.myproject.base.BaseFragment;
+import com.xiaomai.myproject.bignumber.BigNumberActivity;
 import com.xiaomai.myproject.glide.activity.GlideActivity;
 import com.xiaomai.myproject.handler.HandlerActivity;
 import com.xiaomai.myproject.json.activity.FastJsonActivity;
@@ -49,7 +50,7 @@ public class CommonFrameFragment extends BaseFragment implements AdapterView.OnI
     protected void initVariables() {
         super.initVariables();
         datas = new String[] {
-                "事件分发机制", "Handler的使用", "Fragment", "TabLayout", "RxJava", "Retrofit", "Glide",
+                "Java中大数科学计数","事件分发机制", "Handler的使用", "Fragment", "TabLayout", "RxJava", "Retrofit", "Glide",
                 "Picasso", "FastJson", "GSON", "JSON", "RecyclerView", "OKHttp"
         };
     }
@@ -91,6 +92,8 @@ public class CommonFrameFragment extends BaseFragment implements AdapterView.OnI
             intent = new Intent(mContext, HandlerActivity.class);
         } else if ("事件分发机制".equals(data)) {
             intent = new Intent(mContext, TouchEventDispatchActivity.class);
+        } else if ("java中大数科学计数".equals(data)) {
+            intent = new Intent(mContext, BigNumberActivity.class);
         }
         if (intent != null) {
             startActivity(intent);

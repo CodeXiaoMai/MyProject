@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="code_big_number">
+        "BigInteger bigInteger = new BigInteger(\"10000000000000000000000000000000\");\n"
+        "bigInteger = bigInteger.add(bigInteger);\n"
+        "\n"
+        "DecimalFormat format = new DecimalFormat(\"#.#E0\");\n"
+        "tv_big_number.setText(format.format(bigInteger));"
+    </string>
+</resources>
