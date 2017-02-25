@@ -128,7 +128,9 @@
         <activity android:name=".lifecycle.LifeCycleActivityB" />
         <activity android:name=".handler.HandlerActivity" />
         <activity android:name=".touchevent.TouchEventDispatchActivity" />
-        <activity android:name=".bignumber.BigNumberActivity"></activity>
+        <activity android:name=".bignumber.BigNumberActivity" />
+        <activity android:name=".activity.WebViewActivity" />
+        <activity android:name=".activity.DataStructActivity"></activity>
     </application>
 
 </manifest>

@@ -58,6 +58,7 @@ public class LifeCycleActivityB extends BaseActivity implements MyFragmentB.OnFr
     @Override
     protected void initViews() {
         super.initViews();
+        setTitle("动态添加Fragment");
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.add(R.id.fl_life_cycle, MyFragmentB.newInstance("param1", "param2"));
         transaction.commit();

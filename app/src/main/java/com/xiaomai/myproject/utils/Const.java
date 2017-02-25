@@ -45,4 +45,6 @@ public class Const {
     public static final String IMG_ALT_CODE = "code";
 
     public static final String PARAMS_SEPARATOR = "//";
+
+    public static final String URL = "url";
 }

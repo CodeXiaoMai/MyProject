@@ -26,6 +26,7 @@ public class BigNumberActivity extends BaseActivity {
     @Override
     protected void initViews() {
         super.initViews();
+        setTitle("Java中大数的使用");
         tv_big_number = (TextView) findViewById(R.id.tv_big_number);
 
         BigInteger bigInteger = new BigInteger("10000000000000000000000000000000");

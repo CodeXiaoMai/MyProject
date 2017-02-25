@@ -60,6 +60,12 @@ public class LifeCycleActivityA extends BaseActivity implements MyFragmentA.OnFr
     }
 
     @Override
+    protected void initViews() {
+        super.initViews();
+        setTitle("Activity的布局中包含Fragment");
+    }
+
+    @Override
     public void onFragmentInteraction(Uri uri) {
 
     }
