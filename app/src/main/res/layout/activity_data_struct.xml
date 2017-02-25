@@ -27,6 +27,7 @@
                 android:id="@+id/bt_data_struct_2"
                 style="@style/CommonButton"
                 android:text="2" />
+
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

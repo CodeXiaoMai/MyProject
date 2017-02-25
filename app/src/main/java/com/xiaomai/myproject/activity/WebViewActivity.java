@@ -57,7 +57,7 @@ public class WebViewActivity extends BaseActivity implements SwipeRefreshLayout.
         initSettings();
         initWebViewClient();
         srf_web_view.setRefreshing(true);
-        onRefresh();
+        onRefresh(false);
     }
 
     private void initWebViewClient() {
@@ -81,8 +81,8 @@ public class WebViewActivity extends BaseActivity implements SwipeRefreshLayout.
                 String title = view.getTitle();
                 if (!TextUtils.isEmpty(title)) {
                     setTitle(title);
-                    srf_web_view.setRefreshing(false);
                 }
+                srf_web_view.setRefreshing(false);
                 super.onPageFinished(view, url);
             }
 
@@ -138,6 +138,15 @@ public class WebViewActivity extends BaseActivity implements SwipeRefreshLayout.
 
     @Override
     public void onRefresh() {
+        web_view.clearCache(false);
         web_view.loadUrl(mUrl);
+    }
+
+    private void onRefresh(boolean forceRefresh) {
+        if (forceRefresh)
+            onRefresh();
+        else
+            web_view.loadUrl(mUrl);
+
     }
 }

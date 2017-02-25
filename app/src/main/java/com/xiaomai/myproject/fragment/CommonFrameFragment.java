@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.xiaomai.myproject.R;
 import com.xiaomai.myproject.activity.DataStructActivity;
+import com.xiaomai.myproject.activity.SdCardCheckActivity;
 import com.xiaomai.myproject.adapter.CommonFrameFragmentAdapter;
 import com.xiaomai.myproject.base.BaseFragment;
 import com.xiaomai.myproject.bignumber.BigNumberActivity;
@@ -51,7 +52,7 @@ public class CommonFrameFragment extends BaseFragment implements AdapterView.OnI
     protected void initVariables() {
         super.initVariables();
         datas = new String[] {
-                "数据结构","Java中大数科学计数","事件分发机制", "Handler的使用", "Fragment", "TabLayout", "RxJava", "Retrofit", "Glide",
+                "SD卡检测", "数据结构","Java中大数科学计数","事件分发机制", "Handler的使用", "Fragment", "TabLayout", "RxJava", "Retrofit", "Glide",
                 "Picasso", "FastJson", "GSON", "JSON", "RecyclerView", "OKHttp"
         };
     }
@@ -97,6 +98,8 @@ public class CommonFrameFragment extends BaseFragment implements AdapterView.OnI
             intent = new Intent(mContext, BigNumberActivity.class);
         } else if ("数据结构".equals(data)){
             intent = new Intent(mContext, DataStructActivity.class);
+        } else if ("sd卡检测".equals(data)) {
+            intent = new Intent(mContext, SdCardCheckActivity.class);
         }
         if (intent != null) {
             startActivity(intent);

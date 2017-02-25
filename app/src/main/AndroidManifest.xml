@@ -3,8 +3,8 @@
     package="com.xiaomai.myproject">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
@@ -130,7 +130,8 @@
         <activity android:name=".touchevent.TouchEventDispatchActivity" />
         <activity android:name=".bignumber.BigNumberActivity" />
         <activity android:name=".activity.WebViewActivity" />
-        <activity android:name=".activity.DataStructActivity"></activity>
+        <activity android:name=".activity.DataStructActivity" />
+        <activity android:name=".activity.SdCardCheckActivity"></activity>
     </application>
 
 </manifest>

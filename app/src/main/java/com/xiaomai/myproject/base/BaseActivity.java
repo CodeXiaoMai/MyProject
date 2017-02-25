@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -111,6 +113,14 @@ public abstract class BaseActivity extends AppCompatActivity {
              * 标题
              */
             tv_title = (TextView) findViewById(R.id.tv_title);
+            tv_title.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ViewGroup view = (ViewGroup)getWindow().getDecorView();
+                    FrameLayout content = (FrameLayout)view.findViewById(android.R.id.content);
+                    content.getChildAt(0).scrollTo(0, 0);
+                }
+            });
         }
     }
 
