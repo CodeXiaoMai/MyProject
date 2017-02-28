@@ -17,7 +17,7 @@ public class FileUtilsTest extends AndroidTestCase {
         // assertEquals("", FileUtils.getRootPath());
         // assertEquals("", FileUtils.getCacheRootPath());
         // assertEquals("",
-        // FileUtils.formateSize(FileUtils.getFolderSize("/storage")));
+        // FileUtils.formatSize(FileUtils.getFolderSize("/storage")));
         /*
          * assertEquals("100", FileUtils.copyFolders(
          * "/storage/emulated/legacy/com.vyanke1",

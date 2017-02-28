@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 import com.xiaomai.myproject.R;
 import com.xiaomai.myproject.activity.DataStructActivity;
-import com.xiaomai.myproject.activity.SdCardCheckActivity;
+import com.xiaomai.myproject.activity.SdCardSelectActivity;
 import com.xiaomai.myproject.adapter.CommonFrameFragmentAdapter;
 import com.xiaomai.myproject.base.BaseFragment;
 import com.xiaomai.myproject.bignumber.BigNumberActivity;
@@ -99,7 +99,7 @@ public class CommonFrameFragment extends BaseFragment implements AdapterView.OnI
         } else if ("数据结构".equals(data)){
             intent = new Intent(mContext, DataStructActivity.class);
         } else if ("sd卡检测".equals(data)) {
-            intent = new Intent(mContext, SdCardCheckActivity.class);
+            intent = new Intent(mContext, SdCardSelectActivity.class);
         }
         if (intent != null) {
             startActivity(intent);

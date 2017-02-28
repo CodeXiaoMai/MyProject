@@ -4,12 +4,86 @@
     android:id="@+id/activity_sd_card_check"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:divider="@drawable/list_divider"
     android:orientation="vertical"
-    tools:context="com.xiaomai.myproject.activity.SdCardCheckActivity">
+    android:showDividers="middle"
+    tools:context="com.xiaomai.myproject.activity.SdCardSelectActivity">
 
     <include layout="@layout/my_app_bar" />
 
     <TextView
-        android:id="@+id/tv_sd_card"
-        style="@style/CommonTextView" />
+        style="@style/CommonTextView"
+        android:text="离线缓存缓存目录"
+        android:textColor="@color/textBlue"
+        android:textSize="12sp" />
+
+    <LinearLayout
+        android:id="@+id/ll_primary_storage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="手机存储" />
+
+        <TextView
+            android:id="@+id/tv_primary_storage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            tools:text="总量:11G/剩余2G" />
+
+        <ImageView
+            android:id="@+id/iv_primary_storage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp_5"
+            android:src="@drawable/circle_select" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_sd_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="外置存储" />
+
+            <TextView
+                android:id="@+id/tv_sd_card"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                tools:text="总量:11G/剩余2G" />
+
+            <ImageView
+                android:id="@+id/iv_sd_card"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dp_5"
+                android:src="@drawable/circle_select"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="选择当前目录，卸载应用时，下载的文件会被系统删除。" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/bt_sd_card"
+        style="@style/CommonButton"
+        android:text="拷贝" />
 </LinearLayout>

@@ -52,7 +52,7 @@ public class FileUtils {
      * @return
      */
     public static String checkDirs(String path) {
-//        File file = new File(path);
+        // File file = new File(path);
         initDirectory(path, false);
         return path + File.separator;
     }
@@ -186,7 +186,7 @@ public class FileUtils {
      * @param size
      * @return
      */
-    public static String formateSize(long size) {
+    public static String formatSize(long size) {
         double kilByte = size / 1024;// 千字节
         if (kilByte < 1) {
             return size + "B";
@@ -206,13 +206,13 @@ public class FileUtils {
     }
 
     /**
-     * 复制单个文件
+     * 复制单个文件(只能用来copy文本文件)
      *
      * @param srcPath
      * @param destPath
      * @return
      */
-    public static boolean copyFile(String srcPath, String destPath) {
+    private static boolean copyFile(String srcPath, String destPath) {
         BufferedReader reader = null;
         BufferedWriter writer = null;
         File file = new File(destPath);
@@ -233,6 +233,7 @@ public class FileUtils {
             reader.close();
             writer.close();
         } catch (Exception e) {
+            e.printStackTrace();
             return false;
         } finally {
             try {
@@ -245,6 +246,41 @@ public class FileUtils {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }
+        return true;
+    }
+
+    public static boolean copy(String srcFile, String destFile, boolean isStream) {
+        if (isStream) {
+            return copy(srcFile, destFile);
+        } else {
+            return copyFile(srcFile, destFile);
+        }
+    }
+
+    /**
+     * 文件复制.
+     */
+    private static boolean copy(String srcFile, String destFile) {
+        File file = new File(destFile);
+        if (!file.exists()) {
+            String parent = file.getParent();
+            checkDirs(parent);
+        }
+        try {
+            FileInputStream in = new FileInputStream(srcFile);
+            FileOutputStream out = new FileOutputStream(destFile);
+            byte[] bytes = new byte[1024];
+            int c;
+            while ((c = in.read(bytes)) != -1) {
+                out.write(bytes, 0, c);
+            }
+            in.close();
+            out.flush();
+            out.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
         }
         return true;
     }
@@ -300,7 +336,7 @@ public class FileUtils {
      * @return
      */
     public static long getSDCardAvailableSize() {
-        return getDirSize(getRootPath());
+        return getDirAvailableSize(getRootPath());
     }
 
     /**
@@ -309,7 +345,7 @@ public class FileUtils {
      * @param path
      * @return
      */
-    public static long getDirSize(String path) {
+    public static long getDirAvailableSize(String path) {
         StatFs statFs = new StatFs(path);
         long blockSize, availableBlocks;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
@@ -320,6 +356,19 @@ public class FileUtils {
             availableBlocks = statFs.getAvailableBlocks();
         }
         return blockSize * availableBlocks;
+    }
+
+    public static long getDirTotalSize(String path) {
+        StatFs statFs = new StatFs(path);
+        long blockSize, blocks;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
+            blockSize = statFs.getBlockSizeLong();
+            blocks = statFs.getBlockCountLong();
+        } else {
+            blockSize = statFs.getBlockSize();
+            blocks = statFs.getBlockCount();
+        }
+        return blockSize * blocks;
     }
 
     /**
