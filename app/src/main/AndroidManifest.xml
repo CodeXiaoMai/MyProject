@@ -6,12 +6,12 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <!-- 在SDCard中创建与删除文件权限 -->
-    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:name=".MyApplication"
@@ -133,7 +133,8 @@
         <activity android:name=".bignumber.BigNumberActivity" />
         <activity android:name=".activity.WebViewActivity" />
         <activity android:name=".activity.DataStructActivity" />
-        <activity android:name=".activity.SdCardSelectActivity"></activity>
+        <activity android:name=".activity.SdCardSelectActivity" />
+        <activity android:name=".activity.RuntimePermissionActivity"></activity>
     </application>
 
 </manifest>

@@ -31,7 +31,7 @@ android {
     defaultConfig {
         applicationId "com.xiaomai.myproject"
         minSdkVersion 15
-        targetSdkVersion 20
+        targetSdkVersion 23
         versionCode 1
         versionName "1.0"
 
@@ -51,10 +51,10 @@ android {
         }
 
         release {
-            storeFile file("../yourapp.keystore")
-            storePassword "your password"
-            keyAlias "your alias"
-            keyPassword "your password"
+            storeFile file('hskaoyan.keystore')
+            storePassword "hskaoyan519"
+            keyAlias "hskaoyan"
+            keyPassword "hskaoyan519"
         }
     }
 
@@ -94,7 +94,7 @@ android {
                     def outputFile = output.outputFile
                     if (outputFile != null && outputFile.name.endsWith('.apk')) {
                         // 输出apk名称为：软件名_v1.0_渠道名.apk
-                        def fileName = "vyanke_v${defaultConfig.versionName}_${variant.productFlavors[0].name}.apk"
+                        def fileName = "myproject_v${defaultConfig.versionName}_${variant.productFlavors[0].name}.apk"
                         output.outputFile = new File(outputFile.parent, fileName)
                     }
                 }

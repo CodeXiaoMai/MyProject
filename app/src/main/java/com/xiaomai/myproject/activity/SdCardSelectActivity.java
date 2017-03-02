@@ -60,9 +60,9 @@ public class SdCardSelectActivity extends BaseActivity implements View.OnClickLi
     protected void initViews() {
         super.initViews();
         setTitle("SD卡选择");
-        // 当Sdk版本大于4.4时，若要向Sd卡中写入数据，只能向Android/data/[包名]/目录中写入，
+        // 当Sdk版本大于等于4.4时，若要向Sd卡中写入数据，只能向Android/data/[包名]/目录中写入，
         // 调用getExternalFilesDirs();系统自动创建该目录，app没有权限创建。
-        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             getExternalFilesDirs(null);
         }
         ll_sd_card = (LinearLayout) findViewById(R.id.ll_sd_card);
@@ -179,7 +179,7 @@ public class SdCardSelectActivity extends BaseActivity implements View.OnClickLi
             @Override
             public void call(Subscriber<? super Boolean> subscriber) {
                 boolean copy = FileUtils.copy(Environment.getExternalStorageDirectory().getPath() + "/1.apk",
-                        mPath + "/1.apk", true);
+                        mPath + "/Android/data/" + getPackageName() + "/files/1.apk", true);
                 subscriber.onNext(copy);
                 subscriber.onCompleted();
             }
