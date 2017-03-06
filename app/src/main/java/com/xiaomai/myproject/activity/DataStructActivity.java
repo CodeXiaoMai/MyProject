@@ -26,6 +26,18 @@ public class DataStructActivity extends BaseActivity {
     @BindView(R.id.bt_data_struct_4)
     Button btDataStruct4;
 
+    @BindView(R.id.bt_data_struct_5)
+    Button btDataStruct5;
+
+    @BindView(R.id.bt_data_struct_6)
+    Button btDataStruct6;
+
+    @BindView(R.id.bt_data_struct_7)
+    Button btDataStruct7;
+
+    @BindView(R.id.bt_data_struct_8)
+    Button btDataStruct8;
+
     @Override
     protected int getContentLayout() {
         return R.layout.activity_data_struct;
@@ -39,7 +51,9 @@ public class DataStructActivity extends BaseActivity {
     }
 
     @OnClick({
-            R.id.bt_data_struct_1, R.id.bt_data_struct_2, R.id.bt_data_struct_3, R.id.bt_data_struct_4
+            R.id.bt_data_struct_1, R.id.bt_data_struct_2, R.id.bt_data_struct_3,
+            R.id.bt_data_struct_4, R.id.bt_data_struct_5, R.id.bt_data_struct_6,
+            R.id.bt_data_struct_7, R.id.bt_data_struct_8
     })
     public void onClick(View view) {
         Intent intent = new Intent(this, WebViewActivity.class);
@@ -59,6 +73,22 @@ public class DataStructActivity extends BaseActivity {
             case R.id.bt_data_struct_4:
                 intent.putExtra(Const.URL,
                         "https://github.com/CodeXiaoMai/DataStructure/blob/master/04.%E9%93%BE%E8%A1%A8.md");
+                break;
+            case R.id.bt_data_struct_5:
+                intent.putExtra(Const.URL,
+                        "https://github.com/CodeXiaoMai/DataStructure/blob/master/05.%E5%A4%8D%E4%B9%A0.md");
+                break;
+            case R.id.bt_data_struct_6:
+                intent.putExtra(Const.URL,
+                        "https://github.com/CodeXiaoMai/DataStructure/blob/master/06.%E6%A0%88.md");
+                break;
+            case R.id.bt_data_struct_7:
+                intent.putExtra(Const.URL,
+                        "https://github.com/CodeXiaoMai/DataStructure/blob/master/07.%E9%98%9F%E5%88%97.md");
+                break;
+            case R.id.bt_data_struct_8:
+                intent.putExtra(Const.URL,
+                        "https://github.com/CodeXiaoMai/DataStructure/blob/master/08.%E9%80%92%E5%BD%92.md");
                 break;
         }
         startActivity(intent);

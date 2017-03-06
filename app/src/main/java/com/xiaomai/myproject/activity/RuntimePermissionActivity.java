@@ -54,6 +54,11 @@ public class RuntimePermissionActivity extends BaseActivity implements View.OnCl
     }
 
     @Override
+    protected int getCodeResId() {
+        return R.string.code_runtime_permission;
+    }
+
+    @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.bt_permission_call:

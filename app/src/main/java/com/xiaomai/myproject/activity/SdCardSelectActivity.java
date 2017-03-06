@@ -110,6 +110,11 @@ public class SdCardSelectActivity extends BaseActivity implements View.OnClickLi
         }
     }
 
+    @Override
+    protected int getCodeResId() {
+        return R.string.code_sdcard_select;
+    }
+
     /**
      * 扫描存储设备
      * 

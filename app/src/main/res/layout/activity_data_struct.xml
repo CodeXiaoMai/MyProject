@@ -38,6 +38,26 @@
                 style="@style/CommonButton"
                 android:text="4.链表" />
 
+            <Button
+                android:id="@+id/bt_data_struct_5"
+                style="@style/CommonButton"
+                android:text="5.复习" />
+
+            <Button
+                android:id="@+id/bt_data_struct_6"
+                style="@style/CommonButton"
+                android:text="6.栈" />
+
+            <Button
+                android:id="@+id/bt_data_struct_7"
+                style="@style/CommonButton"
+                android:text="7.队列" />
+
+            <Button
+                android:id="@+id/bt_data_struct_8"
+                style="@style/CommonButton"
+                android:text="8.递归" />
+
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
