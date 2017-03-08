@@ -135,6 +135,7 @@
         <activity android:name=".activity.DataStructActivity" />
         <activity android:name=".activity.SdCardSelectActivity" />
         <activity android:name=".activity.RuntimePermissionActivity"></activity>
+        <activity android:name=".mvp.view.UserLoginActivity" />
     </application>
 
 </manifest>

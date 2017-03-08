@@ -21,6 +21,7 @@ import com.xiaomai.myproject.json.activity.FastJsonActivity;
 import com.xiaomai.myproject.json.activity.GsonActivity;
 import com.xiaomai.myproject.json.activity.JsonActivity;
 import com.xiaomai.myproject.lifecycle.LifeCycleActivityA;
+import com.xiaomai.myproject.mvp.view.UserLoginActivity;
 import com.xiaomai.myproject.okhttp.activity.OKHttpActivity;
 import com.xiaomai.myproject.picasso.activity.PicassoActivity;
 import com.xiaomai.myproject.recyclerview.activity.RecyclerViewActivity;
@@ -53,8 +54,9 @@ public class CommonFrameFragment extends BaseFragment implements AdapterView.OnI
     protected void initVariables() {
         super.initVariables();
         datas = new String[] {
-                "运行时权限", "SD卡检测", "数据结构","Java中大数科学计数","事件分发机制", "Handler的使用", "Fragment", "TabLayout", "RxJava", "Retrofit", "Glide",
-                "Picasso", "FastJson", "GSON", "JSON", "RecyclerView", "OKHttp"
+                "MVP", "运行时权限", "SD卡检测", "数据结构", "Java中大数科学计数", "事件分发机制", "Handler的使用", "Fragment",
+                "TabLayout", "RxJava", "Retrofit", "Glide", "Picasso", "FastJson", "GSON", "JSON",
+                "RecyclerView", "OKHttp"
         };
     }
 
@@ -68,41 +70,43 @@ public class CommonFrameFragment extends BaseFragment implements AdapterView.OnI
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Intent intent = null;
-        String data = datas[position].toLowerCase();
-        if ("okhttp".equals(data)) {
+        String data = datas[position];
+        if ("OKHttp".equals(data)) {
             intent = new Intent(mContext, OKHttpActivity.class);
-        } else if ("recyclerview".equals(data)) {
+        } else if ("RecyclerView".equals(data)) {
             intent = new Intent(mContext, RecyclerViewActivity.class);
-        } else if ("json".equals(data)) {
+        } else if ("JSON".equals(data)) {
             intent = new Intent(mContext, JsonActivity.class);
-        } else if ("gson".equals(data)) {
+        } else if ("GSON".equals(data)) {
             intent = new Intent(mContext, GsonActivity.class);
-        } else if ("fastjson".equals(data)) {
+        } else if ("FastJson".equals(data)) {
             intent = new Intent(mContext, FastJsonActivity.class);
-        } else if ("picasso".equals(data)) {
+        } else if ("Picasso".equals(data)) {
             intent = new Intent(mContext, PicassoActivity.class);
-        } else if ("glide".equals(data)) {
+        } else if ("Glide".equals(data)) {
             intent = new Intent(mContext, GlideActivity.class);
-        } else if ("retrofit".equals(data)) {
+        } else if ("Retrofit".equals(data)) {
             intent = new Intent(mContext, RetrofitActivity.class);
-        } else if ("rxjava".equals(data)) {
+        } else if ("RxJava".equals(data)) {
             intent = new Intent(mContext, RxJavaActivity.class);
-        } else if ("tablayout".equals(data)) {
+        } else if ("TabLayout".equals(data)) {
             intent = new Intent(mContext, TabLayoutActivity.class);
-        } else if ("fragment".equals(data)) {
+        } else if ("Fragment".equals(data)) {
             intent = new Intent(mContext, LifeCycleActivityA.class);
-        } else if ("handler的使用".equals(data)) {
+        } else if ("Handler的使用".equals(data)) {
             intent = new Intent(mContext, HandlerActivity.class);
         } else if ("事件分发机制".equals(data)) {
             intent = new Intent(mContext, TouchEventDispatchActivity.class);
-        } else if ("java中大数科学计数".equals(data)) {
+        } else if ("Java中大数科学计数".equals(data)) {
             intent = new Intent(mContext, BigNumberActivity.class);
-        } else if ("数据结构".equals(data)){
+        } else if ("数据结构".equals(data)) {
             intent = new Intent(mContext, DataStructActivity.class);
-        } else if ("sd卡检测".equals(data)) {
+        } else if ("SD卡检测".equals(data)) {
             intent = new Intent(mContext, SdCardSelectActivity.class);
-        } else if ("运行时权限".equals(data)){
+        } else if ("运行时权限".equals(data)) {
             intent = new Intent(mContext, RuntimePermissionActivity.class);
+        } else if ("MVP".equals(data)) {
+            intent = new Intent(mContext, UserLoginActivity.class);
         }
         if (intent != null) {
             startActivity(intent);
