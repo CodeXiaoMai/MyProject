@@ -2,6 +2,7 @@
 package com.xiaomai.myproject.fragment;
 
 import android.content.Intent;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -12,6 +13,7 @@ import com.xiaomai.myproject.R;
 import com.xiaomai.myproject.activity.DataStructActivity;
 import com.xiaomai.myproject.activity.RuntimePermissionActivity;
 import com.xiaomai.myproject.activity.SdCardSelectActivity;
+import com.xiaomai.myproject.activity.WebViewActivity;
 import com.xiaomai.myproject.adapter.CommonFrameFragmentAdapter;
 import com.xiaomai.myproject.base.BaseFragment;
 import com.xiaomai.myproject.bignumber.BigNumberActivity;
@@ -29,6 +31,7 @@ import com.xiaomai.myproject.retrofit.RetrofitActivity;
 import com.xiaomai.myproject.rxjava.RxJavaActivity;
 import com.xiaomai.myproject.tablayout.activity.TabLayoutActivity;
 import com.xiaomai.myproject.touchevent.TouchEventDispatchActivity;
+import com.xiaomai.myproject.utils.Const;
 
 /**
  * Created by XiaoMai on 2017/2/5 11:44.
@@ -54,9 +57,9 @@ public class CommonFrameFragment extends BaseFragment implements AdapterView.OnI
     protected void initVariables() {
         super.initVariables();
         datas = new String[] {
-                "MVP", "运行时权限", "SD卡检测", "数据结构", "Java中大数科学计数", "事件分发机制", "Handler的使用", "Fragment",
-                "TabLayout", "RxJava", "Retrofit", "Glide", "Picasso", "FastJson", "GSON", "JSON",
-                "RecyclerView", "OKHttp"
+                "注解", "MVP", "运行时权限", "SD卡检测", "数据结构", "Java中大数科学计数", "事件分发机制", "Handler的使用",
+                "Fragment", "TabLayout", "RxJava", "Retrofit", "Glide", "Picasso", "FastJson",
+                "GSON", "JSON", "RecyclerView", "OKHttp"
         };
     }
 
@@ -107,6 +110,10 @@ public class CommonFrameFragment extends BaseFragment implements AdapterView.OnI
             intent = new Intent(mContext, RuntimePermissionActivity.class);
         } else if ("MVP".equals(data)) {
             intent = new Intent(mContext, UserLoginActivity.class);
+        } else if (TextUtils.equals("注解", data)) {
+            intent = new Intent(mContext, WebViewActivity.class);
+            intent.putExtra(Const.URL,
+                    "https://github.com/CodeXiaoMai/MyProject/blob/master/md/%E6%B3%A8%E8%A7%A3.md");
         }
         if (intent != null) {
             startActivity(intent);
