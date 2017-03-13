@@ -134,8 +134,9 @@
         <activity android:name=".activity.WebViewActivity" />
         <activity android:name=".activity.DataStructActivity" />
         <activity android:name=".activity.SdCardSelectActivity" />
-        <activity android:name=".activity.RuntimePermissionActivity"></activity>
+        <activity android:name=".activity.RuntimePermissionActivity" />
         <activity android:name=".mvp.view.UserLoginActivity" />
+        <activity android:name=".largeimage.LargeImageActivity"></activity>
     </application>
 
 </manifest>

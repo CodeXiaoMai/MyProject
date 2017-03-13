@@ -1,14 +1,6 @@
 
 package com.xiaomai.myproject.fragment;
 
-import android.content.Intent;
-import android.text.TextUtils;
-import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
-import android.widget.Toast;
-
 import com.xiaomai.myproject.R;
 import com.xiaomai.myproject.activity.DataStructActivity;
 import com.xiaomai.myproject.activity.RuntimePermissionActivity;
@@ -22,6 +14,7 @@ import com.xiaomai.myproject.handler.HandlerActivity;
 import com.xiaomai.myproject.json.activity.FastJsonActivity;
 import com.xiaomai.myproject.json.activity.GsonActivity;
 import com.xiaomai.myproject.json.activity.JsonActivity;
+import com.xiaomai.myproject.largeimage.LargeImageActivity;
 import com.xiaomai.myproject.lifecycle.LifeCycleActivityA;
 import com.xiaomai.myproject.mvp.view.UserLoginActivity;
 import com.xiaomai.myproject.okhttp.activity.OKHttpActivity;
@@ -32,6 +25,16 @@ import com.xiaomai.myproject.rxjava.RxJavaActivity;
 import com.xiaomai.myproject.tablayout.activity.TabLayoutActivity;
 import com.xiaomai.myproject.touchevent.TouchEventDispatchActivity;
 import com.xiaomai.myproject.utils.Const;
+
+import android.content.Intent;
+import android.text.TextUtils;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import retrofit2.http.HEAD;
 
 /**
  * Created by XiaoMai on 2017/2/5 11:44.
@@ -57,9 +60,9 @@ public class CommonFrameFragment extends BaseFragment implements AdapterView.OnI
     protected void initVariables() {
         super.initVariables();
         datas = new String[] {
-                "注解", "MVP", "运行时权限", "SD卡检测", "数据结构", "Java中大数科学计数", "事件分发机制", "Handler的使用",
-                "Fragment", "TabLayout", "RxJava", "Retrofit", "Glide", "Picasso", "FastJson",
-                "GSON", "JSON", "RecyclerView", "OKHttp"
+                "注解", "大图加载", "MVP", "运行时权限", "SD卡检测", "数据结构", "Java中大数科学计数", "事件分发机制",
+                "Handler的使用", "Fragment", "TabLayout", "RxJava", "Retrofit", "Glide", "Picasso",
+                "FastJson", "GSON", "JSON", "RecyclerView", "OKHttp"
         };
     }
 
@@ -114,6 +117,8 @@ public class CommonFrameFragment extends BaseFragment implements AdapterView.OnI
             intent = new Intent(mContext, WebViewActivity.class);
             intent.putExtra(Const.URL,
                     "https://github.com/CodeXiaoMai/MyProject/blob/master/md/%E6%B3%A8%E8%A7%A3.md");
+        } else if (TextUtils.equals("大图加载", data)) {
+            intent = new Intent(mContext, LargeImageActivity.class);
         }
         if (intent != null) {
             startActivity(intent);
