@@ -136,7 +136,13 @@
         <activity android:name=".activity.SdCardSelectActivity" />
         <activity android:name=".activity.RuntimePermissionActivity" />
         <activity android:name=".mvp.view.UserLoginActivity" />
-        <activity android:name=".largeimage.LargeImageActivity"></activity>
+        <activity android:name=".largeimage.LargeImageActivity" />
+        <activity android:name=".launchmode.ActivityA" />
+        <activity
+            android:name=".launchmode.ActivityB"
+            android:launchMode="singleInstance"
+            android:taskAffinity="com.xiaomai.myproject.activityb" />
+        <activity android:name=".launchmode.ActivityC" />
     </application>
 
 </manifest>
