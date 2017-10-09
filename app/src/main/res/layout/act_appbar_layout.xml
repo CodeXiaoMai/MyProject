@@ -43,4 +43,6 @@
             android:text="sal;kfjsal;dfjasl;dfjksladfj"
             android:textSize="50sp" />
     </android.support.v4.widget.NestedScrollView>
+
+    <include layout="@layout/main_layout" />
 </android.support.design.widget.CoordinatorLayout>

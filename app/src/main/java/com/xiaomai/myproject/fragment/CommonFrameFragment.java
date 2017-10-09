@@ -18,6 +18,9 @@ import com.xiaomai.myproject.activity.WebViewActivity;
 import com.xiaomai.myproject.adapter.CommonFrameFragmentAdapter;
 import com.xiaomai.myproject.base.BaseFragment;
 import com.xiaomai.myproject.bignumber.BigNumberActivity;
+import com.xiaomai.myproject.capturing.CaptureActivity;
+import com.xiaomai.myproject.demo.FragmentStackDemo;
+import com.xiaomai.myproject.edittext.EditTextDemoActivity;
 import com.xiaomai.myproject.glide.activity.GlideActivity;
 import com.xiaomai.myproject.handler.HandlerActivity;
 import com.xiaomai.myproject.json.activity.FastJsonActivity;
@@ -59,8 +62,8 @@ public class CommonFrameFragment extends BaseFragment implements AdapterView.OnI
     @Override
     protected void initVariables() {
         super.initVariables();
-        datas = new String[] {
-                "Animation", "LaunchMode", "注解", "大图加载", "MVP", "运行时权限", "SD卡检测", "数据结构", "Java中大数科学计数", "事件分发机制",
+        datas = new String[]{
+                "拍照", "Edit Text", "Fragment Stack", "Animation", "LaunchMode", "注解", "大图加载", "MVP", "运行时权限", "SD卡检测", "数据结构", "Java中大数科学计数", "事件分发机制",
                 "Handler的使用", "Fragment", "TabLayout", "RxJava", "Retrofit", "Glide", "Picasso",
                 "FastJson", "GSON", "JSON", "RecyclerView", "OKHttp"
         };
@@ -123,6 +126,12 @@ public class CommonFrameFragment extends BaseFragment implements AdapterView.OnI
             intent = new Intent(mContext, ActivityA.class);
         } else if (TextUtils.equals("Animation", data)) {
             intent = new Intent(mContext, FloatAnimator.class);
+        } else if (TextUtils.equals("Fragment Stack", data)) {
+            intent = new Intent(mContext, FragmentStackDemo.class);
+        } else if (TextUtils.equals("Edit Text", data)) {
+            intent = new Intent(mContext, EditTextDemoActivity.class);
+        } else if (TextUtils.equals("拍照", data)) {
+            intent = new Intent(mContext, CaptureActivity.class);
         }
         if (intent != null) {
             startActivity(intent);

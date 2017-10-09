@@ -144,6 +144,24 @@
             android:taskAffinity="com.xiaomai.myproject.activityb" />
         <activity android:name=".launchmode.ActivityC" />
         <activity android:name=".activity.FloatAnimator" />
+        <activity android:name=".demo.FragmentStackDemo" />
+        <activity android:name=".edittext.EditTextDemoActivity" />
+        <activity
+            android:name=".edittext.EditActivity"
+            android:theme="@android:style/Theme.Translucent"
+            android:windowSoftInputMode="stateVisible" />
+        <activity android:name=".capturing.CaptureActivity" />
+        <activity android:name=".capturing.ControlCameraActivity" />
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.xiaomai.myproject.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
     </application>
 
 </manifest>

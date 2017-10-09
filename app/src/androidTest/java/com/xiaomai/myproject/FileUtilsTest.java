@@ -24,7 +24,7 @@ public class FileUtilsTest extends AndroidTestCase {
          * "/storage/emulated/legacy/com.vyanke"));
          */
 
-        assertEquals("", FileUtils.unZip(new File("/storage/emulated/legacy/Download/test1.apk"),
+        assertEquals("", FileUtils.unZip("/storage/emulated/legacy/Download/test1.apk",
                 "/storage/emulated/legacy/1/"));
 
         assertEquals("test1",
@@ -35,8 +35,7 @@ public class FileUtilsTest extends AndroidTestCase {
     public void testUnZip() throws Exception {
         assertEquals("",
                 FileUtils.unZip(
-                        new File(
-                                "/storage/emulated/legacy/com.vyanke/latexs/f3084c79ed7b668a67241f9c8a91141b_.zip"),
-                        "/storage/emulated/legacy/1/"));
+                                "/storage/emulated/0/com.hskaoyan/dict.hs",
+                        "/storage/emulated/0/com.hskaoyan/dict"));
     }
 }

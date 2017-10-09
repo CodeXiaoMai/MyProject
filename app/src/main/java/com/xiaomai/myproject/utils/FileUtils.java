@@ -9,18 +9,19 @@ import android.text.TextUtils;
 import com.xiaomai.myproject.MyApplication;
 
 import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.math.BigDecimal;
+import java.util.Enumeration;
 import java.util.zip.ZipEntry;
-import java.util.zip.ZipInputStream;
+import java.util.zip.ZipFile;
 
 /**
  * Created by XiaoMai on 2016/12/13 10:59.
@@ -59,7 +60,7 @@ public class FileUtils {
 
     /**
      * 初始化文件夹
-     * 
+     *
      * @param path
      * @param deleteOld true:删除已经存在的文件夹，false：不删除已经存在的文件夹
      * @return
@@ -373,7 +374,7 @@ public class FileUtils {
 
     /**
      * 获取文件名字，不带扩展名
-     * 
+     *
      * @param file
      * @return
      */
@@ -390,53 +391,55 @@ public class FileUtils {
         }
     }
 
-    /**
-     * 解压文件
-     * 
-     * @param src
-     * @param destPath
-     * @return
-     */
-    public static String unZip(File src, String destPath) {
-        String entryName;
-        BufferedWriter writer = null;
-        BufferedReader reader = null;
+    public static String unZip(String zipFile, String extractFolder) {
         try {
-            FileInputStream inputStream = new FileInputStream(src);
-            ZipInputStream zipInputStream = new ZipInputStream(
-                    new BufferedInputStream(inputStream));
-            ZipEntry zipEntry;
-            while ((zipEntry = zipInputStream.getNextEntry()) != null) {
-                reader = new BufferedReader(new InputStreamReader(zipInputStream));
-                entryName = zipEntry.getName();
-                File entryFile = new File(
-                        destPath + File.separator + getFileName(src) + File.separator + entryName);
-                initDirectory(entryFile.getParent(), false);
-                writer = new BufferedWriter(
-                        new OutputStreamWriter(new FileOutputStream(entryFile)));
-                String line = "";
-                while ((line = reader.readLine()) != null) {
-                    writer.write(line);
+            int BUFFER = 2048;
+            File file = new File(zipFile);
+
+            ZipFile zip = new ZipFile(file);
+            String newPath = extractFolder;
+
+            new File(newPath).mkdir();
+            Enumeration zipFileEntries = zip.entries();
+
+            // Process each entry
+            while (zipFileEntries.hasMoreElements()) {
+                // grab a zip file entry
+                ZipEntry entry = (ZipEntry) zipFileEntries.nextElement();
+                String currentEntry = entry.getName();
+
+                File destFile = new File(newPath, currentEntry);
+                //destFile = new File(newPath, destFile.getName());
+                File destinationParent = destFile.getParentFile();
+
+                // create the parent directory structure if needed
+                destinationParent.mkdirs();
+
+                if (!entry.isDirectory()) {
+                    BufferedInputStream is = new BufferedInputStream(zip
+                            .getInputStream(entry));
+                    int currentByte;
+                    // establish buffer for writing file
+                    byte data[] = new byte[BUFFER];
+
+                    // write the current file to disk
+                    FileOutputStream fos = new FileOutputStream(destFile);
+                    BufferedOutputStream dest = new BufferedOutputStream(fos,
+                            BUFFER);
+
+                    // read and write until last byte is encountered
+                    while ((currentByte = is.read(data, 0, BUFFER)) != -1) {
+                        dest.write(data, 0, currentByte);
+                    }
+                    dest.flush();
+                    dest.close();
+                    is.close();
                 }
-                writer.flush();
-                writer.close();
+
+
             }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if (writer != null) {
-                    writer.close();
-                }
-                if (reader != null) {
-                    reader.close();
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        } catch (Exception e) {
         }
-        return destPath;
+        return extractFolder;
     }
 }

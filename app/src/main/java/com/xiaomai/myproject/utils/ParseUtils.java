@@ -80,7 +80,7 @@ public class ParseUtils {
     }
 
     /**
-     * 把Object转换喂long型
+     * 把Object转换为long型
      *
      * @param obj
      * @return
