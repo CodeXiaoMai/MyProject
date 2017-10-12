@@ -41,9 +41,9 @@ public class MyApplication extends Application {
      */
     private void initLogger() {
         Logger.init("XiaoMai").setLogLevel(LogLevel.FULL).setMethodCount(3);
-        Logger.e("hello");
+//        Logger.e("hello");
         // 自定义Tag
-        Logger.t("myTag").e("lsdkfj");
+//        Logger.t("myTag").e("lsdkfj");
     }
 
     /**

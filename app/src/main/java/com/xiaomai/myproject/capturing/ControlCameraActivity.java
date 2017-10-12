@@ -18,6 +18,12 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import rx.Observable;
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 /**
  * Created by XiaoMai on 2017/10/9.
@@ -35,6 +41,13 @@ public class ControlCameraActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_control_camera);
         mPreview = (Preview) findViewById(R.id.preview_view);
+        mPreview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                success = false;
+            }
+        });
+        
         mButton = (Button) findViewById(R.id.button);
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,6 +85,8 @@ public class ControlCameraActivity extends AppCompatActivity {
         }
     };
 
+    boolean success = false;
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -84,7 +99,56 @@ public class ControlCameraActivity extends AppCompatActivity {
             if (focusModes.contains(Camera.Parameters.FOCUS_MODE_AUTO)) {
                 parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_AUTO);
             }
+            List<Camera.Size> pictureSizes = parameters.getSupportedPictureSizes();
+            for (Camera.Size pictureSize : pictureSizes) {
+                Log.e(TAG, "pictureSize: " + pictureSize.width + "*" + pictureSize.height);
+            }
+            parameters.setPictureSize(pictureSizes.get(0).width, pictureSizes.get(0).height);
+
+            List<Camera.Size> previewSizes = parameters.getSupportedPreviewSizes();
+            for (Camera.Size pictureSize : pictureSizes) {
+                Log.e(TAG, "previewSize: " + pictureSize.width + "*" + pictureSize.height);
+            }
+            parameters.setPreviewSize(previewSizes.get(0).width, previewSizes.get(0).height);
+
+            List<String> sceneModes = parameters.getSupportedSceneModes();
+            for (String sceneMode : sceneModes) {
+                Log.e(TAG, "sceneMode: " + sceneMode);
+            }
+
+            if (sceneModes.contains(Camera.Parameters.SCENE_MODE_AUTO)) {
+                parameters.setSceneMode(Camera.Parameters.SCENE_MODE_AUTO);
+            }
             mCamera.setParameters(parameters);
+
+
+
+            Observable.interval(1000, TimeUnit.MILLISECONDS)
+                    .subscribeOn(Schedulers.newThread())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new Subscriber<Long>() {
+                        @Override
+                        public void onCompleted() {
+
+                        }
+
+                        @Override
+                        public void onError(Throwable e) {
+
+                        }
+
+                        @Override
+                        public void onNext(Long aLong) {
+                            if (success) return;
+                            mCamera.autoFocus(new Camera.AutoFocusCallback() {
+                                @Override
+                                public void onAutoFocus(boolean b, Camera camera) {
+                                    success = b;
+                                }
+                            });
+                        }
+                    });
+
             mPreview.setCamera(mCamera);
         }
     }
@@ -118,7 +182,7 @@ public class ControlCameraActivity extends AppCompatActivity {
         }
     }
 
-    public File getOutPutMediaFile() throws IOException{
+    public File getOutPutMediaFile() throws IOException {
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         String imageName = "JPEG_" + timeStamp + "_";
         File storageDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);

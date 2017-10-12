@@ -15,9 +15,9 @@ def releaseTime() {
  */
 android {
     // 编译SDK的版本
-    compileSdkVersion 24
+    compileSdkVersion 26
     // build tools的版本
-    buildToolsVersion "24.0.3"
+    buildToolsVersion "26.0.1"
 
     /**
      * defaultConfig就是程序的默认配置，

@@ -20,7 +20,7 @@ buildscript {
         /**
          * 注意：不要把你的应用程序的依赖写到这里；他们应该在自己的模块build.gradle文件中配置
          */
-        classpath 'com.android.tools.build:gradle:2.2.3'
+        classpath 'com.android.tools.build:gradle:2.3.3'
         classpath 'com.jakewharton:butterknife-gradle-plugin:8.5.1'
     }
 }
