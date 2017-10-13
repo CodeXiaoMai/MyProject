@@ -1,5 +1,10 @@
 package com.xiaomai.myproject.capturing;
 
+import android.app.ActivityManager;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
 import android.hardware.Camera;
 import android.os.Bundle;
 import android.os.Environment;
@@ -10,7 +15,9 @@ import android.view.View;
 import android.widget.Button;
 
 import com.xiaomai.myproject.R;
+import com.xiaomai.myproject.view.MyToast;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -34,20 +41,23 @@ public class ControlCameraActivity extends AppCompatActivity {
     private Preview mPreview;
     private Camera mCamera;
     private Button mButton;
+    private boolean mIsSuccess = false;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        ActivityManager activityManager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+        int memClass = activityManager.getMemoryClass();//64，以m为单位
+        Log.e(TAG, "memClass: " + memClass);
         setContentView(R.layout.activity_control_camera);
         mPreview = (Preview) findViewById(R.id.preview_view);
         mPreview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                success = false;
+                mIsSuccess = false;
             }
         });
-        
+
         mButton = (Button) findViewById(R.id.button);
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,35 +67,64 @@ public class ControlCameraActivity extends AppCompatActivity {
                 }
             }
         });
+
+        findViewById(R.id.button_flash).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mCamera != null) {
+                    // 开启闪光灯
+                    Camera.Parameters parameters = mCamera.getParameters();
+                    parameters.setFlashMode(Camera.Parameters.FLASH_MODE_ON);
+                    mCamera.setParameters(parameters);
+                }
+            }
+        });
     }
 
     private Camera.PictureCallback mPictureCallBack = new Camera.PictureCallback() {
         @Override
         public void onPictureTaken(byte[] data, Camera camera) {
+            // 拍照后需重新开始预览
+            mCamera.startPreview();
+            // 放到Io线程中操作
             File pictureFile = null;
             try {
                 pictureFile = getOutPutMediaFile();
             } catch (IOException e) {
+                e.printStackTrace();
             }
 
             if (pictureFile == null) {
+                MyToast.show(getApplicationContext(), "拍照失败！");
                 Log.d(TAG, "onPictureTaken: Error creating media file, check storage permissions:");
                 return;
             }
 
+            Bitmap resource = BitmapFactory.decodeByteArray(data, 0, data.length);
+            Matrix matrix = new Matrix();
+            matrix.setRotate(90f);
+
+            Bitmap bitmap = Bitmap.createBitmap(resource, 0, 0, resource.getWidth(), resource.getHeight(), matrix, true);
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+
             try {
                 FileOutputStream fos = new FileOutputStream(pictureFile);
-                fos.write(data);
+                fos.write(byteArrayOutputStream.toByteArray());
                 fos.close();
+                MyToast.show(getApplicationContext(), "照片保存到" + pictureFile.getAbsolutePath());
             } catch (FileNotFoundException e) {
+                MyToast.show(getApplicationContext(), "保存照片失败");
                 Log.d(TAG, "onPictureTaken: File not found:" + e.getMessage());
             } catch (IOException e) {
+                MyToast.show(getApplicationContext(), "保存照片失败");
                 Log.d(TAG, "onPictureTaken: Error accessing file; " + e.getMessage());
             }
+
+
         }
     };
 
-    boolean success = false;
 
     @Override
     protected void onResume() {
@@ -101,9 +140,12 @@ public class ControlCameraActivity extends AppCompatActivity {
             }
             List<Camera.Size> pictureSizes = parameters.getSupportedPictureSizes();
             for (Camera.Size pictureSize : pictureSizes) {
-                Log.e(TAG, "pictureSize: " + pictureSize.width + "*" + pictureSize.height);
+                if (pictureSize.width * pictureSize.height <= 8 * 1024 * 1024) {
+                    parameters.setPictureSize(pictureSize.width, pictureSize.height);
+                    Log.e(TAG, "pictureSize: " + pictureSize.width + "*" + pictureSize.height);
+                    break;
+                }
             }
-            parameters.setPictureSize(pictureSizes.get(0).width, pictureSizes.get(0).height);
 
             List<Camera.Size> previewSizes = parameters.getSupportedPreviewSizes();
             for (Camera.Size pictureSize : pictureSizes) {
@@ -121,8 +163,6 @@ public class ControlCameraActivity extends AppCompatActivity {
             }
             mCamera.setParameters(parameters);
 
-
-
             Observable.interval(1000, TimeUnit.MILLISECONDS)
                     .subscribeOn(Schedulers.newThread())
                     .observeOn(AndroidSchedulers.mainThread())
@@ -139,11 +179,14 @@ public class ControlCameraActivity extends AppCompatActivity {
 
                         @Override
                         public void onNext(Long aLong) {
-                            if (success) return;
+                            if (mIsSuccess) return;
                             mCamera.autoFocus(new Camera.AutoFocusCallback() {
                                 @Override
                                 public void onAutoFocus(boolean b, Camera camera) {
-                                    success = b;
+                                    mIsSuccess = b;
+                                    if (mIsSuccess) {
+                                        MyToast.show(getApplicationContext(), "聚焦成功");
+                                    }
                                 }
                             });
                         }

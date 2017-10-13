@@ -31,7 +31,7 @@ android {
     defaultConfig {
         applicationId "com.xiaomai.myproject"
         minSdkVersion 15
-        targetSdkVersion 23
+        targetSdkVersion 14
         versionCode 1
         versionName "1.0"
 
@@ -147,12 +147,12 @@ dependencies {
     compile files('libs/fastjson-1.1.54.android.jar')
     compile files('libs/picasso-2.5.2.jar')
     // If you want to use the GPU Filters
-    compile 'com.android.support:appcompat-v7:24.2.1'
-    compile 'com.android.support:recyclerview-v7:24.2.1'
+    compile 'com.android.support:appcompat-v7:26+'
+    compile 'com.android.support:recyclerview-v7:26+'
     compile 'pl.droidsonroids.gif:android-gif-drawable:1.2.2'
     compile 'com.liulishuo.filedownloader:library:1.2.2'
     compile 'com.github.bumptech.glide:glide:3.7.0'
-    compile 'com.android.support:design:24.2.1'
+    compile 'com.android.support:design:26+'
     compile 'me.leolin:ShortcutBadger:1.1.10@aar'
     compile 'de.hdodenhof:circleimageview:2.1.0'
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
@@ -169,5 +169,5 @@ dependencies {
     compile 'com.squareup.okhttp3:logging-interceptor:3.+'
     compile 'io.reactivex:rxjava:1.0.14'
     compile 'io.reactivex:rxandroid:1.0.1'
-    compile 'com.android.support:support-v4:24.2.1'
+    compile 'com.android.support:support-v4:26+'
 }
